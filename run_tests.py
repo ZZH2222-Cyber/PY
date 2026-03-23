@@ -22,6 +22,14 @@ def run_tests():
         text=True
     )
     
+    # 将测试输出保存到文件
+    with open("test_output.log", "w", encoding="utf-8") as f:
+        f.write("测试输出:\n")
+        f.write(result.stdout)
+        if result.stderr:
+            f.write("\n错误输出:\n")
+            f.write(result.stderr)
+    
     # 打印测试结果
     print("测试输出:")
     print(result.stdout)
@@ -48,6 +56,14 @@ def run_tests_with_allure():
         capture_output=True,
         text=True
     )
+    
+    # 将测试输出保存到文件
+    with open("test_output.log", "w", encoding="utf-8") as f:
+        f.write("测试输出:\n")
+        f.write(result.stdout)
+        if result.stderr:
+            f.write("\n错误输出:\n")
+            f.write(result.stderr)
     
     # 打印测试结果
     print("测试输出:")
