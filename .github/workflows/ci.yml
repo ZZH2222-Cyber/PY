@@ -48,12 +48,21 @@ jobs:
           fi
         done
     
+    - name: Upload test output log
+      uses: actions/upload-artifact@v4
+      with:
+        name: test-output
+        path: test_output.log
+        retention-days: 7
+    
     - name: Generate Allure report
+      if: success() || failure()
       run: |
         echo "Generating Allure report..."
         python -m pytest src/tests --alluredir=./allure-results
     
     - name: Upload Allure report
+      if: success() || failure()
       uses: actions/upload-artifact@v4
       with:
         name: allure-report
