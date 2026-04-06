@@ -1,0 +1,7 @@
+2026-04-05 21:40:29 [INFO] [user_api.py:66] 调用登录接口：username=admin
+2026-04-05 21:40:29 [INFO] [request_handler.py:84] Request: POST https://httpbin.org/login
+2026-04-05 21:40:29 [INFO] [request_handler.py:93] Response status: 200 elapsed=0.001s
+2026-04-05 21:40:29 [INFO] [user_api.py:85] 登录成功，已缓存 Token
+2026-04-05 21:40:29 [INFO] [user_api.py:136] 调用获取用户接口：user_id=1
+2026-04-05 21:40:29 [INFO] [request_handler.py:84] Request: GET https://httpbin.org/user/1
+2026-04-05 21:40:29 [INFO] [request_handler.py:93] Response status: 200 elapsed=0.001s

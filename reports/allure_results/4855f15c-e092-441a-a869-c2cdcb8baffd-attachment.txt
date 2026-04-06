@@ -1,0 +1,4 @@
+2026-04-05 21:38:26 [INFO] [user_api.py:66] 调用登录接口：username=admin
+2026-04-05 21:38:26 [INFO] [request_handler.py:84] Request: POST https://httpbin.org/login
+2026-04-05 21:38:26 [INFO] [request_handler.py:93] Response status: 200 elapsed=0.001s
+2026-04-05 21:38:26 [INFO] [user_api.py:87] 登录响应中未包含 token 字段（可能为失败用例）

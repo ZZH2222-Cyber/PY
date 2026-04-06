@@ -1,0 +1,97 @@
+2026-04-05 21:38:26 [INFO] [settings.py:108] 日志系统初始化完成，级别=INFO
+2026-04-05 21:38:26 [INFO] [excel_reader.py:31] 读取 Excel：C:\Users\11154\Desktop\api-auto-test-framework\data\login_data.xlsx sheet=login
+2026-04-05 21:38:26 [INFO] [excel_reader.py:89] Excel 读取完成，共 3 条数据行
+2026-04-05 21:38:26 [INFO] [user_api.py:66] 调用登录接口：username=admin
+2026-04-05 21:38:26 [INFO] [request_handler.py:84] Request: POST https://httpbin.org/login
+2026-04-05 21:38:26 [INFO] [request_handler.py:93] Response status: 200 elapsed=0.002s
+2026-04-05 21:38:26 [INFO] [user_api.py:85] 登录成功，已缓存 Token
+2026-04-05 21:38:26 [INFO] [user_api.py:66] 调用登录接口：username=admin
+2026-04-05 21:38:26 [INFO] [request_handler.py:84] Request: POST https://httpbin.org/login
+2026-04-05 21:38:26 [INFO] [request_handler.py:93] Response status: 200 elapsed=0.001s
+2026-04-05 21:38:26 [INFO] [user_api.py:87] 登录响应中未包含 token 字段（可能为失败用例）
+2026-04-05 21:38:27 [INFO] [user_api.py:66] 调用登录接口：username=ghost
+2026-04-05 21:38:27 [INFO] [request_handler.py:84] Request: POST https://httpbin.org/login
+2026-04-05 21:38:27 [INFO] [request_handler.py:93] Response status: 200 elapsed=0.001s
+2026-04-05 21:38:27 [INFO] [user_api.py:87] 登录响应中未包含 token 字段（可能为失败用例）
+2026-04-05 21:38:27 [INFO] [request_handler.py:84] Request: GET https://httpbin.org/get
+2026-04-05 21:38:32 [INFO] [request_handler.py:93] Response status: 200 elapsed=5.110s
+2026-04-05 21:38:32 [INFO] [request_handler.py:84] Request: GET https://httpbin.org/get
+2026-04-05 21:38:36 [INFO] [request_handler.py:93] Response status: 200 elapsed=4.679s
+2026-04-05 21:38:36 [INFO] [request_handler.py:84] Request: GET https://httpbin.org/get
+2026-04-05 21:38:38 [INFO] [request_handler.py:93] Response status: 200 elapsed=1.474s
+2026-04-05 21:38:38 [INFO] [request_handler.py:84] Request: GET https://httpbin.org/get
+2026-04-05 21:38:40 [INFO] [request_handler.py:93] Response status: 200 elapsed=2.152s
+2026-04-05 21:38:40 [INFO] [request_handler.py:84] Request: GET https://httpbin.org/get
+2026-04-05 21:38:44 [INFO] [request_handler.py:93] Response status: 200 elapsed=4.016s
+2026-04-05 21:38:44 [INFO] [request_handler.py:84] Request: GET https://httpbin.org/get
+2026-04-05 21:38:49 [INFO] [request_handler.py:93] Response status: 200 elapsed=4.892s
+2026-04-05 21:38:49 [INFO] [request_handler.py:84] Request: GET https://httpbin.org/get
+2026-04-05 21:38:52 [INFO] [request_handler.py:93] Response status: 200 elapsed=3.347s
+2026-04-05 21:38:52 [INFO] [request_handler.py:84] Request: GET https://httpbin.org/get
+2026-04-05 21:38:54 [INFO] [request_handler.py:93] Response status: 200 elapsed=1.469s
+2026-04-05 21:38:54 [INFO] [request_handler.py:84] Request: GET https://httpbin.org/get
+2026-04-05 21:38:55 [INFO] [request_handler.py:93] Response status: 200 elapsed=1.575s
+2026-04-05 21:38:55 [INFO] [request_handler.py:84] Request: GET https://httpbin.org/get
+2026-04-05 21:38:57 [INFO] [request_handler.py:93] Response status: 200 elapsed=1.396s
+2026-04-05 21:38:57 [INFO] [request_handler.py:84] Request: GET https://httpbin.org/get
+2026-04-05 21:38:59 [INFO] [request_handler.py:93] Response status: 200 elapsed=2.331s
+2026-04-05 21:38:59 [INFO] [request_handler.py:84] Request: GET https://httpbin.org/get
+2026-04-05 21:39:02 [INFO] [request_handler.py:93] Response status: 200 elapsed=2.875s
+2026-04-05 21:39:02 [INFO] [request_handler.py:84] Request: GET https://httpbin.org/get
+2026-04-05 21:39:03 [INFO] [request_handler.py:93] Response status: 200 elapsed=1.371s
+2026-04-05 21:39:03 [INFO] [request_handler.py:84] Request: GET https://httpbin.org/get
+2026-04-05 21:39:06 [INFO] [request_handler.py:93] Response status: 200 elapsed=2.233s
+2026-04-05 21:39:06 [INFO] [request_handler.py:84] Request: GET https://httpbin.org/get
+2026-04-05 21:39:07 [INFO] [request_handler.py:93] Response status: 200 elapsed=1.307s
+2026-04-05 21:39:07 [INFO] [request_handler.py:84] Request: GET https://httpbin.org/get
+2026-04-05 21:39:09 [INFO] [request_handler.py:93] Response status: 200 elapsed=2.394s
+2026-04-05 21:39:09 [INFO] [request_handler.py:84] Request: GET https://httpbin.org/get
+2026-04-05 21:39:14 [INFO] [request_handler.py:93] Response status: 200 elapsed=5.082s
+2026-04-05 21:39:14 [INFO] [request_handler.py:84] Request: GET https://httpbin.org/get
+2026-04-05 21:39:18 [INFO] [request_handler.py:93] Response status: 200 elapsed=3.929s
+2026-04-05 21:39:18 [INFO] [request_handler.py:84] Request: GET https://httpbin.org/get
+2026-04-05 21:39:23 [INFO] [request_handler.py:93] Response status: 200 elapsed=4.195s
+2026-04-05 21:39:23 [INFO] [request_handler.py:84] Request: GET https://httpbin.org/get
+2026-04-05 21:39:29 [INFO] [request_handler.py:93] Response status: 200 elapsed=6.457s
+2026-04-05 21:39:29 [INFO] [request_handler.py:84] Request: GET https://httpbin.org/get
+2026-04-05 21:39:32 [INFO] [request_handler.py:93] Response status: 200 elapsed=3.290s
+2026-04-05 21:39:32 [INFO] [request_handler.py:84] Request: GET https://httpbin.org/get
+2026-04-05 21:39:37 [INFO] [request_handler.py:93] Response status: 200 elapsed=4.250s
+2026-04-05 21:39:37 [INFO] [request_handler.py:84] Request: GET https://httpbin.org/get
+2026-04-05 21:39:39 [INFO] [request_handler.py:93] Response status: 200 elapsed=2.157s
+2026-04-05 21:39:39 [INFO] [request_handler.py:84] Request: GET https://httpbin.org/get
+2026-04-05 21:39:42 [INFO] [request_handler.py:93] Response status: 200 elapsed=3.691s
+2026-04-05 21:39:42 [INFO] [request_handler.py:84] Request: GET https://httpbin.org/get
+2026-04-05 21:39:44 [INFO] [request_handler.py:93] Response status: 200 elapsed=1.422s
+2026-04-05 21:39:44 [INFO] [request_handler.py:84] Request: GET https://httpbin.org/get
+2026-04-05 21:39:45 [INFO] [request_handler.py:93] Response status: 200 elapsed=1.374s
+2026-04-05 21:39:45 [INFO] [request_handler.py:84] Request: GET https://httpbin.org/get
+2026-04-05 21:39:47 [INFO] [request_handler.py:93] Response status: 200 elapsed=1.469s
+2026-04-05 21:39:47 [INFO] [request_handler.py:84] Request: GET https://httpbin.org/get
+2026-04-05 21:39:48 [INFO] [request_handler.py:93] Response status: 200 elapsed=1.576s
+2026-04-05 21:39:48 [INFO] [request_handler.py:84] Request: GET https://httpbin.org/get
+2026-04-05 21:39:50 [INFO] [request_handler.py:93] Response status: 200 elapsed=1.496s
+2026-04-05 21:39:50 [INFO] [request_handler.py:84] Request: GET https://httpbin.org/get
+2026-04-05 21:39:51 [INFO] [request_handler.py:93] Response status: 200 elapsed=1.501s
+2026-04-05 21:40:28 [INFO] [settings.py:108] 日志系统初始化完成，级别=INFO
+2026-04-05 21:40:29 [INFO] [excel_reader.py:31] 读取 Excel：C:\Users\11154\Desktop\api-auto-test-framework\data\login_data.xlsx sheet=login
+2026-04-05 21:40:29 [INFO] [excel_reader.py:89] Excel 读取完成，共 3 条数据行
+2026-04-05 21:40:29 [INFO] [user_api.py:66] 调用登录接口：username=admin
+2026-04-05 21:40:29 [INFO] [request_handler.py:84] Request: POST https://httpbin.org/login
+2026-04-05 21:40:29 [INFO] [request_handler.py:93] Response status: 200 elapsed=0.001s
+2026-04-05 21:40:29 [INFO] [user_api.py:85] 登录成功，已缓存 Token
+2026-04-05 21:40:29 [INFO] [user_api.py:66] 调用登录接口：username=admin
+2026-04-05 21:40:29 [INFO] [request_handler.py:84] Request: POST https://httpbin.org/login
+2026-04-05 21:40:29 [INFO] [request_handler.py:93] Response status: 200 elapsed=0.001s
+2026-04-05 21:40:29 [INFO] [user_api.py:87] 登录响应中未包含 token 字段（可能为失败用例）
+2026-04-05 21:40:29 [INFO] [user_api.py:66] 调用登录接口：username=ghost
+2026-04-05 21:40:29 [INFO] [request_handler.py:84] Request: POST https://httpbin.org/login
+2026-04-05 21:40:29 [INFO] [request_handler.py:93] Response status: 200 elapsed=0.001s
+2026-04-05 21:40:29 [INFO] [user_api.py:87] 登录响应中未包含 token 字段（可能为失败用例）
+2026-04-05 21:40:29 [INFO] [user_api.py:66] 调用登录接口：username=admin
+2026-04-05 21:40:29 [INFO] [request_handler.py:84] Request: POST https://httpbin.org/login
+2026-04-05 21:40:29 [INFO] [request_handler.py:93] Response status: 200 elapsed=0.001s
+2026-04-05 21:40:29 [INFO] [user_api.py:85] 登录成功，已缓存 Token
+2026-04-05 21:40:29 [INFO] [user_api.py:136] 调用获取用户接口：user_id=1
+2026-04-05 21:40:29 [INFO] [request_handler.py:84] Request: GET https://httpbin.org/user/1
+2026-04-05 21:40:29 [INFO] [request_handler.py:93] Response status: 200 elapsed=0.001s
