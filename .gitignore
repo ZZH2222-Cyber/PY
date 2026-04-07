@@ -1,19 +1,37 @@
 # Python
 __pycache__/
-*.pyc
-*.pyo
-*.pyd
+*.py[cod]
+*$py.class
+
+# Allure
+allure-results/
+allure-report/
+allure/
+allure-2.24.1/
+allure.zip
+
+# SQLite
+test.db
+sqlite-tools.zip
+sqlite3_analyzer.exe
+
+# Test output
+test_output.log
 
 # IDE
 .vscode/
 .idea/
 
-# Test
-allure-results/
-
-# Data
-data/*.xlsx
-
 # OS
-.DS_Store
 Thumbs.db
+.DS_Store
+
+# Environment
+.env
+venv/
+env/
+
+# Build
+build/
+dist/
+*.egg-info/
