@@ -1,0 +1,15 @@
+{
+  "args": {
+    "name": "test",
+    "value": "123"
+  },
+  "headers": {
+    "Accept": "*/*",
+    "Accept-Encoding": "gzip, deflate, zstd",
+    "Host": "httpbin.org",
+    "User-Agent": "python-requests/2.32.5",
+    "X-Amzn-Trace-Id": "Root=1-69d67680-3f3850723a18598234bede70"
+  },
+  "origin": "119.143.133.97",
+  "url": "https://httpbin.org/get?name=test&value=123"
+}

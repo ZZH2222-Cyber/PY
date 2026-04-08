@@ -1,0 +1,2 @@
+2026-04-08 21:05:23 [INFO] [request_handler.py:84] Request: GET https://httpbin.org/headers
+2026-04-08 21:05:24 [INFO] [request_handler.py:93] Response status: 200 elapsed=1.183s

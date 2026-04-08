@@ -1,0 +1,21 @@
+{
+  "case_id": "TC207",
+  "case_name": "提取Token并使用",
+  "priority": "高",
+  "module": "通用接口",
+  "method": "POST",
+  "path": "/post",
+  "params": null,
+  "headers": null,
+  "json_body": "{\"token\": \"abc123\"}",
+  "data_body": null,
+  "expected_status": 200,
+  "expected_code": 0,
+  "assert_type": "eq",
+  "assert_field": "json.token",
+  "assert_value": "abc123",
+  "extract_var": "auth_token",
+  "extract_field": "json.token",
+  "enabled": "Y",
+  "remark": "测试响应提取"
+}

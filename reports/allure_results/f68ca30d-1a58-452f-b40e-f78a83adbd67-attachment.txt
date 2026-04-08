@@ -1,0 +1,2 @@
+2026-04-08 22:03:20 [INFO] [request_handler.py:84] Request: GET https://httpbin.org/user-agent
+2026-04-08 22:03:22 [INFO] [request_handler.py:93] Response status: 200 elapsed=1.357s

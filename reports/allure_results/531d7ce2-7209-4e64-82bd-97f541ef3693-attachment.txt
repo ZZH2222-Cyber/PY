@@ -1,0 +1,2 @@
+2026-04-08 23:32:20 [INFO] [request_handler.py:84] Request: GET https://httpbin.org/delay/2
+2026-04-08 23:32:24 [INFO] [request_handler.py:93] Response status: 200 elapsed=3.382s

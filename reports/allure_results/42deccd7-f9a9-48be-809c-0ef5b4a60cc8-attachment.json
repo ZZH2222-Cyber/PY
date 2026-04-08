@@ -1,0 +1,14 @@
+{
+  "case_id": "TC004",
+  "case_name": "登录失败-用户不存在",
+  "priority": "中",
+  "module": "用户模块",
+  "method": "POST",
+  "path": "/login",
+  "username": "notexist",
+  "password": "any_password",
+  "expected_code": 400,
+  "expected_msg": "用户不存在",
+  "enabled": "Y",
+  "remark": "验证不存在的用户"
+}

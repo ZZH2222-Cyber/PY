@@ -1,0 +1,20 @@
+{
+  "args": {}, 
+  "data": "{\"update\": \"data\"}", 
+  "files": {}, 
+  "form": {}, 
+  "headers": {
+    "Accept": "*/*", 
+    "Accept-Encoding": "gzip, deflate, zstd", 
+    "Content-Length": "18", 
+    "Content-Type": "application/json", 
+    "Host": "httpbin.org", 
+    "User-Agent": "python-requests/2.32.5", 
+    "X-Amzn-Trace-Id": "Root=1-69d65363-00a6d3285c14bf7404408f8d"
+  }, 
+  "json": {
+    "update": "data"
+  }, 
+  "origin": "113.81.104.103", 
+  "url": "https://httpbin.org/put"
+}

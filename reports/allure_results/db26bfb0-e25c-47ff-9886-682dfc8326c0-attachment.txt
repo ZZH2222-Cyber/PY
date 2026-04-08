@@ -1,0 +1,2 @@
+[32mINFO    [0m core.request_handler:request_handler.py:84 Request: POST https://httpbin.org/post
+[32mINFO    [0m core.request_handler:request_handler.py:93 Response status: 200 elapsed=1.462s

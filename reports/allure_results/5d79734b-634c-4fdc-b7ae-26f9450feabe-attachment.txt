@@ -1,0 +1,17 @@
+{
+  "args": {}, 
+  "data": "", 
+  "files": {}, 
+  "form": {}, 
+  "headers": {
+    "Accept": "*/*", 
+    "Accept-Encoding": "gzip, deflate, zstd", 
+    "Content-Length": "0", 
+    "Host": "httpbin.org", 
+    "User-Agent": "python-requests/2.32.5", 
+    "X-Amzn-Trace-Id": "Root=1-69d65293-09aae81008d5b6e86a45fe3f"
+  }, 
+  "json": null, 
+  "origin": "113.81.104.103", 
+  "url": "https://httpbin.org/delete"
+}

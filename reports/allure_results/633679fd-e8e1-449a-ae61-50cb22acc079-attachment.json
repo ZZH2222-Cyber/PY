@@ -1,0 +1,21 @@
+{
+  "case_id": "TC203",
+  "case_name": "POST请求-表单数据",
+  "priority": "中",
+  "module": "通用接口",
+  "method": "POST",
+  "path": "/post",
+  "params": null,
+  "headers": null,
+  "json_body": null,
+  "data_body": "field=test",
+  "expected_status": 200,
+  "expected_code": 0,
+  "assert_type": "eq",
+  "assert_field": "form.field",
+  "assert_value": "test",
+  "extract_var": null,
+  "extract_field": null,
+  "enabled": "Y",
+  "remark": "测试POST请求表单格式"
+}

@@ -1,0 +1,2 @@
+2026-04-08 22:03:00 [INFO] [request_handler.py:84] Request: DELETE https://httpbin.org/delete
+2026-04-08 22:03:03 [INFO] [request_handler.py:93] Response status: 200 elapsed=2.178s

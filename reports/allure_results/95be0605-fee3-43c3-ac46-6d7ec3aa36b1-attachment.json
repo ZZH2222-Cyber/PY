@@ -1,0 +1,14 @@
+{
+  "case_id": "TC002",
+  "case_name": "正常登录-普通用户",
+  "priority": "高",
+  "module": "用户模块",
+  "method": "POST",
+  "path": "/login",
+  "username": "user",
+  "password": "correct_password",
+  "expected_code": 0,
+  "expected_msg": "登录成功",
+  "enabled": "Y",
+  "remark": "验证普通用户登录成功"
+}

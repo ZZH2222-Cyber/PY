@@ -1,0 +1,2 @@
+2026-04-08 23:38:59 [INFO] [request_handler.py:84] Request: GET https://httpbin.org/xml
+2026-04-08 23:39:02 [INFO] [request_handler.py:93] Response status: 200 elapsed=2.818s

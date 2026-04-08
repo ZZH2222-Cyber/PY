@@ -1,0 +1,2 @@
+2026-04-08 23:23:18 [INFO] [request_handler.py:84] Request: GET https://httpbin.org/status/404
+2026-04-08 23:23:19 [INFO] [request_handler.py:93] Response status: 404 elapsed=1.490s

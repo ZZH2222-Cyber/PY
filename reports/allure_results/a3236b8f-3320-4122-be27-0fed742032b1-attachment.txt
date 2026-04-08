@@ -1,0 +1,2 @@
+[32mINFO    [0m core.request_handler:request_handler.py:84 Request: GET https://httpbin.org/user-agent
+[32mINFO    [0m core.request_handler:request_handler.py:93 Response status: 200 elapsed=1.249s

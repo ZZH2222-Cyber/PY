@@ -1,0 +1,2 @@
+2026-04-08 23:23:10 [INFO] [request_handler.py:84] Request: PUT https://httpbin.org/put
+2026-04-08 23:23:12 [INFO] [request_handler.py:93] Response status: 200 elapsed=1.980s

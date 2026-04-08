@@ -1,0 +1,20 @@
+{
+  "args": {}, 
+  "data": "{\"token\": \"abc123\"}", 
+  "files": {}, 
+  "form": {}, 
+  "headers": {
+    "Accept": "*/*", 
+    "Accept-Encoding": "gzip, deflate, zstd", 
+    "Content-Length": "19", 
+    "Content-Type": "application/json", 
+    "Host": "httpbin.org", 
+    "User-Agent": "python-requests/2.32.5", 
+    "X-Amzn-Trace-Id": "Root=1-69d65300-1cfbab1732915508647eca88"
+  }, 
+  "json": {
+    "token": "abc123"
+  }, 
+  "origin": "113.81.104.103", 
+  "url": "https://httpbin.org/post"
+}

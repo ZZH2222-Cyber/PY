@@ -1,0 +1,2 @@
+2026-04-08 22:03:14 [INFO] [request_handler.py:84] Request: GET https://httpbin.org/status/500
+2026-04-08 22:03:17 [INFO] [request_handler.py:93] Response status: 500 elapsed=3.611s

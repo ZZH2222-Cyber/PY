@@ -1,0 +1,21 @@
+{
+  "case_id": "TC206",
+  "case_name": "自定义Headers",
+  "priority": "低",
+  "module": "通用接口",
+  "method": "GET",
+  "path": "/headers",
+  "params": null,
+  "headers": "{\"X-Custom\": \"test-value\"}",
+  "json_body": null,
+  "data_body": null,
+  "expected_status": 200,
+  "expected_code": 0,
+  "assert_type": "eq",
+  "assert_field": "headers.X-Custom",
+  "assert_value": "test-value",
+  "extract_var": null,
+  "extract_field": null,
+  "enabled": "Y",
+  "remark": "测试自定义请求头"
+}

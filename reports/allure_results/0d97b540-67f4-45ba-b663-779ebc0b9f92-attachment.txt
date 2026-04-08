@@ -1,0 +1,2 @@
+2026-04-08 23:22:02 [INFO] [request_handler.py:84] Request: GET https://httpbin.org/status/301
+2026-04-08 23:22:04 [INFO] [request_handler.py:93] Response status: 301 elapsed=1.960s

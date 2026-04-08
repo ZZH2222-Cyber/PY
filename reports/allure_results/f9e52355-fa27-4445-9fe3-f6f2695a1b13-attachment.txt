@@ -1,0 +1,10 @@
+{
+  "headers": {
+    "Accept": "*/*", 
+    "Accept-Encoding": "gzip, deflate, zstd", 
+    "Host": "httpbin.org", 
+    "User-Agent": "python-requests/2.32.5", 
+    "X-Amzn-Trace-Id": "Root=1-69d65aa1-620b49bf7d73fbc122a194a3", 
+    "X-Custom": "test-value"
+  }
+}

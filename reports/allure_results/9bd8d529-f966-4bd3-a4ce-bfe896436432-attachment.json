@@ -1,0 +1,14 @@
+{
+  "case_id": "TC001",
+  "case_name": "正常登录-管理员",
+  "priority": "高",
+  "module": "用户模块",
+  "method": "POST",
+  "path": "/login",
+  "username": "admin",
+  "password": "correct_password",
+  "expected_code": 0,
+  "expected_msg": "登录成功",
+  "enabled": "Y",
+  "remark": "验证管理员登录成功"
+}

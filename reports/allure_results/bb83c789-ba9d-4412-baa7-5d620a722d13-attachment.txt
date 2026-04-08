@@ -1,0 +1,4 @@
+2026-04-08 23:32:10 [INFO] [request_handler.py:84] Request: GET https://httpbin.org/cookies/set?test_cookie=test_value
+2026-04-08 23:32:16 [INFO] [request_handler.py:93] Response status: 200 elapsed=5.373s
+2026-04-08 23:32:16 [INFO] [request_handler.py:84] Request: GET https://httpbin.org/cookies
+2026-04-08 23:32:16 [INFO] [request_handler.py:93] Response status: 200 elapsed=0.525s

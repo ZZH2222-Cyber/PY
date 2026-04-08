@@ -1,0 +1,7 @@
+INFO     api.user_api:user_api.py:66 调用登录接口：username=admin
+INFO     core.request_handler:request_handler.py:84 Request: POST https://httpbin.org/login
+INFO     core.request_handler:request_handler.py:93 Response status: 200 elapsed=0.000s
+INFO     api.user_api:user_api.py:85 登录成功，已缓存 Token
+INFO     api.user_api:user_api.py:136 调用获取用户接口：user_id=1
+INFO     core.request_handler:request_handler.py:84 Request: GET https://httpbin.org/user/1
+INFO     core.request_handler:request_handler.py:93 Response status: 200 elapsed=0.000s

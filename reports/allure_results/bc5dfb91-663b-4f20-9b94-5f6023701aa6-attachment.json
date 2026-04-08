@@ -1,0 +1,21 @@
+{
+  "case_id": "TC201",
+  "case_name": "GET请求-查询参数",
+  "priority": "高",
+  "module": "通用接口",
+  "method": "GET",
+  "path": "/get",
+  "params": "page=1&size=10",
+  "headers": null,
+  "json_body": null,
+  "data_body": null,
+  "expected_status": 200,
+  "expected_code": 0,
+  "assert_type": "eq",
+  "assert_field": "args.page",
+  "assert_value": "1",
+  "extract_var": null,
+  "extract_field": null,
+  "enabled": "Y",
+  "remark": "测试GET请求带查询参数"
+}

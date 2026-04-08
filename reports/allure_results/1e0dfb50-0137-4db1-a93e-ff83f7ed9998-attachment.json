@@ -1,0 +1,14 @@
+{
+  "case_id": "TC005",
+  "case_name": "登录失败-空用户名",
+  "priority": "低",
+  "module": "用户模块",
+  "method": "POST",
+  "path": "/login",
+  "username": null,
+  "password": "any_password",
+  "expected_code": 400,
+  "expected_msg": "用户不存在",
+  "enabled": "Y",
+  "remark": "验证空用户名处理"
+}

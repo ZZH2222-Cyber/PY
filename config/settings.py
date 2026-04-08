@@ -19,6 +19,13 @@ LOG_DIR: str = os.path.join(PROJECT_ROOT, "logs")
 # ---------------------------------------------------------------------------
 BASE_URL: str = os.environ.get("BASE_URL", "https://httpbin.org")
 REQUEST_TIMEOUT: int = int(os.environ.get("REQUEST_TIMEOUT", "10"))
+TIMEOUT: int = REQUEST_TIMEOUT
+
+# ---------------------------------------------------------------------------
+# 安全测试（目录约定）
+# ---------------------------------------------------------------------------
+SECURITY_BUG_LOG_DIR: str = os.path.join(PROJECT_ROOT, "docs", "security_bug_log")
+SECURITY_PAYLOAD_DIR: str = os.path.join(PROJECT_ROOT, "testcases", "security", "payload")
 
 # ---------------------------------------------------------------------------
 # 日志

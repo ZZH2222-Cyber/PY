@@ -1,0 +1,3 @@
+[32mINFO    [0m core.request_handler:request_handler.py:84 Request: POST https://httpbin.org/post
+[32mINFO    [0m core.request_handler:request_handler.py:93 Response status: 200 elapsed=3.128s
+[32mINFO    [0m testcases.test_api_ddt:test_api_ddt.py:361 提取变量：auth_token = abc123

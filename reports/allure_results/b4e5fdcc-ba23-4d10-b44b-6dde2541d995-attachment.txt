@@ -1,0 +1,3 @@
+2026-04-08 21:07:09 [INFO] [request_handler.py:84] Request: POST https://httpbin.org/post
+2026-04-08 21:07:11 [INFO] [request_handler.py:93] Response status: 200 elapsed=2.286s
+2026-04-08 21:07:11 [INFO] [test_api_ddt.py:361] 提取变量：auth_token = abc123

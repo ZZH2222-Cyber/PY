@@ -1,0 +1,21 @@
+{
+  "case_id": "TC205",
+  "case_name": "DELETE请求",
+  "priority": "中",
+  "module": "通用接口",
+  "method": "DELETE",
+  "path": "/delete",
+  "params": null,
+  "headers": null,
+  "json_body": null,
+  "data_body": null,
+  "expected_status": 200,
+  "expected_code": 0,
+  "assert_type": "contains",
+  "assert_field": "url",
+  "assert_value": "delete",
+  "extract_var": null,
+  "extract_field": null,
+  "enabled": "Y",
+  "remark": "测试DELETE请求"
+}

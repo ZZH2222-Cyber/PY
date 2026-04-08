@@ -1,0 +1,4 @@
+[32mINFO    [0m api.user_api:user_api.py:66 调用登录接口：username=ghost
+[32mINFO    [0m core.request_handler:request_handler.py:84 Request: POST https://httpbin.org/login
+[32mINFO    [0m core.request_handler:request_handler.py:93 Response status: 200 elapsed=0.001s
+[32mINFO    [0m api.user_api:user_api.py:87 登录响应中未包含 token 字段（可能为失败用例）

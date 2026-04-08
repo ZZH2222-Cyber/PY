@@ -1,0 +1,21 @@
+{
+  "case_id": "TC202",
+  "case_name": "POST请求-JSON体",
+  "priority": "高",
+  "module": "通用接口",
+  "method": "POST",
+  "path": "/post",
+  "params": null,
+  "headers": null,
+  "json_body": "{\"key\": \"value\"}",
+  "data_body": null,
+  "expected_status": 200,
+  "expected_code": 0,
+  "assert_type": "eq",
+  "assert_field": "json.key",
+  "assert_value": "value",
+  "extract_var": null,
+  "extract_field": null,
+  "enabled": "Y",
+  "remark": "测试POST请求JSON格式"
+}

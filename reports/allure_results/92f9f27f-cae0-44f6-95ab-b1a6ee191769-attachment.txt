@@ -1,0 +1,2 @@
+2026-04-08 21:25:35 [INFO] [request_handler.py:84] Request: POST https://httpbin.org/post
+2026-04-08 21:25:36 [INFO] [request_handler.py:93] Response status: 200 elapsed=1.337s

@@ -1,0 +1,3 @@
+INFO     core.request_handler:request_handler.py:84 Request: POST https://httpbin.org/post
+INFO     core.request_handler:request_handler.py:93 Response status: 200 elapsed=1.461s
+INFO     testcases.test_api_ddt:test_api_ddt.py:270 已保存 Token 到上下文

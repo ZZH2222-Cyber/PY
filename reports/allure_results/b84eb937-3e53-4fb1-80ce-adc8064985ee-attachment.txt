@@ -1,0 +1,20 @@
+{
+  "args": {}, 
+  "data": "{\"key\": \"value\"}", 
+  "files": {}, 
+  "form": {}, 
+  "headers": {
+    "Accept": "*/*", 
+    "Accept-Encoding": "gzip, deflate, zstd", 
+    "Content-Length": "16", 
+    "Content-Type": "application/json", 
+    "Host": "httpbin.org", 
+    "User-Agent": "python-requests/2.32.5", 
+    "X-Amzn-Trace-Id": "Root=1-69d6528f-49b64e7604d1689578345d7d"
+  }, 
+  "json": {
+    "key": "value"
+  }, 
+  "origin": "113.81.104.103", 
+  "url": "https://httpbin.org/post"
+}
