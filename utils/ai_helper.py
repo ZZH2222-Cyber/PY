@@ -217,9 +217,3 @@ def save_to_excel(cases: List[Dict[str, Any]], file_path: str) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     wb.save(str(path))
     logger.info("Excel 已保存：%s", path)
-
-</think>
-Fixing `save_to_excel`: adding missing `Path` import and completing the function.
-
-<｜tool▁calls▁begin｜><｜tool▁call▁begin｜>
-StrReplace

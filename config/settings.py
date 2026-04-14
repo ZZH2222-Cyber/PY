@@ -6,6 +6,16 @@ import os
 from pathlib import Path
 from typing import List
 
+# 尝试从项目根目录的 .env 加载环境变量（CI/系统环境变量优先，不会被覆盖）
+try:
+    from dotenv import load_dotenv  # type: ignore
+
+    _PROJECT_ROOT = Path(__file__).resolve().parents[1]
+    load_dotenv(dotenv_path=_PROJECT_ROOT / ".env", override=False)
+except Exception:
+    # 未安装 python-dotenv 或加载失败时，直接使用系统环境变量
+    pass
+
 # ---------------------------------------------------------------------------
 # 路径（PROJECT_ROOT 为项目根目录）
 # ---------------------------------------------------------------------------
@@ -20,6 +30,21 @@ LOG_DIR: str = os.path.join(PROJECT_ROOT, "logs")
 BASE_URL: str = os.environ.get("BASE_URL", "https://httpbin.org")
 REQUEST_TIMEOUT: int = int(os.environ.get("REQUEST_TIMEOUT", "10"))
 TIMEOUT: int = REQUEST_TIMEOUT
+
+# ---------------------------------------------------------------------------
+# API Key（可选）：用于对接需要固定密钥的后端（例如 X-API-Key / Authorization）
+# ---------------------------------------------------------------------------
+# 示例：
+# - API_KEY=xxxx
+# - API_KEY_HEADER=X-API-Key
+# - API_KEY_PREFIX=               (不需要前缀时留空)
+# 或：
+# - API_KEY=xxxx
+# - API_KEY_HEADER=Authorization
+# - API_KEY_PREFIX=Bearer
+API_KEY: str = os.environ.get("API_KEY", "")
+API_KEY_HEADER: str = os.environ.get("API_KEY_HEADER", "X-API-Key")
+API_KEY_PREFIX: str = os.environ.get("API_KEY_PREFIX", "")
 
 # ---------------------------------------------------------------------------
 # 安全测试（目录约定）

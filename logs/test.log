@@ -1318,3 +1318,168 @@
 2026-04-08 23:48:41 [INFO] [request_handler.py:93] Response status: 200 elapsed=4.638s
 2026-04-08 23:48:41 [INFO] [request_handler.py:84] Request: GET https://httpbin.org/get
 2026-04-08 23:48:46 [INFO] [request_handler.py:93] Response status: 200 elapsed=4.360s
+2026-04-09 21:09:04 [INFO] [settings.py:115] 日志系统初始化完成，级别=INFO
+2026-04-09 21:09:05 [INFO] [settings.py:115] 日志系统初始化完成，级别=INFO
+2026-04-09 21:09:26 [INFO] [settings.py:115] 日志系统初始化完成，级别=INFO
+2026-04-09 21:09:26 [ERROR] [run_detector.py:150] 初始化检测实例失败
+Traceback (most recent call last):
+  File "C:\Users\11154\Desktop\api-auto-test-framework\testcases\security\run_detector.py", line 148, in run_detection
+    _client, _auth, detector = init_all_instances(custom_payload_path, base_url=base_url)
+                               ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\11154\Desktop\api-auto-test-framework\testcases\test_security_detector_url_mode.py", line 30, in <lambda>
+    monkeypatch.setattr(run_detector, "init_all_instances", lambda *a, **k: (_ for _ in ()).throw(RuntimeError("x")))
+                                                                            ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\11154\Desktop\api-auto-test-framework\testcases\test_security_detector_url_mode.py", line 30, in <genexpr>
+    monkeypatch.setattr(run_detector, "init_all_instances", lambda *a, **k: (_ for _ in ()).throw(RuntimeError("x")))
+RuntimeError: x
+2026-04-09 21:12:08 [INFO] [settings.py:115] 日志系统初始化完成，级别=INFO
+2026-04-09 21:12:08 [INFO] [run_detector.py:170] 开始安全检测：interface=http://10.50.193.91:60291/?id=1 custom_payload=None
+2026-04-09 21:12:08 [INFO] [auth_handler.py:57] 未配置用户名/密码，跳过自动登录获取 token
+2026-04-09 21:12:08 [INFO] [run_detector.py:89] 安全检测初始化完成：BASE_URL=http://10.50.193.91:60291 TIMEOUT=10s
+2026-04-09 21:12:08 [INFO] [request_handler.py:84] Request: GET http://10.50.193.91:60291/
+2026-04-09 21:12:09 [INFO] [request_handler.py:93] Response status: 200 elapsed=0.317s
+2026-04-09 21:12:09 [INFO] [request_handler.py:84] Request: GET http://10.50.193.91:60291/
+2026-04-09 21:12:09 [INFO] [request_handler.py:93] Response status: 200 elapsed=0.146s
+2026-04-09 21:12:09 [INFO] [request_handler.py:84] Request: GET http://10.50.193.91:60291/
+2026-04-09 21:12:09 [INFO] [request_handler.py:93] Response status: 200 elapsed=0.112s
+2026-04-09 21:12:09 [INFO] [request_handler.py:84] Request: GET http://10.50.193.91:60291/
+2026-04-09 21:12:09 [INFO] [request_handler.py:93] Response status: 200 elapsed=0.112s
+2026-04-09 21:12:09 [INFO] [request_handler.py:84] Request: GET http://10.50.193.91:60291/
+2026-04-09 21:12:09 [INFO] [request_handler.py:93] Response status: 200 elapsed=0.121s
+2026-04-09 21:12:09 [INFO] [request_handler.py:84] Request: GET http://10.50.193.91:60291/
+2026-04-09 21:12:09 [INFO] [request_handler.py:93] Response status: 200 elapsed=0.109s
+2026-04-09 21:12:09 [INFO] [request_handler.py:84] Request: GET http://10.50.193.91:60291/
+2026-04-09 21:12:10 [INFO] [request_handler.py:93] Response status: 200 elapsed=0.134s
+2026-04-09 21:12:10 [INFO] [request_handler.py:84] Request: GET http://10.50.193.91:60291/
+2026-04-09 21:12:10 [INFO] [request_handler.py:93] Response status: 200 elapsed=0.108s
+2026-04-09 21:12:10 [INFO] [request_handler.py:84] Request: GET http://10.50.193.91:60291/
+2026-04-09 21:12:10 [INFO] [request_handler.py:93] Response status: 200 elapsed=0.098s
+2026-04-09 21:12:10 [INFO] [request_handler.py:84] Request: GET http://10.50.193.91:60291/
+2026-04-09 21:12:10 [INFO] [request_handler.py:93] Response status: 200 elapsed=0.080s
+2026-04-09 21:12:10 [INFO] [request_handler.py:84] Request: GET http://10.50.193.91:60291/
+2026-04-09 21:12:10 [INFO] [request_handler.py:93] Response status: 200 elapsed=0.077s
+2026-04-09 21:12:10 [INFO] [request_handler.py:84] Request: GET http://10.50.193.91:60291/
+2026-04-09 21:12:10 [INFO] [request_handler.py:93] Response status: 200 elapsed=0.116s
+2026-04-09 21:12:10 [INFO] [request_handler.py:84] Request: GET http://10.50.193.91:60291/
+2026-04-09 21:12:10 [INFO] [request_handler.py:93] Response status: 200 elapsed=0.124s
+2026-04-09 21:12:10 [INFO] [request_handler.py:84] Request: GET http://10.50.193.91:60291/
+2026-04-09 21:12:10 [INFO] [request_handler.py:93] Response status: 200 elapsed=0.081s
+2026-04-09 21:12:10 [INFO] [request_handler.py:84] Request: GET http://10.50.193.91:60291/
+2026-04-09 21:12:10 [INFO] [request_handler.py:93] Response status: 200 elapsed=0.082s
+2026-04-09 21:12:10 [INFO] [request_handler.py:84] Request: GET http://10.50.193.91:60291/
+2026-04-09 21:12:10 [INFO] [request_handler.py:93] Response status: 200 elapsed=0.082s
+2026-04-09 21:12:10 [INFO] [request_handler.py:84] Request: GET http://10.50.193.91:60291/
+2026-04-09 21:12:11 [INFO] [request_handler.py:93] Response status: 200 elapsed=0.080s
+2026-04-09 21:12:11 [INFO] [request_handler.py:84] Request: GET http://10.50.193.91:60291/
+2026-04-09 21:12:11 [INFO] [request_handler.py:93] Response status: 200 elapsed=0.071s
+2026-04-09 21:12:11 [INFO] [request_handler.py:84] Request: GET http://10.50.193.91:60291/
+2026-04-09 21:12:11 [INFO] [request_handler.py:93] Response status: 200 elapsed=0.083s
+2026-04-09 21:12:11 [INFO] [request_handler.py:84] Request: GET http://10.50.193.91:60291/
+2026-04-09 21:12:11 [INFO] [request_handler.py:93] Response status: 200 elapsed=0.061s
+2026-04-09 21:12:11 [INFO] [request_handler.py:84] Request: GET http://10.50.193.91:60291/
+2026-04-09 21:12:11 [INFO] [request_handler.py:93] Response status: 200 elapsed=0.104s
+2026-04-09 21:12:11 [INFO] [request_handler.py:84] Request: GET http://10.50.193.91:60291/
+2026-04-09 21:12:11 [INFO] [request_handler.py:93] Response status: 200 elapsed=0.078s
+2026-04-09 21:12:11 [INFO] [request_handler.py:84] Request: GET http://10.50.193.91:60291/
+2026-04-09 21:12:11 [INFO] [request_handler.py:93] Response status: 200 elapsed=0.066s
+2026-04-09 21:12:11 [INFO] [request_handler.py:84] Request: GET http://10.50.193.91:60291/
+2026-04-09 21:12:11 [INFO] [request_handler.py:93] Response status: 200 elapsed=0.074s
+2026-04-09 21:12:11 [INFO] [request_handler.py:84] Request: GET http://10.50.193.91:60291/
+2026-04-09 21:12:11 [INFO] [request_handler.py:93] Response status: 200 elapsed=0.068s
+2026-04-09 21:12:11 [INFO] [request_handler.py:84] Request: GET http://10.50.193.91:60291/
+2026-04-09 21:12:11 [INFO] [request_handler.py:93] Response status: 200 elapsed=0.063s
+2026-04-09 21:12:11 [INFO] [request_handler.py:84] Request: GET http://10.50.193.91:60291/
+2026-04-09 21:12:11 [INFO] [request_handler.py:93] Response status: 200 elapsed=0.072s
+2026-04-09 21:12:11 [INFO] [request_handler.py:84] Request: GET http://10.50.193.91:60291/
+2026-04-09 21:12:11 [INFO] [request_handler.py:93] Response status: 200 elapsed=0.059s
+2026-04-09 21:12:11 [INFO] [request_handler.py:84] Request: GET http://10.50.193.91:60291/
+2026-04-09 21:12:11 [INFO] [request_handler.py:93] Response status: 200 elapsed=0.048s
+2026-04-09 21:12:11 [INFO] [request_handler.py:84] Request: GET http://10.50.193.91:60291/
+2026-04-09 21:12:11 [INFO] [request_handler.py:93] Response status: 200 elapsed=0.054s
+2026-04-09 21:12:11 [INFO] [request_handler.py:84] Request: GET http://10.50.193.91:60291/
+2026-04-09 21:12:12 [INFO] [request_handler.py:93] Response status: 200 elapsed=0.136s
+2026-04-09 21:12:12 [INFO] [request_handler.py:84] Request: GET http://10.50.193.91:60291/
+2026-04-09 21:12:12 [INFO] [request_handler.py:93] Response status: 200 elapsed=0.062s
+2026-04-09 21:12:12 [INFO] [request_handler.py:84] Request: GET http://10.50.193.91:60291/
+2026-04-09 21:12:12 [INFO] [request_handler.py:93] Response status: 200 elapsed=0.063s
+2026-04-09 21:12:12 [INFO] [request_handler.py:84] Request: GET http://10.50.193.91:60291/
+2026-04-09 21:12:12 [INFO] [request_handler.py:93] Response status: 200 elapsed=0.103s
+2026-04-09 21:12:12 [INFO] [request_handler.py:84] Request: GET http://10.50.193.91:60291/
+2026-04-09 21:12:12 [INFO] [request_handler.py:93] Response status: 200 elapsed=0.060s
+2026-04-09 21:12:12 [INFO] [request_handler.py:84] Request: GET http://10.50.193.91:60291/
+2026-04-09 21:12:12 [INFO] [request_handler.py:93] Response status: 200 elapsed=0.081s
+2026-04-09 21:12:12 [INFO] [request_handler.py:84] Request: GET http://10.50.193.91:60291/
+2026-04-09 21:12:12 [INFO] [request_handler.py:93] Response status: 200 elapsed=0.079s
+2026-04-09 21:12:12 [INFO] [request_handler.py:84] Request: GET http://10.50.193.91:60291/
+2026-04-09 21:12:12 [INFO] [request_handler.py:93] Response status: 200 elapsed=0.068s
+2026-04-09 21:12:12 [INFO] [request_handler.py:84] Request: GET http://10.50.193.91:60291/
+2026-04-09 21:12:12 [INFO] [request_handler.py:93] Response status: 200 elapsed=0.046s
+2026-04-09 21:12:12 [INFO] [request_handler.py:84] Request: GET http://10.50.193.91:60291/
+2026-04-09 21:12:12 [INFO] [request_handler.py:93] Response status: 200 elapsed=0.112s
+2026-04-09 21:12:12 [INFO] [request_handler.py:84] Request: GET http://10.50.193.91:60291/
+2026-04-09 21:12:12 [INFO] [request_handler.py:93] Response status: 200 elapsed=0.062s
+2026-04-09 21:12:12 [INFO] [request_handler.py:84] Request: GET http://10.50.193.91:60291/
+2026-04-09 21:12:12 [INFO] [request_handler.py:93] Response status: 200 elapsed=0.064s
+2026-04-09 21:12:12 [INFO] [request_handler.py:84] Request: GET http://10.50.193.91:60291/
+2026-04-09 21:12:12 [INFO] [request_handler.py:93] Response status: 200 elapsed=0.070s
+2026-04-09 21:12:12 [INFO] [request_handler.py:84] Request: GET http://10.50.193.91:60291/
+2026-04-09 21:12:13 [INFO] [request_handler.py:93] Response status: 200 elapsed=0.076s
+2026-04-09 21:12:13 [INFO] [request_handler.py:84] Request: GET http://10.50.193.91:60291/
+2026-04-09 21:12:13 [INFO] [request_handler.py:93] Response status: 200 elapsed=0.113s
+2026-04-09 21:12:13 [INFO] [request_handler.py:84] Request: GET http://10.50.193.91:60291/
+2026-04-09 21:12:13 [INFO] [request_handler.py:93] Response status: 200 elapsed=0.337s
+2026-04-09 21:12:13 [INFO] [request_handler.py:84] Request: GET http://10.50.193.91:60291/
+2026-04-09 21:12:13 [INFO] [request_handler.py:93] Response status: 200 elapsed=0.204s
+2026-04-09 21:12:13 [INFO] [request_handler.py:84] Request: GET http://10.50.193.91:60291/
+2026-04-09 21:12:13 [INFO] [request_handler.py:93] Response status: 200 elapsed=0.155s
+2026-04-09 21:12:13 [INFO] [run_detector.py:185] 本次接口安全检测未发现任何SQL注入/XSS漏洞
+2026-04-14 17:02:58 [INFO] [settings.py:115] 日志系统初始化完成，级别=INFO
+2026-04-14 17:02:58 [INFO] [runtest.py:157] 目录结构检查完成
+2026-04-14 17:02:58 [INFO] [runtest.py:92] 执行命令：pytest testcases/test_httpbin_real.py -v --tb=short -W ignore::DeprecationWarning --alluredir C:\Users\11154\Desktop\api-auto-test-framework\reports\allure_results
+2026-04-14 17:02:59 [INFO] [settings.py:115] 日志系统初始化完成，级别=INFO
+2026-04-14 17:02:59 [INFO] [request_handler.py:84] Request: GET https://httpbin.org/get
+2026-04-14 17:03:01 [INFO] [request_handler.py:93] Response status: 200 elapsed=2.669s
+2026-04-14 17:03:01 [INFO] [request_handler.py:84] Request: POST https://httpbin.org/post
+2026-04-14 17:03:03 [INFO] [request_handler.py:93] Response status: 200 elapsed=1.619s
+2026-04-14 17:03:03 [INFO] [request_handler.py:84] Request: PUT https://httpbin.org/put
+2026-04-14 17:03:04 [INFO] [request_handler.py:93] Response status: 200 elapsed=1.295s
+2026-04-14 17:03:04 [INFO] [request_handler.py:84] Request: DELETE https://httpbin.org/delete
+2026-04-14 17:03:06 [INFO] [request_handler.py:93] Response status: 200 elapsed=1.987s
+2026-04-14 17:03:06 [INFO] [request_handler.py:84] Request: GET https://httpbin.org/status/200
+2026-04-14 17:03:09 [INFO] [request_handler.py:93] Response status: 200 elapsed=2.905s
+2026-04-14 17:03:09 [INFO] [request_handler.py:84] Request: GET https://httpbin.org/status/301
+2026-04-14 17:03:11 [INFO] [request_handler.py:93] Response status: 301 elapsed=1.468s
+2026-04-14 17:03:11 [INFO] [request_handler.py:84] Request: GET https://httpbin.org/status/404
+2026-04-14 17:03:13 [INFO] [request_handler.py:93] Response status: 404 elapsed=2.651s
+2026-04-14 17:03:13 [INFO] [request_handler.py:84] Request: GET https://httpbin.org/status/500
+2026-04-14 17:03:15 [INFO] [request_handler.py:93] Response status: 500 elapsed=1.847s
+2026-04-14 17:03:15 [INFO] [request_handler.py:84] Request: GET https://httpbin.org/headers
+2026-04-14 17:03:16 [INFO] [request_handler.py:93] Response status: 200 elapsed=1.272s
+2026-04-14 17:03:16 [INFO] [request_handler.py:84] Request: GET https://httpbin.org/user-agent
+2026-04-14 17:03:18 [INFO] [request_handler.py:93] Response status: 200 elapsed=1.258s
+2026-04-14 17:03:18 [INFO] [request_handler.py:84] Request: GET https://httpbin.org/json
+2026-04-14 17:03:19 [INFO] [request_handler.py:93] Response status: 200 elapsed=1.889s
+2026-04-14 17:03:19 [INFO] [request_handler.py:84] Request: GET https://httpbin.org/xml
+2026-04-14 17:03:21 [INFO] [request_handler.py:93] Response status: 200 elapsed=1.328s
+2026-04-14 17:03:21 [INFO] [request_handler.py:84] Request: GET https://httpbin.org/cookies/set?session_id=abc123
+2026-04-14 17:03:32 [INFO] [request_handler.py:93] Response status: 200 elapsed=11.616s
+2026-04-14 17:03:32 [INFO] [request_handler.py:84] Request: GET https://httpbin.org/cookies/set?test_cookie=test_value
+2026-04-14 17:03:34 [INFO] [request_handler.py:93] Response status: 200 elapsed=2.064s
+2026-04-14 17:03:34 [INFO] [request_handler.py:84] Request: GET https://httpbin.org/cookies
+2026-04-14 17:03:35 [INFO] [request_handler.py:93] Response status: 200 elapsed=0.305s
+2026-04-14 17:03:35 [INFO] [request_handler.py:84] Request: GET https://httpbin.org/delay/1
+2026-04-14 17:03:39 [INFO] [request_handler.py:93] Response status: 200 elapsed=4.132s
+2026-04-14 17:03:39 [INFO] [request_handler.py:84] Request: GET https://httpbin.org/delay/2
+2026-04-14 17:03:42 [INFO] [request_handler.py:93] Response status: 200 elapsed=3.408s
+2026-04-14 17:03:42 [INFO] [request_handler.py:84] Request: POST https://httpbin.org/post
+2026-04-14 17:03:44 [INFO] [request_handler.py:93] Response status: 200 elapsed=1.234s
+2026-04-14 17:03:44 [INFO] [request_handler.py:84] Request: POST https://httpbin.org/post
+2026-04-14 17:03:45 [INFO] [request_handler.py:93] Response status: 200 elapsed=1.257s
+2026-04-14 17:03:45 [INFO] [request_handler.py:84] Request: GET https://httpbin.org/get
+2026-04-14 17:03:46 [INFO] [request_handler.py:93] Response status: 200 elapsed=1.282s
+2026-04-14 17:03:46 [INFO] [request_handler.py:84] Request: GET https://httpbin.org/get
+2026-04-14 17:03:48 [INFO] [request_handler.py:93] Response status: 200 elapsed=1.864s
+2026-04-14 17:03:48 [INFO] [request_handler.py:84] Request: GET https://httpbin.org/get
+2026-04-14 17:03:51 [INFO] [request_handler.py:93] Response status: 200 elapsed=2.750s
+2026-04-14 17:03:51 [INFO] [request_handler.py:84] Request: GET https://httpbin.org/get
+2026-04-14 17:03:53 [INFO] [request_handler.py:93] Response status: 200 elapsed=2.080s

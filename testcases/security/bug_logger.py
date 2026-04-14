@@ -92,6 +92,10 @@ class BugLogGenerator:
             "inject_param",
             "payload",
             "status_code",
+            "evidence_type",
+            "evidence_detail",
+            "db_fingerprint",
+            "diff_hint",
             "reason",
         ]
         lines.append("| " + " | ".join(cols) + " |")

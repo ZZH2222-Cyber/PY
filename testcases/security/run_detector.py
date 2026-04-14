@@ -5,7 +5,8 @@ import logging
 import os
 import sys
 from pathlib import Path
-from typing import List, Optional, Sequence, Tuple
+from typing import Any, Dict, List, Optional, Sequence, Tuple
+from urllib.parse import parse_qs, urlparse
 
 # 允许在项目根目录执行：python testcases/security/run_detector.py
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
@@ -59,9 +60,13 @@ def _dedupe_preserve_order(items: List[str]) -> List[str]:
     return out
 
 
-def init_all_instances(custom_payload_path: Optional[str] = None) -> Tuple[RequestHandler, AuthManager, SecurityDetector]:
+def init_all_instances(
+    custom_payload_path: Optional[str] = None,
+    base_url: Optional[str] = None,
+) -> Tuple[RequestHandler, AuthManager, SecurityDetector]:
     """初始化 RequestHandler、AuthManager、SecurityDetector，并加载 payload（内置 + 自定义）。"""
-    request_handler = RequestHandler(base_url=BASE_URL)
+    effective_base_url = base_url or BASE_URL
+    request_handler = RequestHandler(base_url=effective_base_url)
     auth_manager = AuthManager(
         request_handler,
         username=os.environ.get("SECURITY_TEST_USERNAME"),
@@ -81,17 +86,73 @@ def init_all_instances(custom_payload_path: Optional[str] = None) -> Tuple[Reque
         xss_payloads = _dedupe_preserve_order(xss_payloads + extra)
 
     detector = SecurityDetector(request_handler, auth_manager, sql_payloads, xss_payloads)
-    logger.info("安全检测初始化完成：BASE_URL=%s TIMEOUT=%ss", BASE_URL, TIMEOUT)
+    logger.info("安全检测初始化完成：BASE_URL=%s TIMEOUT=%ss", effective_base_url, TIMEOUT)
     return request_handler, auth_manager, detector
 
 
+def _build_interface_from_url(target_url: str) -> Tuple[str, Dict[str, Any]]:
+    """将完整 URL 解析为 (base_url, interface_cfg)。
+
+    说明：
+        该能力用于靶场/训练环境快速探测：你只需传入目标 URL（可带 query 参数），模块会自动：
+        - 提取 base_url（scheme://host[:port]）
+        - 提取 path 作为 interface
+        - 若 URL 自带 query 参数，则默认注入第一个 query key
+    """
+    parsed = urlparse(target_url)
+    if parsed.scheme not in ("http", "https") or not parsed.netloc:
+        raise ValueError(f"非法 URL：{target_url}")
+    base_url = f"{parsed.scheme}://{parsed.netloc}"
+    path = parsed.path or "/"
+
+    qs = parse_qs(parsed.query, keep_blank_values=True)
+    if qs:
+        # 选择第一个 query key 作为默认注入点
+        param_name = list(qs.keys())[0]
+        default_val = qs.get(param_name, [""])[0]
+        default_data = {param_name: default_val if default_val is not None else ""}
+        param_type = "query"
+    else:
+        # 无 query 时给一个默认参数名，便于探测（实际接口可在 interface_config 中精配）
+        default_data = {"q": "test"}
+        param_type = "query"
+
+    interface_cfg = {
+        "interface": path,
+        "method": "GET",
+        "need_auth": False,
+        "param_type": param_type,
+        "default_data": default_data,
+    }
+    return base_url, interface_cfg
+
+
 def run_detection(interface: Optional[str] = None, custom_payload_path: Optional[str] = None) -> list:
-    """执行检测流程（单接口/批量），返回漏洞信息列表。"""
-    _client, _auth, detector = init_all_instances(custom_payload_path)
+    """执行检测流程（单接口/批量），返回漏洞信息列表。
+
+    兼容：
+        - interface 为 /path：从 interface_config 中取配置
+        - interface 为 http(s)://...：自动解析 URL 并构造单接口配置（训练/靶场便捷模式）
+    """
+    base_url: Optional[str] = None
+    url_mode_cfg: Optional[Dict[str, Any]] = None
+
+    if interface and (interface.startswith("http://") or interface.startswith("https://")):
+        try:
+            base_url, url_mode_cfg = _build_interface_from_url(interface)
+        except Exception:
+            logger.exception("解析目标 URL 失败：%s", interface)
+            return []
+
+    try:
+        _client, _auth, detector = init_all_instances(custom_payload_path, base_url=base_url)
+    except Exception:
+        logger.exception("初始化检测实例失败")
+        return []
     _ = (_client, _auth)
 
     if interface:
-        cfg = get_interface_config(interface)
+        cfg = url_mode_cfg or get_interface_config(interface)
         if not cfg:
             logger.error("接口配置不存在：%s", interface)
             return []

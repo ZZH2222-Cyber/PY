@@ -127,9 +127,20 @@ allure generate reports/allure_results -o reports/allure_report --clean
 |------|------|
 | `BASE_URL` | 被测 API 根地址，默认 `https://httpbin.org` |
 | `REQUEST_TIMEOUT` | 超时秒数，默认 `10` |
+| `API_KEY` | （可选）API 密钥；设置后会在所有请求里自动携带 |
+| `API_KEY_HEADER` | （可选）API 密钥对应的请求头名，默认 `X-API-Key`（也可设为 `Authorization`） |
+| `API_KEY_PREFIX` | （可选）API Key 前缀，默认空；常见可设为 `Bearer`（最终为 `Bearer <API_KEY>`） |
 | `LOG_LEVEL` | 日志级别，默认 `INFO` |
 | `DEEPSEEK_API_KEY` | 若设置则 `utils/ai_helper.py` 走真实 DeepSeek，否则返回内置模拟用例 |
 | `SECURITY_SQL_SAMPLES` / `SECURITY_XSS_SAMPLES` | 安全用例抽样数量，默认各 `15` |
+
+### 团队共享配置（推荐）
+
+项目支持从根目录的 `.env` 自动读取环境变量（使用 `python-dotenv`），便于队友拉取代码后直接运行。
+
+- 将仓库里的 `.env.example` 复制为 `.env`
+- 在 `.env` 里填入你自己的 `BASE_URL`、`API_KEY` 等
+- `.env` 已在 `.gitignore` 中忽略，不会被提交到仓库
 
 ## runtest.py 命令行参数
 
