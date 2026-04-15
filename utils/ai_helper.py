@@ -88,7 +88,57 @@ def _parse_json_array_from_content(content: str) -> List[Dict[str, Any]]:
     if fence:
         text = fence.group(1).strip()
 
-    data = json.loads(text)
+    def _try_load(raw: str) -> Any:
+        return json.loads(raw)
+
+    try:
+        data = _try_load(text)
+    except json.JSONDecodeError:
+        # 兜底：尝试从文本中截取最外层 JSON 数组并做轻量清洗
+        m = re.search(r"\[[\s\S]*\]", text)
+        if m:
+            candidate = m.group(0).strip()
+            # 清理常见的末尾多余逗号：", }" / ", ]"
+            candidate = re.sub(r",(\s*[\]}])", r"\1", candidate)
+            data = _try_load(candidate)
+        else:
+            # 最后兜底：逐个提取 JSON 对象并解析（容忍数组层面的格式问题/截断）
+            objs: List[Dict[str, Any]] = []
+            in_str = False
+            esc = False
+            depth = 0
+            start = -1
+            for i, ch in enumerate(text):
+                if in_str:
+                    if esc:
+                        esc = False
+                    elif ch == "\\":
+                        esc = True
+                    elif ch == "\"":
+                        in_str = False
+                    continue
+                if ch == "\"":
+                    in_str = True
+                    continue
+                if ch == "{":
+                    if depth == 0:
+                        start = i
+                    depth += 1
+                elif ch == "}":
+                    if depth > 0:
+                        depth -= 1
+                        if depth == 0 and start != -1:
+                            raw_obj = text[start : i + 1].strip()
+                            raw_obj = re.sub(r",(\s*[\]}])", r"\1", raw_obj)
+                            try:
+                                parsed = _try_load(raw_obj)
+                                if isinstance(parsed, dict):
+                                    objs.append(parsed)
+                            except json.JSONDecodeError:
+                                pass
+            if not objs:
+                raise
+            data = objs
     if not isinstance(data, list):
         raise ValueError("模型返回不是 JSON 数组")
     out: List[Dict[str, Any]] = []
@@ -121,50 +171,67 @@ def generate_test_cases_by_ai(api_info: Dict[str, Any]) -> List[Dict[str, Any]]:
 
     system_prompt = (
         "你是资深测试工程师。根据给定的接口信息，输出**仅包含**一个 JSON 数组，"
-        "数组元素为对象，覆盖：正常、边界、异常、安全（含 SQL 注入/XSS payload 思路）。"
+        "数组元素为对象，输出 8~12 条用例，覆盖：正常、边界、异常、安全（含 SQL 注入/XSS payload 思路）。"
         "每个对象建议包含：title, method, path, headers, body, expected_status, category。"
         "不要输出 Markdown 说明，只输出 JSON。"
     )
     user_prompt = json.dumps(api_info, ensure_ascii=False, indent=2)
 
-    payload = {
-        "model": "deepseek-chat",
-        "messages": [
-            {"role": "system", "content": system_prompt},
-            {"role": "user", "content": user_prompt},
-        ],
-        "temperature": 0.3,
-    }
     headers = {
         "Authorization": f"Bearer {DEEPSEEK_API_KEY}",
         "Content-Type": "application/json",
     }
 
-    logger.info("调用 DeepSeek 生成用例…")
-    try:
-        resp = requests.post(
-            DEEPSEEK_API_URL,
-            headers=headers,
-            json=payload,
-            timeout=120,
-        )
-        resp.raise_for_status()
-    except RequestException as exc:
-        logger.error("DeepSeek 请求失败：%s", exc, exc_info=True)
-        raise
+    def _call_deepseek(temp: float, strict: bool) -> str:
+        extra_hint = ""
+        if strict:
+            extra_hint = (
+                "\n\n【格式强约束】你必须输出严格有效的 JSON 数组（RFC8259），"
+                "禁止代码块围栏（```）、禁止任何解释性文字；字符串必须使用双引号；"
+                "不要包含尾随逗号。"
+            )
+        payload = {
+            "model": "deepseek-chat",
+            "messages": [
+                {"role": "system", "content": system_prompt + extra_hint},
+                {"role": "user", "content": user_prompt},
+            ],
+            "temperature": temp,
+            # 避免输出被截断导致 JSON 不完整
+            "max_tokens": 2000,
+        }
+        logger.info("调用 DeepSeek 生成用例… temperature=%s strict=%s", temp, strict)
+        try:
+            resp = requests.post(
+                DEEPSEEK_API_URL,
+                headers=headers,
+                json=payload,
+                timeout=120,
+            )
+            resp.raise_for_status()
+        except RequestException as exc:
+            logger.error("DeepSeek 请求失败：%s", exc, exc_info=True)
+            raise
 
-    try:
-        body = resp.json()
-        content = body["choices"][0]["message"]["content"]
-    except (ValueError, KeyError, IndexError) as exc:
-        logger.error("DeepSeek 响应结构异常：%s", exc)
-        raise ValueError("无法解析 DeepSeek 响应") from exc
+        try:
+            body = resp.json()
+            return body["choices"][0]["message"]["content"]
+        except (ValueError, KeyError, IndexError) as exc:
+            logger.error("DeepSeek 响应结构异常：%s", exc)
+            raise ValueError("无法解析 DeepSeek 响应") from exc
 
+    content = _call_deepseek(temp=0.3, strict=False)
     try:
         cases = _parse_json_array_from_content(content)
     except (json.JSONDecodeError, ValueError) as exc:
         logger.error("解析模型 JSON 失败：%s 原始片段=%s", exc, content[:500])
-        raise ValueError("模型输出不是合法 JSON 数组") from exc
+        logger.info("将使用更严格提示重试一次…")
+        content2 = _call_deepseek(temp=0.0, strict=True)
+        try:
+            cases = _parse_json_array_from_content(content2)
+        except (json.JSONDecodeError, ValueError) as exc2:
+            logger.error("二次解析仍失败：%s 原始片段=%s", exc2, content2[:500])
+            raise ValueError("模型输出不是合法 JSON 数组") from exc2
 
     logger.info("DeepSeek 生成用例 %d 条", len(cases))
     return cases

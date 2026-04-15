@@ -1483,3 +1483,185 @@ RuntimeError: x
 2026-04-14 17:03:51 [INFO] [request_handler.py:93] Response status: 200 elapsed=2.750s
 2026-04-14 17:03:51 [INFO] [request_handler.py:84] Request: GET https://httpbin.org/get
 2026-04-14 17:03:53 [INFO] [request_handler.py:93] Response status: 200 elapsed=2.080s
+2026-04-15 14:02:58 [INFO] [settings.py:140] 日志系统初始化完成，级别=INFO
+2026-04-15 14:04:02 [INFO] [settings.py:140] 日志系统初始化完成，级别=INFO
+2026-04-15 14:04:40 [INFO] [settings.py:140] 日志系统初始化完成，级别=INFO
+2026-04-15 14:05:15 [INFO] [settings.py:140] 日志系统初始化完成，级别=INFO
+2026-04-15 14:05:45 [INFO] [settings.py:140] 日志系统初始化完成，级别=INFO
+2026-04-15 14:06:15 [INFO] [settings.py:140] 日志系统初始化完成，级别=INFO
+2026-04-15 14:06:57 [INFO] [settings.py:140] 日志系统初始化完成，级别=INFO
+2026-04-15 14:08:17 [INFO] [settings.py:140] 日志系统初始化完成，级别=INFO
+2026-04-15 14:08:17 [INFO] [ai_helper.py:143] 调用 DeepSeek 生成用例…
+2026-04-15 14:09:20 [ERROR] [ai_helper.py:166] 解析模型 JSON 失败：Expecting ',' delimiter: line 52 column 38 (char 1487) 原始片段=```json
+[
+    {
+        "title": "正常请求-最小有效数据",
+        "method": "POST",
+        "path": "/demo",
+        "headers": {"Content-Type": "application/json"},
+        "body": {"id": 1, "name": "a"},
+        "expected_status": 200,
+        "category": "normal"
+    },
+    {
+        "title": "正常请求-常规数据",
+        "method": "POST",
+        "path": "/demo",
+        "headers": {"Content-Type": "application/json"},
+        "body": {"id": 100, "name": "John Doe"},
+        "expected_status": 200,
+        "ca
+2026-04-15 14:09:46 [INFO] [settings.py:140] 日志系统初始化完成，级别=INFO
+2026-04-15 14:09:46 [INFO] [ai_helper.py:156] 调用 DeepSeek 生成用例…
+2026-04-15 14:10:54 [ERROR] [ai_helper.py:179] 解析模型 JSON 失败：Expecting ',' delimiter: line 52 column 38 (char 1487) 原始片段=```json
+[
+    {
+        "title": "正常请求-最小数据",
+        "method": "POST",
+        "path": "/demo",
+        "headers": {"Content-Type": "application/json"},
+        "body": {"id": 1, "name": "a"},
+        "expected_status": 200,
+        "category": "normal"
+    },
+    {
+        "title": "正常请求-常规数据",
+        "method": "POST",
+        "path": "/demo",
+        "headers": {"Content-Type": "application/json"},
+        "body": {"id": 100, "name": "John Doe"},
+        "expected_status": 200,
+        "cate
+2026-04-15 14:11:25 [INFO] [settings.py:140] 日志系统初始化完成，级别=INFO
+2026-04-15 14:11:25 [INFO] [ai_helper.py:164] 调用 DeepSeek 生成用例… temperature=0.3 strict=False
+2026-04-15 14:12:27 [ERROR] [ai_helper.py:188] 解析模型 JSON 失败：Expecting ',' delimiter: line 52 column 38 (char 1489) 原始片段=```json
+[
+    {
+        "title": "正常请求-最小数据",
+        "method": "POST",
+        "path": "/demo",
+        "headers": {"Content-Type": "application/json"},
+        "body": {"id": 1, "name": "a"},
+        "expected_status": 200,
+        "category": "normal"
+    },
+    {
+        "title": "正常请求-常规数据",
+        "method": "POST",
+        "path": "/demo",
+        "headers": {"Content-Type": "application/json"},
+        "body": {"id": 100, "name": "John Doe"},
+        "expected_status": 200,
+        "cate
+2026-04-15 14:12:27 [INFO] [ai_helper.py:189] 将使用更严格提示重试一次…
+2026-04-15 14:12:27 [INFO] [ai_helper.py:164] 调用 DeepSeek 生成用例… temperature=0.0 strict=True
+2026-04-15 14:13:16 [ERROR] [ai_helper.py:194] 二次解析仍失败：Expecting ',' delimiter: line 43 column 34 (char 1086) 原始片段=[
+  {
+    "title": "正常请求-有效数据",
+    "method": "POST",
+    "path": "/demo",
+    "headers": {"Content-Type": "application/json"},
+    "body": {"id": 1, "name": "test"},
+    "expected_status": 200,
+    "category": "normal"
+  },
+  {
+    "title": "边界值-最小整数ID",
+    "method": "POST",
+    "path": "/demo",
+    "headers": {"Content-Type": "application/json"},
+    "body": {"id": -2147483648, "name": "boundary"},
+    "expected_status": 200,
+    "category": "boundary"
+  },
+  {
+    "title": "边界值-最大整数ID",
+    
+2026-04-15 14:13:35 [INFO] [settings.py:140] 日志系统初始化完成，级别=INFO
+2026-04-15 14:13:35 [INFO] [ai_helper.py:166] 调用 DeepSeek 生成用例… temperature=0.3 strict=False
+2026-04-15 14:14:16 [ERROR] [ai_helper.py:190] 解析模型 JSON 失败：Expecting ',' delimiter: line 53 column 24 (char 1164) 原始片段=```json
+[
+    {
+        "title": "正常请求-有效数据",
+        "method": "POST",
+        "path": "/demo",
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        "body": {
+            "id": 100,
+            "name": "张三"
+        },
+        "expected_status": 200,
+        "category": "正常"
+    },
+    {
+        "title": "边界值-最小ID",
+        "method": "POST",
+        "path": "/demo",
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        "body": {
+
+2026-04-15 14:14:16 [INFO] [ai_helper.py:191] 将使用更严格提示重试一次…
+2026-04-15 14:14:16 [INFO] [ai_helper.py:166] 调用 DeepSeek 生成用例… temperature=0.0 strict=True
+2026-04-15 14:14:49 [ERROR] [ai_helper.py:196] 二次解析仍失败：Expecting ',' delimiter: line 97 column 34 (char 2522) 原始片段=[
+  {
+    "title": "正常请求-有效数据",
+    "method": "POST",
+    "path": "/demo",
+    "headers": {"Content-Type": "application/json"},
+    "body": {"id": 100, "name": "张三"},
+    "expected_status": 200,
+    "category": "normal"
+  },
+  {
+    "title": "边界测试-id最小值",
+    "method": "POST",
+    "path": "/demo",
+    "headers": {"Content-Type": "application/json"},
+    "body": {"id": -2147483648, "name": "boundary"},
+    "expected_status": 200,
+    "category": "boundary"
+  },
+  {
+    "title": "边界测试-id最大值",
+    
+2026-04-15 14:15:21 [INFO] [settings.py:140] 日志系统初始化完成，级别=INFO
+2026-04-15 14:15:21 [INFO] [ai_helper.py:203] 调用 DeepSeek 生成用例… temperature=0.3 strict=False
+2026-04-15 14:15:53 [ERROR] [ai_helper.py:227] 解析模型 JSON 失败：Expecting ',' delimiter: line 34 column 40 (char 948) 原始片段=```json
+[
+    {
+        "title": "正常请求-有效数据",
+        "method": "POST",
+        "path": "/demo",
+        "headers": {"Content-Type": "application/json"},
+        "body": {"id": 100, "name": "张三"},
+        "expected_status": 200,
+        "category": "正常"
+    },
+    {
+        "title": "正常请求-最小边界值",
+        "method": "POST",
+        "path": "/demo",
+        "headers": {"Content-Type": "application/json"},
+        "body": {"id": 1, "name": "a"},
+        "expected_status": 200,
+        "category": "边
+2026-04-15 14:15:53 [INFO] [ai_helper.py:228] 将使用更严格提示重试一次…
+2026-04-15 14:15:53 [INFO] [ai_helper.py:203] 调用 DeepSeek 生成用例… temperature=0.0 strict=True
+2026-04-15 14:16:24 [INFO] [ai_helper.py:236] DeepSeek 生成用例 12 条
+2026-04-15 14:18:30 [INFO] [settings.py:140] 日志系统初始化完成，级别=INFO
+2026-04-15 14:18:30 [INFO] [ai_helper.py:203] 调用 DeepSeek 生成用例… temperature=0.3 strict=False
+2026-04-15 14:19:01 [INFO] [ai_helper.py:236] DeepSeek 生成用例 12 条
+2026-04-15 14:29:21 [INFO] [settings.py:140] 日志系统初始化完成，级别=INFO
+2026-04-15 14:29:21 [INFO] [ai_helper.py:203] 调用 DeepSeek 生成用例… temperature=0.3 strict=False
+2026-04-15 14:29:57 [INFO] [ai_helper.py:236] DeepSeek 生成用例 12 条
+2026-04-15 14:29:58 [INFO] [ai_helper.py:260] 写入 Excel：data/ai_cases.xlsx 共 12 条
+2026-04-15 14:29:58 [INFO] [ai_helper.py:286] Excel 已保存：data\ai_cases.xlsx
+2026-04-15 14:33:15 [INFO] [settings.py:140] 日志系统初始化完成，级别=INFO
+2026-04-15 14:33:15 [INFO] [ai_helper.py:203] 调用 DeepSeek 生成用例… temperature=0.3 strict=False
+2026-04-15 14:33:51 [INFO] [ai_helper.py:236] DeepSeek 生成用例 12 条
+2026-04-15 14:33:51 [INFO] [ai_helper.py:260] 写入 Excel：data/ai_cases.xlsx 共 12 条
+2026-04-15 14:33:51 [INFO] [ai_helper.py:286] Excel 已保存：data\ai_cases.xlsx
