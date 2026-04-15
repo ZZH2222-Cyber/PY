@@ -44,7 +44,19 @@ def load_test_cases(sheet_name: str) -> List[Dict[str, Any]]:
         logger.warning("测试用例文件不存在：%s，请先运行 python -m utils.excel_template", file_path)
         return []
 
-    cases = read_excel_data(str(file_path), sheet_name=sheet_name)
+    try:
+        cases = read_excel_data(str(file_path), sheet_name=sheet_name)
+    except ValueError as exc:
+        # 兼容：部分项目会将登录用例放在 login_data.xlsx
+        if sheet_name == "login":
+            fallback = Path(DATA_DIR) / "login_data.xlsx"
+            if fallback.exists():
+                logger.info("api_test_cases.xlsx 未找到 login sheet，改用：%s", fallback)
+                cases = read_excel_data(str(fallback), sheet_name=sheet_name)
+            else:
+                raise
+        else:
+            raise
 
     # 过滤启用的用例
     enabled_cases = [c for c in cases if str(c.get("enabled", "Y")).upper() == "Y"]

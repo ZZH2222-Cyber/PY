@@ -1665,3 +1665,2478 @@ RuntimeError: x
 2026-04-15 14:33:51 [INFO] [ai_helper.py:236] DeepSeek 生成用例 12 条
 2026-04-15 14:33:51 [INFO] [ai_helper.py:260] 写入 Excel：data/ai_cases.xlsx 共 12 条
 2026-04-15 14:33:51 [INFO] [ai_helper.py:286] Excel 已保存：data\ai_cases.xlsx
+2026-04-15 15:41:47 [INFO] [settings.py:140] 日志系统初始化完成，级别=INFO
+2026-04-15 15:41:47 [INFO] [ai_helper.py:203] 调用 DeepSeek 生成用例… temperature=0.3 strict=False
+2026-04-15 15:42:15 [INFO] [ai_helper.py:236] DeepSeek 生成用例 12 条
+2026-04-15 15:42:15 [INFO] [ai_to_excel.py:169] 已删除旧用例行：0（method=POST path=/demo）
+2026-04-15 15:42:15 [INFO] [ai_to_excel.py:178] 已写入 12 条 AI 用例到 C:\Users\11154\Desktop\api-auto-test-framework\data\api_test_cases.xlsx sheet=api 起始行=2
+2026-04-15 15:42:19 [INFO] [settings.py:140] 日志系统初始化完成，级别=INFO
+2026-04-15 15:42:22 [INFO] [settings.py:140] 日志系统初始化完成，级别=INFO
+2026-04-15 15:42:22 [INFO] [runtest.py:157] 目录结构检查完成
+2026-04-15 15:42:22 [INFO] [runtest.py:92] 执行命令：pytest testcases/test_api_ddt.py -v --tb=short -W ignore::DeprecationWarning --alluredir C:\Users\11154\Desktop\api-auto-test-framework\reports\allure_results
+2026-04-15 15:42:23 [INFO] [settings.py:140] 日志系统初始化完成，级别=INFO
+2026-04-15 15:42:23 [INFO] [excel_reader.py:31] 读取 Excel：C:\Users\11154\Desktop\api-auto-test-framework\data\api_test_cases.xlsx sheet=login
+2026-04-15 15:42:23 [ERROR] [excel_reader.py:51] 工作表不存在：login，可选：['http_methods', 'status_codes', 'headers', 'cookies', '字段说明', 'api']
+2026-04-15 15:42:40 [INFO] [settings.py:140] 日志系统初始化完成，级别=INFO
+2026-04-15 15:42:40 [INFO] [runtest.py:157] 目录结构检查完成
+2026-04-15 15:42:40 [INFO] [runtest.py:92] 执行命令：pytest testcases/test_api_ddt.py -v --tb=short -W ignore::DeprecationWarning --alluredir C:\Users\11154\Desktop\api-auto-test-framework\reports\allure_results
+2026-04-15 15:42:40 [INFO] [settings.py:140] 日志系统初始化完成，级别=INFO
+2026-04-15 15:42:41 [INFO] [excel_reader.py:31] 读取 Excel：C:\Users\11154\Desktop\api-auto-test-framework\data\api_test_cases.xlsx sheet=login
+2026-04-15 15:42:41 [ERROR] [excel_reader.py:51] 工作表不存在：login，可选：['http_methods', 'status_codes', 'headers', 'cookies', '字段说明', 'api']
+2026-04-15 15:42:41 [INFO] [test_api_ddt.py:54] api_test_cases.xlsx 未找到 login sheet，改用：C:\Users\11154\Desktop\api-auto-test-framework\data\login_data.xlsx
+2026-04-15 15:42:41 [INFO] [excel_reader.py:31] 读取 Excel：C:\Users\11154\Desktop\api-auto-test-framework\data\login_data.xlsx sheet=login
+2026-04-15 15:42:41 [INFO] [excel_reader.py:89] Excel 读取完成，共 3 条数据行
+2026-04-15 15:42:41 [INFO] [test_api_ddt.py:64] 加载测试用例：login，共 3 条（启用 3 条）
+2026-04-15 15:42:41 [INFO] [excel_reader.py:31] 读取 Excel：C:\Users\11154\Desktop\api-auto-test-framework\data\api_test_cases.xlsx sheet=api
+2026-04-15 15:42:41 [INFO] [excel_reader.py:89] Excel 读取完成，共 12 条数据行
+2026-04-15 15:42:41 [INFO] [test_api_ddt.py:64] 加载测试用例：api，共 12 条（启用 12 条）
+2026-04-15 15:42:41 [INFO] [request_handler.py:111] Request: POST https://your-backend.example.com/post
+2026-04-15 15:42:41 [ERROR] [request_handler.py:128] Request failed: HTTPSConnectionPool(host='your-backend.example.com', port=443): Max retries exceeded with url: /post (Caused by NameResolutionError("HTTPSConnection(host='your-backend.example.com', port=443): Failed to resolve 'your-backend.example.com' ([Errno 11001] getaddrinfo failed)"))
+Traceback (most recent call last):
+  File "D:\Lib\site-packages\urllib3\connection.py", line 204, in _new_conn
+    sock = connection.create_connection(
+        (self._dns_host, self.port),
+    ...<2 lines>...
+        socket_options=self.socket_options,
+    )
+  File "D:\Lib\site-packages\urllib3\util\connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Lib\socket.py", line 983, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "D:\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "D:\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "D:\Lib\site-packages\urllib3\connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+    ~~~~~~~~~~~~^^
+  File "D:\Lib\site-packages\urllib3\connection.py", line 759, in connect
+    self.sock = sock = self._new_conn()
+                       ~~~~~~~~~~~~~~^^
+  File "D:\Lib\site-packages\urllib3\connection.py", line 211, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: HTTPSConnection(host='your-backend.example.com', port=443): Failed to resolve 'your-backend.example.com' ([Errno 11001] getaddrinfo failed)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Lib\site-packages\requests\adapters.py", line 644, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "D:\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "D:\Lib\site-packages\urllib3\util\retry.py", line 535, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='your-backend.example.com', port=443): Max retries exceeded with url: /post (Caused by NameResolutionError("HTTPSConnection(host='your-backend.example.com', port=443): Failed to resolve 'your-backend.example.com' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\11154\Desktop\api-auto-test-framework\core\request_handler.py", line 118, in request
+    response = self.session.request(method, full_url, **kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\Lib\site-packages\requests\adapters.py", line 677, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='your-backend.example.com', port=443): Max retries exceeded with url: /post (Caused by NameResolutionError("HTTPSConnection(host='your-backend.example.com', port=443): Failed to resolve 'your-backend.example.com' ([Errno 11001] getaddrinfo failed)"))
+2026-04-15 15:42:41 [INFO] [request_handler.py:111] Request: POST https://your-backend.example.com/post
+2026-04-15 15:42:41 [ERROR] [request_handler.py:128] Request failed: HTTPSConnectionPool(host='your-backend.example.com', port=443): Max retries exceeded with url: /post (Caused by NameResolutionError("HTTPSConnection(host='your-backend.example.com', port=443): Failed to resolve 'your-backend.example.com' ([Errno 11001] getaddrinfo failed)"))
+Traceback (most recent call last):
+  File "D:\Lib\site-packages\urllib3\connection.py", line 204, in _new_conn
+    sock = connection.create_connection(
+        (self._dns_host, self.port),
+    ...<2 lines>...
+        socket_options=self.socket_options,
+    )
+  File "D:\Lib\site-packages\urllib3\util\connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Lib\socket.py", line 983, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "D:\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "D:\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "D:\Lib\site-packages\urllib3\connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+    ~~~~~~~~~~~~^^
+  File "D:\Lib\site-packages\urllib3\connection.py", line 759, in connect
+    self.sock = sock = self._new_conn()
+                       ~~~~~~~~~~~~~~^^
+  File "D:\Lib\site-packages\urllib3\connection.py", line 211, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: HTTPSConnection(host='your-backend.example.com', port=443): Failed to resolve 'your-backend.example.com' ([Errno 11001] getaddrinfo failed)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Lib\site-packages\requests\adapters.py", line 644, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "D:\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "D:\Lib\site-packages\urllib3\util\retry.py", line 535, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='your-backend.example.com', port=443): Max retries exceeded with url: /post (Caused by NameResolutionError("HTTPSConnection(host='your-backend.example.com', port=443): Failed to resolve 'your-backend.example.com' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\11154\Desktop\api-auto-test-framework\core\request_handler.py", line 118, in request
+    response = self.session.request(method, full_url, **kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\Lib\site-packages\requests\adapters.py", line 677, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='your-backend.example.com', port=443): Max retries exceeded with url: /post (Caused by NameResolutionError("HTTPSConnection(host='your-backend.example.com', port=443): Failed to resolve 'your-backend.example.com' ([Errno 11001] getaddrinfo failed)"))
+2026-04-15 15:42:42 [INFO] [request_handler.py:111] Request: POST https://your-backend.example.com/post
+2026-04-15 15:42:42 [ERROR] [request_handler.py:128] Request failed: HTTPSConnectionPool(host='your-backend.example.com', port=443): Max retries exceeded with url: /post (Caused by NameResolutionError("HTTPSConnection(host='your-backend.example.com', port=443): Failed to resolve 'your-backend.example.com' ([Errno 11001] getaddrinfo failed)"))
+Traceback (most recent call last):
+  File "D:\Lib\site-packages\urllib3\connection.py", line 204, in _new_conn
+    sock = connection.create_connection(
+        (self._dns_host, self.port),
+    ...<2 lines>...
+        socket_options=self.socket_options,
+    )
+  File "D:\Lib\site-packages\urllib3\util\connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Lib\socket.py", line 983, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "D:\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "D:\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "D:\Lib\site-packages\urllib3\connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+    ~~~~~~~~~~~~^^
+  File "D:\Lib\site-packages\urllib3\connection.py", line 759, in connect
+    self.sock = sock = self._new_conn()
+                       ~~~~~~~~~~~~~~^^
+  File "D:\Lib\site-packages\urllib3\connection.py", line 211, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: HTTPSConnection(host='your-backend.example.com', port=443): Failed to resolve 'your-backend.example.com' ([Errno 11001] getaddrinfo failed)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Lib\site-packages\requests\adapters.py", line 644, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "D:\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "D:\Lib\site-packages\urllib3\util\retry.py", line 535, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='your-backend.example.com', port=443): Max retries exceeded with url: /post (Caused by NameResolutionError("HTTPSConnection(host='your-backend.example.com', port=443): Failed to resolve 'your-backend.example.com' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\11154\Desktop\api-auto-test-framework\core\request_handler.py", line 118, in request
+    response = self.session.request(method, full_url, **kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\Lib\site-packages\requests\adapters.py", line 677, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='your-backend.example.com', port=443): Max retries exceeded with url: /post (Caused by NameResolutionError("HTTPSConnection(host='your-backend.example.com', port=443): Failed to resolve 'your-backend.example.com' ([Errno 11001] getaddrinfo failed)"))
+2026-04-15 15:42:42 [INFO] [request_handler.py:111] Request: POST https://your-backend.example.com/demo
+2026-04-15 15:42:42 [ERROR] [request_handler.py:128] Request failed: HTTPSConnectionPool(host='your-backend.example.com', port=443): Max retries exceeded with url: /demo (Caused by NameResolutionError("HTTPSConnection(host='your-backend.example.com', port=443): Failed to resolve 'your-backend.example.com' ([Errno 11001] getaddrinfo failed)"))
+Traceback (most recent call last):
+  File "D:\Lib\site-packages\urllib3\connection.py", line 204, in _new_conn
+    sock = connection.create_connection(
+        (self._dns_host, self.port),
+    ...<2 lines>...
+        socket_options=self.socket_options,
+    )
+  File "D:\Lib\site-packages\urllib3\util\connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Lib\socket.py", line 983, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "D:\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "D:\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "D:\Lib\site-packages\urllib3\connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+    ~~~~~~~~~~~~^^
+  File "D:\Lib\site-packages\urllib3\connection.py", line 759, in connect
+    self.sock = sock = self._new_conn()
+                       ~~~~~~~~~~~~~~^^
+  File "D:\Lib\site-packages\urllib3\connection.py", line 211, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: HTTPSConnection(host='your-backend.example.com', port=443): Failed to resolve 'your-backend.example.com' ([Errno 11001] getaddrinfo failed)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Lib\site-packages\requests\adapters.py", line 644, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "D:\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "D:\Lib\site-packages\urllib3\util\retry.py", line 535, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='your-backend.example.com', port=443): Max retries exceeded with url: /demo (Caused by NameResolutionError("HTTPSConnection(host='your-backend.example.com', port=443): Failed to resolve 'your-backend.example.com' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\11154\Desktop\api-auto-test-framework\core\request_handler.py", line 118, in request
+    response = self.session.request(method, full_url, **kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\Lib\site-packages\requests\adapters.py", line 677, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='your-backend.example.com', port=443): Max retries exceeded with url: /demo (Caused by NameResolutionError("HTTPSConnection(host='your-backend.example.com', port=443): Failed to resolve 'your-backend.example.com' ([Errno 11001] getaddrinfo failed)"))
+2026-04-15 15:42:42 [INFO] [request_handler.py:111] Request: POST https://your-backend.example.com/demo
+2026-04-15 15:42:42 [ERROR] [request_handler.py:128] Request failed: HTTPSConnectionPool(host='your-backend.example.com', port=443): Max retries exceeded with url: /demo (Caused by NameResolutionError("HTTPSConnection(host='your-backend.example.com', port=443): Failed to resolve 'your-backend.example.com' ([Errno 11001] getaddrinfo failed)"))
+Traceback (most recent call last):
+  File "D:\Lib\site-packages\urllib3\connection.py", line 204, in _new_conn
+    sock = connection.create_connection(
+        (self._dns_host, self.port),
+    ...<2 lines>...
+        socket_options=self.socket_options,
+    )
+  File "D:\Lib\site-packages\urllib3\util\connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Lib\socket.py", line 983, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "D:\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "D:\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "D:\Lib\site-packages\urllib3\connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+    ~~~~~~~~~~~~^^
+  File "D:\Lib\site-packages\urllib3\connection.py", line 759, in connect
+    self.sock = sock = self._new_conn()
+                       ~~~~~~~~~~~~~~^^
+  File "D:\Lib\site-packages\urllib3\connection.py", line 211, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: HTTPSConnection(host='your-backend.example.com', port=443): Failed to resolve 'your-backend.example.com' ([Errno 11001] getaddrinfo failed)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Lib\site-packages\requests\adapters.py", line 644, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "D:\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "D:\Lib\site-packages\urllib3\util\retry.py", line 535, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='your-backend.example.com', port=443): Max retries exceeded with url: /demo (Caused by NameResolutionError("HTTPSConnection(host='your-backend.example.com', port=443): Failed to resolve 'your-backend.example.com' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\11154\Desktop\api-auto-test-framework\core\request_handler.py", line 118, in request
+    response = self.session.request(method, full_url, **kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\Lib\site-packages\requests\adapters.py", line 677, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='your-backend.example.com', port=443): Max retries exceeded with url: /demo (Caused by NameResolutionError("HTTPSConnection(host='your-backend.example.com', port=443): Failed to resolve 'your-backend.example.com' ([Errno 11001] getaddrinfo failed)"))
+2026-04-15 15:42:42 [INFO] [request_handler.py:111] Request: POST https://your-backend.example.com/demo
+2026-04-15 15:42:42 [ERROR] [request_handler.py:128] Request failed: HTTPSConnectionPool(host='your-backend.example.com', port=443): Max retries exceeded with url: /demo (Caused by NameResolutionError("HTTPSConnection(host='your-backend.example.com', port=443): Failed to resolve 'your-backend.example.com' ([Errno 11001] getaddrinfo failed)"))
+Traceback (most recent call last):
+  File "D:\Lib\site-packages\urllib3\connection.py", line 204, in _new_conn
+    sock = connection.create_connection(
+        (self._dns_host, self.port),
+    ...<2 lines>...
+        socket_options=self.socket_options,
+    )
+  File "D:\Lib\site-packages\urllib3\util\connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Lib\socket.py", line 983, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "D:\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "D:\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "D:\Lib\site-packages\urllib3\connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+    ~~~~~~~~~~~~^^
+  File "D:\Lib\site-packages\urllib3\connection.py", line 759, in connect
+    self.sock = sock = self._new_conn()
+                       ~~~~~~~~~~~~~~^^
+  File "D:\Lib\site-packages\urllib3\connection.py", line 211, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: HTTPSConnection(host='your-backend.example.com', port=443): Failed to resolve 'your-backend.example.com' ([Errno 11001] getaddrinfo failed)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Lib\site-packages\requests\adapters.py", line 644, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "D:\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "D:\Lib\site-packages\urllib3\util\retry.py", line 535, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='your-backend.example.com', port=443): Max retries exceeded with url: /demo (Caused by NameResolutionError("HTTPSConnection(host='your-backend.example.com', port=443): Failed to resolve 'your-backend.example.com' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\11154\Desktop\api-auto-test-framework\core\request_handler.py", line 118, in request
+    response = self.session.request(method, full_url, **kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\Lib\site-packages\requests\adapters.py", line 677, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='your-backend.example.com', port=443): Max retries exceeded with url: /demo (Caused by NameResolutionError("HTTPSConnection(host='your-backend.example.com', port=443): Failed to resolve 'your-backend.example.com' ([Errno 11001] getaddrinfo failed)"))
+2026-04-15 15:42:42 [INFO] [request_handler.py:111] Request: POST https://your-backend.example.com/demo
+2026-04-15 15:42:42 [ERROR] [request_handler.py:128] Request failed: HTTPSConnectionPool(host='your-backend.example.com', port=443): Max retries exceeded with url: /demo (Caused by NameResolutionError("HTTPSConnection(host='your-backend.example.com', port=443): Failed to resolve 'your-backend.example.com' ([Errno 11001] getaddrinfo failed)"))
+Traceback (most recent call last):
+  File "D:\Lib\site-packages\urllib3\connection.py", line 204, in _new_conn
+    sock = connection.create_connection(
+        (self._dns_host, self.port),
+    ...<2 lines>...
+        socket_options=self.socket_options,
+    )
+  File "D:\Lib\site-packages\urllib3\util\connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Lib\socket.py", line 983, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "D:\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "D:\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "D:\Lib\site-packages\urllib3\connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+    ~~~~~~~~~~~~^^
+  File "D:\Lib\site-packages\urllib3\connection.py", line 759, in connect
+    self.sock = sock = self._new_conn()
+                       ~~~~~~~~~~~~~~^^
+  File "D:\Lib\site-packages\urllib3\connection.py", line 211, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: HTTPSConnection(host='your-backend.example.com', port=443): Failed to resolve 'your-backend.example.com' ([Errno 11001] getaddrinfo failed)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Lib\site-packages\requests\adapters.py", line 644, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "D:\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "D:\Lib\site-packages\urllib3\util\retry.py", line 535, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='your-backend.example.com', port=443): Max retries exceeded with url: /demo (Caused by NameResolutionError("HTTPSConnection(host='your-backend.example.com', port=443): Failed to resolve 'your-backend.example.com' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\11154\Desktop\api-auto-test-framework\core\request_handler.py", line 118, in request
+    response = self.session.request(method, full_url, **kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\Lib\site-packages\requests\adapters.py", line 677, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='your-backend.example.com', port=443): Max retries exceeded with url: /demo (Caused by NameResolutionError("HTTPSConnection(host='your-backend.example.com', port=443): Failed to resolve 'your-backend.example.com' ([Errno 11001] getaddrinfo failed)"))
+2026-04-15 15:42:42 [INFO] [request_handler.py:111] Request: POST https://your-backend.example.com/demo
+2026-04-15 15:42:42 [ERROR] [request_handler.py:128] Request failed: HTTPSConnectionPool(host='your-backend.example.com', port=443): Max retries exceeded with url: /demo (Caused by NameResolutionError("HTTPSConnection(host='your-backend.example.com', port=443): Failed to resolve 'your-backend.example.com' ([Errno 11001] getaddrinfo failed)"))
+Traceback (most recent call last):
+  File "D:\Lib\site-packages\urllib3\connection.py", line 204, in _new_conn
+    sock = connection.create_connection(
+        (self._dns_host, self.port),
+    ...<2 lines>...
+        socket_options=self.socket_options,
+    )
+  File "D:\Lib\site-packages\urllib3\util\connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Lib\socket.py", line 983, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "D:\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "D:\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "D:\Lib\site-packages\urllib3\connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+    ~~~~~~~~~~~~^^
+  File "D:\Lib\site-packages\urllib3\connection.py", line 759, in connect
+    self.sock = sock = self._new_conn()
+                       ~~~~~~~~~~~~~~^^
+  File "D:\Lib\site-packages\urllib3\connection.py", line 211, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: HTTPSConnection(host='your-backend.example.com', port=443): Failed to resolve 'your-backend.example.com' ([Errno 11001] getaddrinfo failed)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Lib\site-packages\requests\adapters.py", line 644, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "D:\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "D:\Lib\site-packages\urllib3\util\retry.py", line 535, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='your-backend.example.com', port=443): Max retries exceeded with url: /demo (Caused by NameResolutionError("HTTPSConnection(host='your-backend.example.com', port=443): Failed to resolve 'your-backend.example.com' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\11154\Desktop\api-auto-test-framework\core\request_handler.py", line 118, in request
+    response = self.session.request(method, full_url, **kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\Lib\site-packages\requests\adapters.py", line 677, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='your-backend.example.com', port=443): Max retries exceeded with url: /demo (Caused by NameResolutionError("HTTPSConnection(host='your-backend.example.com', port=443): Failed to resolve 'your-backend.example.com' ([Errno 11001] getaddrinfo failed)"))
+2026-04-15 15:42:42 [INFO] [request_handler.py:111] Request: POST https://your-backend.example.com/demo
+2026-04-15 15:42:42 [ERROR] [request_handler.py:128] Request failed: HTTPSConnectionPool(host='your-backend.example.com', port=443): Max retries exceeded with url: /demo (Caused by NameResolutionError("HTTPSConnection(host='your-backend.example.com', port=443): Failed to resolve 'your-backend.example.com' ([Errno 11001] getaddrinfo failed)"))
+Traceback (most recent call last):
+  File "D:\Lib\site-packages\urllib3\connection.py", line 204, in _new_conn
+    sock = connection.create_connection(
+        (self._dns_host, self.port),
+    ...<2 lines>...
+        socket_options=self.socket_options,
+    )
+  File "D:\Lib\site-packages\urllib3\util\connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Lib\socket.py", line 983, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "D:\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "D:\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "D:\Lib\site-packages\urllib3\connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+    ~~~~~~~~~~~~^^
+  File "D:\Lib\site-packages\urllib3\connection.py", line 759, in connect
+    self.sock = sock = self._new_conn()
+                       ~~~~~~~~~~~~~~^^
+  File "D:\Lib\site-packages\urllib3\connection.py", line 211, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: HTTPSConnection(host='your-backend.example.com', port=443): Failed to resolve 'your-backend.example.com' ([Errno 11001] getaddrinfo failed)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Lib\site-packages\requests\adapters.py", line 644, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "D:\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "D:\Lib\site-packages\urllib3\util\retry.py", line 535, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='your-backend.example.com', port=443): Max retries exceeded with url: /demo (Caused by NameResolutionError("HTTPSConnection(host='your-backend.example.com', port=443): Failed to resolve 'your-backend.example.com' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\11154\Desktop\api-auto-test-framework\core\request_handler.py", line 118, in request
+    response = self.session.request(method, full_url, **kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\Lib\site-packages\requests\adapters.py", line 677, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='your-backend.example.com', port=443): Max retries exceeded with url: /demo (Caused by NameResolutionError("HTTPSConnection(host='your-backend.example.com', port=443): Failed to resolve 'your-backend.example.com' ([Errno 11001] getaddrinfo failed)"))
+2026-04-15 15:42:42 [INFO] [request_handler.py:111] Request: POST https://your-backend.example.com/demo
+2026-04-15 15:42:42 [ERROR] [request_handler.py:128] Request failed: HTTPSConnectionPool(host='your-backend.example.com', port=443): Max retries exceeded with url: /demo (Caused by NameResolutionError("HTTPSConnection(host='your-backend.example.com', port=443): Failed to resolve 'your-backend.example.com' ([Errno 11001] getaddrinfo failed)"))
+Traceback (most recent call last):
+  File "D:\Lib\site-packages\urllib3\connection.py", line 204, in _new_conn
+    sock = connection.create_connection(
+        (self._dns_host, self.port),
+    ...<2 lines>...
+        socket_options=self.socket_options,
+    )
+  File "D:\Lib\site-packages\urllib3\util\connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Lib\socket.py", line 983, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "D:\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "D:\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "D:\Lib\site-packages\urllib3\connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+    ~~~~~~~~~~~~^^
+  File "D:\Lib\site-packages\urllib3\connection.py", line 759, in connect
+    self.sock = sock = self._new_conn()
+                       ~~~~~~~~~~~~~~^^
+  File "D:\Lib\site-packages\urllib3\connection.py", line 211, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: HTTPSConnection(host='your-backend.example.com', port=443): Failed to resolve 'your-backend.example.com' ([Errno 11001] getaddrinfo failed)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Lib\site-packages\requests\adapters.py", line 644, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "D:\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "D:\Lib\site-packages\urllib3\util\retry.py", line 535, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='your-backend.example.com', port=443): Max retries exceeded with url: /demo (Caused by NameResolutionError("HTTPSConnection(host='your-backend.example.com', port=443): Failed to resolve 'your-backend.example.com' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\11154\Desktop\api-auto-test-framework\core\request_handler.py", line 118, in request
+    response = self.session.request(method, full_url, **kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\Lib\site-packages\requests\adapters.py", line 677, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='your-backend.example.com', port=443): Max retries exceeded with url: /demo (Caused by NameResolutionError("HTTPSConnection(host='your-backend.example.com', port=443): Failed to resolve 'your-backend.example.com' ([Errno 11001] getaddrinfo failed)"))
+2026-04-15 15:42:42 [INFO] [request_handler.py:111] Request: POST https://your-backend.example.com/demo
+2026-04-15 15:42:42 [ERROR] [request_handler.py:128] Request failed: HTTPSConnectionPool(host='your-backend.example.com', port=443): Max retries exceeded with url: /demo (Caused by NameResolutionError("HTTPSConnection(host='your-backend.example.com', port=443): Failed to resolve 'your-backend.example.com' ([Errno 11001] getaddrinfo failed)"))
+Traceback (most recent call last):
+  File "D:\Lib\site-packages\urllib3\connection.py", line 204, in _new_conn
+    sock = connection.create_connection(
+        (self._dns_host, self.port),
+    ...<2 lines>...
+        socket_options=self.socket_options,
+    )
+  File "D:\Lib\site-packages\urllib3\util\connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Lib\socket.py", line 983, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "D:\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "D:\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "D:\Lib\site-packages\urllib3\connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+    ~~~~~~~~~~~~^^
+  File "D:\Lib\site-packages\urllib3\connection.py", line 759, in connect
+    self.sock = sock = self._new_conn()
+                       ~~~~~~~~~~~~~~^^
+  File "D:\Lib\site-packages\urllib3\connection.py", line 211, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: HTTPSConnection(host='your-backend.example.com', port=443): Failed to resolve 'your-backend.example.com' ([Errno 11001] getaddrinfo failed)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Lib\site-packages\requests\adapters.py", line 644, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "D:\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "D:\Lib\site-packages\urllib3\util\retry.py", line 535, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='your-backend.example.com', port=443): Max retries exceeded with url: /demo (Caused by NameResolutionError("HTTPSConnection(host='your-backend.example.com', port=443): Failed to resolve 'your-backend.example.com' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\11154\Desktop\api-auto-test-framework\core\request_handler.py", line 118, in request
+    response = self.session.request(method, full_url, **kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\Lib\site-packages\requests\adapters.py", line 677, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='your-backend.example.com', port=443): Max retries exceeded with url: /demo (Caused by NameResolutionError("HTTPSConnection(host='your-backend.example.com', port=443): Failed to resolve 'your-backend.example.com' ([Errno 11001] getaddrinfo failed)"))
+2026-04-15 15:42:42 [INFO] [request_handler.py:111] Request: POST https://your-backend.example.com/demo
+2026-04-15 15:42:42 [ERROR] [request_handler.py:128] Request failed: HTTPSConnectionPool(host='your-backend.example.com', port=443): Max retries exceeded with url: /demo (Caused by NameResolutionError("HTTPSConnection(host='your-backend.example.com', port=443): Failed to resolve 'your-backend.example.com' ([Errno 11001] getaddrinfo failed)"))
+Traceback (most recent call last):
+  File "D:\Lib\site-packages\urllib3\connection.py", line 204, in _new_conn
+    sock = connection.create_connection(
+        (self._dns_host, self.port),
+    ...<2 lines>...
+        socket_options=self.socket_options,
+    )
+  File "D:\Lib\site-packages\urllib3\util\connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Lib\socket.py", line 983, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "D:\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "D:\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "D:\Lib\site-packages\urllib3\connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+    ~~~~~~~~~~~~^^
+  File "D:\Lib\site-packages\urllib3\connection.py", line 759, in connect
+    self.sock = sock = self._new_conn()
+                       ~~~~~~~~~~~~~~^^
+  File "D:\Lib\site-packages\urllib3\connection.py", line 211, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: HTTPSConnection(host='your-backend.example.com', port=443): Failed to resolve 'your-backend.example.com' ([Errno 11001] getaddrinfo failed)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Lib\site-packages\requests\adapters.py", line 644, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "D:\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "D:\Lib\site-packages\urllib3\util\retry.py", line 535, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='your-backend.example.com', port=443): Max retries exceeded with url: /demo (Caused by NameResolutionError("HTTPSConnection(host='your-backend.example.com', port=443): Failed to resolve 'your-backend.example.com' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\11154\Desktop\api-auto-test-framework\core\request_handler.py", line 118, in request
+    response = self.session.request(method, full_url, **kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\Lib\site-packages\requests\adapters.py", line 677, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='your-backend.example.com', port=443): Max retries exceeded with url: /demo (Caused by NameResolutionError("HTTPSConnection(host='your-backend.example.com', port=443): Failed to resolve 'your-backend.example.com' ([Errno 11001] getaddrinfo failed)"))
+2026-04-15 15:42:42 [INFO] [request_handler.py:111] Request: POST https://your-backend.example.com/demo
+2026-04-15 15:42:42 [ERROR] [request_handler.py:128] Request failed: HTTPSConnectionPool(host='your-backend.example.com', port=443): Max retries exceeded with url: /demo (Caused by NameResolutionError("HTTPSConnection(host='your-backend.example.com', port=443): Failed to resolve 'your-backend.example.com' ([Errno 11001] getaddrinfo failed)"))
+Traceback (most recent call last):
+  File "D:\Lib\site-packages\urllib3\connection.py", line 204, in _new_conn
+    sock = connection.create_connection(
+        (self._dns_host, self.port),
+    ...<2 lines>...
+        socket_options=self.socket_options,
+    )
+  File "D:\Lib\site-packages\urllib3\util\connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Lib\socket.py", line 983, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "D:\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "D:\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "D:\Lib\site-packages\urllib3\connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+    ~~~~~~~~~~~~^^
+  File "D:\Lib\site-packages\urllib3\connection.py", line 759, in connect
+    self.sock = sock = self._new_conn()
+                       ~~~~~~~~~~~~~~^^
+  File "D:\Lib\site-packages\urllib3\connection.py", line 211, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: HTTPSConnection(host='your-backend.example.com', port=443): Failed to resolve 'your-backend.example.com' ([Errno 11001] getaddrinfo failed)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Lib\site-packages\requests\adapters.py", line 644, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "D:\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "D:\Lib\site-packages\urllib3\util\retry.py", line 535, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='your-backend.example.com', port=443): Max retries exceeded with url: /demo (Caused by NameResolutionError("HTTPSConnection(host='your-backend.example.com', port=443): Failed to resolve 'your-backend.example.com' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\11154\Desktop\api-auto-test-framework\core\request_handler.py", line 118, in request
+    response = self.session.request(method, full_url, **kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\Lib\site-packages\requests\adapters.py", line 677, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='your-backend.example.com', port=443): Max retries exceeded with url: /demo (Caused by NameResolutionError("HTTPSConnection(host='your-backend.example.com', port=443): Failed to resolve 'your-backend.example.com' ([Errno 11001] getaddrinfo failed)"))
+2026-04-15 15:42:42 [INFO] [request_handler.py:111] Request: POST https://your-backend.example.com/demo
+2026-04-15 15:42:42 [ERROR] [request_handler.py:128] Request failed: HTTPSConnectionPool(host='your-backend.example.com', port=443): Max retries exceeded with url: /demo (Caused by NameResolutionError("HTTPSConnection(host='your-backend.example.com', port=443): Failed to resolve 'your-backend.example.com' ([Errno 11001] getaddrinfo failed)"))
+Traceback (most recent call last):
+  File "D:\Lib\site-packages\urllib3\connection.py", line 204, in _new_conn
+    sock = connection.create_connection(
+        (self._dns_host, self.port),
+    ...<2 lines>...
+        socket_options=self.socket_options,
+    )
+  File "D:\Lib\site-packages\urllib3\util\connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Lib\socket.py", line 983, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "D:\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "D:\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "D:\Lib\site-packages\urllib3\connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+    ~~~~~~~~~~~~^^
+  File "D:\Lib\site-packages\urllib3\connection.py", line 759, in connect
+    self.sock = sock = self._new_conn()
+                       ~~~~~~~~~~~~~~^^
+  File "D:\Lib\site-packages\urllib3\connection.py", line 211, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: HTTPSConnection(host='your-backend.example.com', port=443): Failed to resolve 'your-backend.example.com' ([Errno 11001] getaddrinfo failed)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Lib\site-packages\requests\adapters.py", line 644, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "D:\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "D:\Lib\site-packages\urllib3\util\retry.py", line 535, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='your-backend.example.com', port=443): Max retries exceeded with url: /demo (Caused by NameResolutionError("HTTPSConnection(host='your-backend.example.com', port=443): Failed to resolve 'your-backend.example.com' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\11154\Desktop\api-auto-test-framework\core\request_handler.py", line 118, in request
+    response = self.session.request(method, full_url, **kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\Lib\site-packages\requests\adapters.py", line 677, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='your-backend.example.com', port=443): Max retries exceeded with url: /demo (Caused by NameResolutionError("HTTPSConnection(host='your-backend.example.com', port=443): Failed to resolve 'your-backend.example.com' ([Errno 11001] getaddrinfo failed)"))
+2026-04-15 15:42:43 [WARNING] [test_api_ddt.py:144] 解析请求体失败：Expecting property name enclosed in double quotes: line 1 column 2 (char 1)，原值：{invalid_json
+2026-04-15 15:42:43 [INFO] [request_handler.py:111] Request: POST https://your-backend.example.com/demo
+2026-04-15 15:42:43 [ERROR] [request_handler.py:128] Request failed: HTTPSConnectionPool(host='your-backend.example.com', port=443): Max retries exceeded with url: /demo (Caused by NameResolutionError("HTTPSConnection(host='your-backend.example.com', port=443): Failed to resolve 'your-backend.example.com' ([Errno 11001] getaddrinfo failed)"))
+Traceback (most recent call last):
+  File "D:\Lib\site-packages\urllib3\connection.py", line 204, in _new_conn
+    sock = connection.create_connection(
+        (self._dns_host, self.port),
+    ...<2 lines>...
+        socket_options=self.socket_options,
+    )
+  File "D:\Lib\site-packages\urllib3\util\connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Lib\socket.py", line 983, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "D:\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "D:\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "D:\Lib\site-packages\urllib3\connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+    ~~~~~~~~~~~~^^
+  File "D:\Lib\site-packages\urllib3\connection.py", line 759, in connect
+    self.sock = sock = self._new_conn()
+                       ~~~~~~~~~~~~~~^^
+  File "D:\Lib\site-packages\urllib3\connection.py", line 211, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: HTTPSConnection(host='your-backend.example.com', port=443): Failed to resolve 'your-backend.example.com' ([Errno 11001] getaddrinfo failed)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Lib\site-packages\requests\adapters.py", line 644, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "D:\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "D:\Lib\site-packages\urllib3\util\retry.py", line 535, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='your-backend.example.com', port=443): Max retries exceeded with url: /demo (Caused by NameResolutionError("HTTPSConnection(host='your-backend.example.com', port=443): Failed to resolve 'your-backend.example.com' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\11154\Desktop\api-auto-test-framework\core\request_handler.py", line 118, in request
+    response = self.session.request(method, full_url, **kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\Lib\site-packages\requests\adapters.py", line 677, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='your-backend.example.com', port=443): Max retries exceeded with url: /demo (Caused by NameResolutionError("HTTPSConnection(host='your-backend.example.com', port=443): Failed to resolve 'your-backend.example.com' ([Errno 11001] getaddrinfo failed)"))
+2026-04-15 15:42:59 [INFO] [settings.py:140] 日志系统初始化完成，级别=INFO
+2026-04-15 15:42:59 [INFO] [ai_helper.py:203] 调用 DeepSeek 生成用例… temperature=0.3 strict=False
+2026-04-15 15:43:32 [ERROR] [ai_helper.py:227] 解析模型 JSON 失败：Expecting ',' delimiter: line 25 column 36 (char 594) 原始片段=```json
+[
+    {
+        "title": "正常请求 - 发送基本JSON数据",
+        "method": "POST",
+        "path": "/post",
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        "body": {
+            "name": "test_user",
+            "age": 25,
+            "email": "user@example.com"
+        },
+        "expected_status": 200,
+        "category": "normal"
+    },
+    {
+        "title": "边界测试 - 超大JSON对象",
+        "method": "POST",
+        "path": "/post",
+        "headers": {
+         
+2026-04-15 15:43:32 [INFO] [ai_helper.py:228] 将使用更严格提示重试一次…
+2026-04-15 15:43:32 [INFO] [ai_helper.py:203] 调用 DeepSeek 生成用例… temperature=0.0 strict=True
+2026-04-15 15:44:01 [ERROR] [ai_helper.py:233] 二次解析仍失败：Expecting ',' delimiter: line 39 column 23 (char 774) 原始片段=[
+  {
+    "title": "正常请求-发送完整JSON数据",
+    "method": "POST",
+    "path": "/post",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "name": "ai_generated",
+      "method": "POST",
+      "path": "/post",
+      "description": "httpbin /post accepts json body"
+    },
+    "expected_status": 200,
+    "category": "正常"
+  },
+  {
+    "title": "正常请求-发送最小化JSON数据",
+    "method": "POST",
+    "path": "/post",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+  
+2026-04-15 15:44:23 [INFO] [settings.py:140] 日志系统初始化完成，级别=INFO
+2026-04-15 15:44:24 [INFO] [ai_helper.py:210] 调用 DeepSeek 生成用例… temperature=0.3 strict=False
+2026-04-15 15:44:57 [INFO] [ai_helper.py:243] DeepSeek 生成用例 10 条
+2026-04-15 15:44:57 [INFO] [ai_to_excel.py:169] 已删除旧用例行：0（method=POST path=/post）
+2026-04-15 15:44:57 [INFO] [ai_to_excel.py:178] 已写入 10 条 AI 用例到 C:\Users\11154\Desktop\api-auto-test-framework\data\api_test_cases.xlsx sheet=api 起始行=14
+2026-04-15 15:45:05 [INFO] [settings.py:140] 日志系统初始化完成，级别=INFO
+2026-04-15 15:45:05 [INFO] [runtest.py:157] 目录结构检查完成
+2026-04-15 15:45:05 [INFO] [runtest.py:92] 执行命令：pytest testcases/test_api_ddt.py -v --tb=short -W ignore::DeprecationWarning --alluredir C:\Users\11154\Desktop\api-auto-test-framework\reports\allure_results
+2026-04-15 15:45:05 [INFO] [settings.py:140] 日志系统初始化完成，级别=INFO
+2026-04-15 15:45:06 [INFO] [excel_reader.py:31] 读取 Excel：C:\Users\11154\Desktop\api-auto-test-framework\data\api_test_cases.xlsx sheet=login
+2026-04-15 15:45:06 [ERROR] [excel_reader.py:51] 工作表不存在：login，可选：['http_methods', 'status_codes', 'headers', 'cookies', '字段说明', 'api']
+2026-04-15 15:45:06 [INFO] [test_api_ddt.py:54] api_test_cases.xlsx 未找到 login sheet，改用：C:\Users\11154\Desktop\api-auto-test-framework\data\login_data.xlsx
+2026-04-15 15:45:06 [INFO] [excel_reader.py:31] 读取 Excel：C:\Users\11154\Desktop\api-auto-test-framework\data\login_data.xlsx sheet=login
+2026-04-15 15:45:06 [INFO] [excel_reader.py:89] Excel 读取完成，共 3 条数据行
+2026-04-15 15:45:06 [INFO] [test_api_ddt.py:64] 加载测试用例：login，共 3 条（启用 3 条）
+2026-04-15 15:45:06 [INFO] [excel_reader.py:31] 读取 Excel：C:\Users\11154\Desktop\api-auto-test-framework\data\api_test_cases.xlsx sheet=api
+2026-04-15 15:45:06 [INFO] [excel_reader.py:89] Excel 读取完成，共 22 条数据行
+2026-04-15 15:45:06 [INFO] [test_api_ddt.py:64] 加载测试用例：api，共 22 条（启用 22 条）
+2026-04-15 15:45:06 [INFO] [request_handler.py:111] Request: POST https://httpbin.org/post
+2026-04-15 15:45:09 [INFO] [request_handler.py:120] Response status: 200 elapsed=2.956s
+2026-04-15 15:45:09 [INFO] [test_api_ddt.py:282] 已保存 Token 到上下文
+2026-04-15 15:45:09 [INFO] [request_handler.py:111] Request: POST https://httpbin.org/post
+2026-04-15 15:45:12 [INFO] [request_handler.py:120] Response status: 200 elapsed=3.211s
+2026-04-15 15:45:12 [INFO] [request_handler.py:111] Request: POST https://httpbin.org/post
+2026-04-15 15:45:14 [INFO] [request_handler.py:120] Response status: 200 elapsed=1.494s
+2026-04-15 15:45:14 [INFO] [request_handler.py:111] Request: POST https://httpbin.org/demo
+2026-04-15 15:45:15 [INFO] [request_handler.py:120] Response status: 404 elapsed=1.533s
+2026-04-15 15:45:15 [INFO] [request_handler.py:111] Request: POST https://httpbin.org/demo
+2026-04-15 15:45:18 [INFO] [request_handler.py:120] Response status: 404 elapsed=2.437s
+2026-04-15 15:45:18 [INFO] [request_handler.py:111] Request: POST https://httpbin.org/demo
+2026-04-15 15:45:21 [INFO] [request_handler.py:120] Response status: 404 elapsed=3.629s
+2026-04-15 15:45:21 [INFO] [request_handler.py:111] Request: POST https://httpbin.org/demo
+2026-04-15 15:45:23 [INFO] [request_handler.py:120] Response status: 404 elapsed=1.218s
+2026-04-15 15:45:23 [INFO] [request_handler.py:111] Request: POST https://httpbin.org/demo
+2026-04-15 15:45:24 [INFO] [request_handler.py:120] Response status: 404 elapsed=1.467s
+2026-04-15 15:45:24 [INFO] [request_handler.py:111] Request: POST https://httpbin.org/demo
+2026-04-15 15:45:27 [INFO] [request_handler.py:120] Response status: 404 elapsed=2.397s
+2026-04-15 15:45:27 [INFO] [request_handler.py:111] Request: POST https://httpbin.org/demo
+2026-04-15 15:45:28 [INFO] [request_handler.py:120] Response status: 404 elapsed=1.900s
+2026-04-15 15:45:29 [INFO] [request_handler.py:111] Request: POST https://httpbin.org/demo
+2026-04-15 15:45:30 [INFO] [request_handler.py:120] Response status: 404 elapsed=1.613s
+2026-04-15 15:45:30 [INFO] [request_handler.py:111] Request: POST https://httpbin.org/demo
+2026-04-15 15:45:32 [INFO] [request_handler.py:120] Response status: 404 elapsed=1.845s
+2026-04-15 15:45:32 [INFO] [request_handler.py:111] Request: POST https://httpbin.org/demo
+2026-04-15 15:45:34 [INFO] [request_handler.py:120] Response status: 404 elapsed=2.078s
+2026-04-15 15:45:34 [INFO] [request_handler.py:111] Request: POST https://httpbin.org/demo
+2026-04-15 15:45:37 [INFO] [request_handler.py:120] Response status: 404 elapsed=2.620s
+2026-04-15 15:45:37 [WARNING] [test_api_ddt.py:144] 解析请求体失败：Expecting property name enclosed in double quotes: line 1 column 2 (char 1)，原值：{invalid_json
+2026-04-15 15:45:37 [INFO] [request_handler.py:111] Request: POST https://httpbin.org/demo
+2026-04-15 15:45:38 [INFO] [request_handler.py:120] Response status: 404 elapsed=1.574s
+2026-04-15 15:45:38 [INFO] [request_handler.py:111] Request: POST https://httpbin.org/post
+2026-04-15 15:45:41 [INFO] [request_handler.py:120] Response status: 200 elapsed=2.648s
+2026-04-15 15:45:41 [INFO] [request_handler.py:111] Request: POST https://httpbin.org/post
+2026-04-15 15:45:42 [INFO] [request_handler.py:120] Response status: 200 elapsed=1.436s
+2026-04-15 15:45:42 [INFO] [request_handler.py:111] Request: POST https://httpbin.org/post
+2026-04-15 15:45:45 [INFO] [request_handler.py:120] Response status: 200 elapsed=2.359s
+2026-04-15 15:45:45 [INFO] [request_handler.py:111] Request: POST https://httpbin.org/post
+2026-04-15 15:45:46 [INFO] [request_handler.py:120] Response status: 200 elapsed=1.576s
+2026-04-15 15:45:46 [WARNING] [test_api_ddt.py:144] 解析请求体失败：Expecting property name enclosed in double quotes: line 1 column 2 (char 1)，原值：{invalid_json
+2026-04-15 15:45:46 [INFO] [request_handler.py:111] Request: POST https://httpbin.org/post
+2026-04-15 15:45:48 [INFO] [request_handler.py:120] Response status: 200 elapsed=1.412s
+2026-04-15 15:45:48 [WARNING] [test_api_ddt.py:144] 解析请求体失败：Expecting value: line 1 column 1 (char 0)，原值：<user><name>test</name></user>
+2026-04-15 15:45:48 [INFO] [request_handler.py:111] Request: POST https://httpbin.org/post
+2026-04-15 15:45:49 [INFO] [request_handler.py:120] Response status: 200 elapsed=1.344s
+2026-04-15 15:45:49 [INFO] [request_handler.py:111] Request: POST https://httpbin.org/post
+2026-04-15 15:45:51 [INFO] [request_handler.py:120] Response status: 200 elapsed=1.442s
+2026-04-15 15:45:51 [INFO] [request_handler.py:111] Request: POST https://httpbin.org/post
+2026-04-15 15:45:53 [INFO] [settings.py:140] 日志系统初始化完成，级别=INFO
+2026-04-15 15:45:53 [INFO] [ai_to_excel.py:172] 已删除旧用例行：12（method=POST path=/demo）
+2026-04-15 15:45:53 [INFO] [ai_to_excel.py:183] 仅删除完成：C:\Users\11154\Desktop\api-auto-test-framework\data\api_test_cases.xlsx sheet=api deleted=12
+2026-04-15 15:45:53 [INFO] [request_handler.py:120] Response status: 200 elapsed=2.451s
+2026-04-15 15:45:53 [INFO] [request_handler.py:111] Request: POST https://httpbin.org/post
+2026-04-15 15:45:54 [INFO] [request_handler.py:120] Response status: 200 elapsed=1.282s
+2026-04-15 15:45:54 [INFO] [request_handler.py:111] Request: POST https://httpbin.org/post
+2026-04-15 15:45:56 [INFO] [request_handler.py:120] Response status: 200 elapsed=2.030s
+2026-04-15 15:45:58 [INFO] [settings.py:140] 日志系统初始化完成，级别=INFO
+2026-04-15 15:45:58 [INFO] [runtest.py:157] 目录结构检查完成
+2026-04-15 15:45:58 [INFO] [runtest.py:92] 执行命令：pytest testcases/test_api_ddt.py -v --tb=short -W ignore::DeprecationWarning --alluredir C:\Users\11154\Desktop\api-auto-test-framework\reports\allure_results
+2026-04-15 15:45:59 [INFO] [settings.py:140] 日志系统初始化完成，级别=INFO
+2026-04-15 15:45:59 [INFO] [excel_reader.py:31] 读取 Excel：C:\Users\11154\Desktop\api-auto-test-framework\data\api_test_cases.xlsx sheet=login
+2026-04-15 15:45:59 [ERROR] [excel_reader.py:51] 工作表不存在：login，可选：['http_methods', 'status_codes', 'headers', 'cookies', '字段说明', 'api']
+2026-04-15 15:45:59 [INFO] [test_api_ddt.py:54] api_test_cases.xlsx 未找到 login sheet，改用：C:\Users\11154\Desktop\api-auto-test-framework\data\login_data.xlsx
+2026-04-15 15:45:59 [INFO] [excel_reader.py:31] 读取 Excel：C:\Users\11154\Desktop\api-auto-test-framework\data\login_data.xlsx sheet=login
+2026-04-15 15:45:59 [INFO] [excel_reader.py:89] Excel 读取完成，共 3 条数据行
+2026-04-15 15:45:59 [INFO] [test_api_ddt.py:64] 加载测试用例：login，共 3 条（启用 3 条）
+2026-04-15 15:45:59 [INFO] [excel_reader.py:31] 读取 Excel：C:\Users\11154\Desktop\api-auto-test-framework\data\api_test_cases.xlsx sheet=api
+2026-04-15 15:45:59 [INFO] [excel_reader.py:89] Excel 读取完成，共 10 条数据行
+2026-04-15 15:45:59 [INFO] [test_api_ddt.py:64] 加载测试用例：api，共 10 条（启用 10 条）
+2026-04-15 15:45:59 [INFO] [request_handler.py:111] Request: POST https://httpbin.org/post
+2026-04-15 15:46:08 [INFO] [request_handler.py:120] Response status: 200 elapsed=8.892s
+2026-04-15 15:46:08 [INFO] [test_api_ddt.py:282] 已保存 Token 到上下文
+2026-04-15 15:46:08 [INFO] [request_handler.py:111] Request: POST https://httpbin.org/post
+2026-04-15 15:46:10 [INFO] [request_handler.py:120] Response status: 200 elapsed=1.909s
+2026-04-15 15:46:10 [INFO] [request_handler.py:111] Request: POST https://httpbin.org/post
+2026-04-15 15:46:12 [INFO] [request_handler.py:120] Response status: 200 elapsed=2.414s
+2026-04-15 15:46:12 [INFO] [request_handler.py:111] Request: POST https://httpbin.org/post
+2026-04-15 15:46:14 [INFO] [request_handler.py:120] Response status: 200 elapsed=1.773s
+2026-04-15 15:46:14 [INFO] [request_handler.py:111] Request: POST https://httpbin.org/post
+2026-04-15 15:46:16 [INFO] [request_handler.py:120] Response status: 200 elapsed=1.973s
+2026-04-15 15:46:16 [INFO] [request_handler.py:111] Request: POST https://httpbin.org/post
+2026-04-15 15:46:18 [INFO] [request_handler.py:120] Response status: 200 elapsed=1.809s
+2026-04-15 15:46:18 [INFO] [request_handler.py:111] Request: POST https://httpbin.org/post
+2026-04-15 15:46:19 [INFO] [request_handler.py:120] Response status: 200 elapsed=1.436s
+2026-04-15 15:46:20 [WARNING] [test_api_ddt.py:144] 解析请求体失败：Expecting property name enclosed in double quotes: line 1 column 2 (char 1)，原值：{invalid_json
+2026-04-15 15:46:20 [INFO] [request_handler.py:111] Request: POST https://httpbin.org/post
+2026-04-15 15:46:22 [INFO] [request_handler.py:120] Response status: 200 elapsed=2.370s
+2026-04-15 15:46:22 [WARNING] [test_api_ddt.py:144] 解析请求体失败：Expecting value: line 1 column 1 (char 0)，原值：<user><name>test</name></user>
+2026-04-15 15:46:22 [INFO] [request_handler.py:111] Request: POST https://httpbin.org/post
+2026-04-15 15:46:24 [INFO] [request_handler.py:120] Response status: 200 elapsed=1.729s
+2026-04-15 15:46:24 [INFO] [request_handler.py:111] Request: POST https://httpbin.org/post
+2026-04-15 15:46:26 [INFO] [request_handler.py:120] Response status: 200 elapsed=1.883s
+2026-04-15 15:46:26 [INFO] [request_handler.py:111] Request: POST https://httpbin.org/post
+2026-04-15 15:46:28 [INFO] [request_handler.py:120] Response status: 200 elapsed=2.456s
+2026-04-15 15:46:28 [INFO] [request_handler.py:111] Request: POST https://httpbin.org/post
+2026-04-15 15:46:31 [INFO] [request_handler.py:120] Response status: 200 elapsed=2.425s
+2026-04-15 15:46:31 [INFO] [request_handler.py:111] Request: POST https://httpbin.org/post
+2026-04-15 15:46:32 [INFO] [request_handler.py:120] Response status: 200 elapsed=1.346s
+2026-04-15 15:46:52 [INFO] [settings.py:140] 日志系统初始化完成，级别=INFO
+2026-04-15 15:46:52 [INFO] [ai_helper.py:210] 调用 DeepSeek 生成用例… temperature=0.3 strict=False
+2026-04-15 15:47:19 [INFO] [ai_helper.py:243] DeepSeek 生成用例 10 条
+2026-04-15 15:47:19 [INFO] [ai_to_excel.py:173] 已删除旧用例行：10（method=POST path=/post）
+2026-04-15 15:47:19 [INFO] [ai_to_excel.py:188] 已写入 10 条 AI 用例到 C:\Users\11154\Desktop\api-auto-test-framework\data\api_test_cases.xlsx sheet=api 起始行=2
+2026-04-15 15:47:23 [INFO] [settings.py:140] 日志系统初始化完成，级别=INFO
+2026-04-15 15:47:23 [INFO] [runtest.py:157] 目录结构检查完成
+2026-04-15 15:47:23 [INFO] [runtest.py:92] 执行命令：pytest testcases/test_api_ddt.py -v --tb=short -W ignore::DeprecationWarning --alluredir C:\Users\11154\Desktop\api-auto-test-framework\reports\allure_results
+2026-04-15 15:47:23 [INFO] [settings.py:140] 日志系统初始化完成，级别=INFO
+2026-04-15 15:47:23 [INFO] [excel_reader.py:31] 读取 Excel：C:\Users\11154\Desktop\api-auto-test-framework\data\api_test_cases.xlsx sheet=login
+2026-04-15 15:47:23 [ERROR] [excel_reader.py:51] 工作表不存在：login，可选：['http_methods', 'status_codes', 'headers', 'cookies', '字段说明', 'api']
+2026-04-15 15:47:23 [INFO] [test_api_ddt.py:54] api_test_cases.xlsx 未找到 login sheet，改用：C:\Users\11154\Desktop\api-auto-test-framework\data\login_data.xlsx
+2026-04-15 15:47:23 [INFO] [excel_reader.py:31] 读取 Excel：C:\Users\11154\Desktop\api-auto-test-framework\data\login_data.xlsx sheet=login
+2026-04-15 15:47:24 [INFO] [excel_reader.py:89] Excel 读取完成，共 3 条数据行
+2026-04-15 15:47:24 [INFO] [test_api_ddt.py:64] 加载测试用例：login，共 3 条（启用 3 条）
+2026-04-15 15:47:24 [INFO] [excel_reader.py:31] 读取 Excel：C:\Users\11154\Desktop\api-auto-test-framework\data\api_test_cases.xlsx sheet=api
+2026-04-15 15:47:24 [INFO] [excel_reader.py:89] Excel 读取完成，共 10 条数据行
+2026-04-15 15:47:24 [INFO] [test_api_ddt.py:64] 加载测试用例：api，共 10 条（启用 10 条）
+2026-04-15 15:47:24 [INFO] [request_handler.py:111] Request: POST https://httpbin.org/post
+2026-04-15 15:47:25 [INFO] [request_handler.py:120] Response status: 200 elapsed=1.981s
+2026-04-15 15:47:25 [INFO] [test_api_ddt.py:282] 已保存 Token 到上下文
+2026-04-15 15:47:26 [INFO] [request_handler.py:111] Request: POST https://httpbin.org/post
+2026-04-15 15:47:30 [INFO] [request_handler.py:120] Response status: 200 elapsed=4.486s
+2026-04-15 15:47:30 [INFO] [request_handler.py:111] Request: POST https://httpbin.org/post
+2026-04-15 15:47:32 [INFO] [request_handler.py:120] Response status: 200 elapsed=1.783s
+2026-04-15 15:47:32 [INFO] [request_handler.py:111] Request: POST https://httpbin.org/post
+2026-04-15 15:47:35 [INFO] [request_handler.py:120] Response status: 200 elapsed=3.197s
+2026-04-15 15:47:35 [INFO] [request_handler.py:111] Request: POST https://httpbin.org/post
+2026-04-15 15:47:38 [INFO] [request_handler.py:120] Response status: 200 elapsed=3.013s
+2026-04-15 15:47:38 [INFO] [request_handler.py:111] Request: POST https://httpbin.org/post
+2026-04-15 15:47:40 [INFO] [request_handler.py:120] Response status: 200 elapsed=1.858s
+2026-04-15 15:47:40 [WARNING] [test_api_ddt.py:144] 解析请求体失败：Expecting property name enclosed in double quotes: line 1 column 2 (char 1)，原值：{invalid_json: missing_quotes}
+2026-04-15 15:47:40 [INFO] [request_handler.py:111] Request: POST https://httpbin.org/post
+2026-04-15 15:47:43 [INFO] [request_handler.py:120] Response status: 200 elapsed=3.027s
+2026-04-15 15:47:43 [WARNING] [test_api_ddt.py:144] 解析请求体失败：Expecting value: line 1 column 1 (char 0)，原值：plain text instead of json
+2026-04-15 15:47:43 [INFO] [request_handler.py:111] Request: POST https://httpbin.org/post
+2026-04-15 15:47:45 [INFO] [request_handler.py:120] Response status: 200 elapsed=2.179s
+2026-04-15 15:47:45 [INFO] [request_handler.py:111] Request: POST https://httpbin.org/post
+2026-04-15 15:47:47 [INFO] [request_handler.py:120] Response status: 200 elapsed=2.139s
+2026-04-15 15:47:47 [INFO] [request_handler.py:111] Request: POST https://httpbin.org/post
+2026-04-15 15:47:50 [INFO] [request_handler.py:120] Response status: 200 elapsed=2.766s
+2026-04-15 15:47:50 [INFO] [request_handler.py:111] Request: POST https://httpbin.org/post
+2026-04-15 15:47:54 [INFO] [request_handler.py:120] Response status: 200 elapsed=3.842s
+2026-04-15 15:47:54 [INFO] [request_handler.py:111] Request: POST https://httpbin.org/post
+2026-04-15 15:47:56 [INFO] [request_handler.py:120] Response status: 200 elapsed=1.723s
+2026-04-15 15:47:56 [INFO] [request_handler.py:111] Request: POST https://httpbin.org/post
+2026-04-15 15:47:57 [INFO] [request_handler.py:120] Response status: 200 elapsed=1.671s
+2026-04-15 15:55:49 [INFO] [settings.py:140] 日志系统初始化完成，级别=INFO
+2026-04-15 15:55:49 [INFO] [runtest.py:157] 目录结构检查完成
+2026-04-15 15:55:49 [INFO] [runtest.py:92] 执行命令：pytest testcases/test_api_ddt.py -v --tb=short -W ignore::DeprecationWarning --alluredir C:\Users\11154\Desktop\api-auto-test-framework\reports\allure_results
+2026-04-15 15:55:49 [INFO] [settings.py:140] 日志系统初始化完成，级别=INFO
+2026-04-15 15:55:50 [INFO] [excel_reader.py:31] 读取 Excel：C:\Users\11154\Desktop\api-auto-test-framework\data\api_test_cases.xlsx sheet=login
+2026-04-15 15:55:50 [ERROR] [excel_reader.py:51] 工作表不存在：login，可选：['http_methods', 'status_codes', 'headers', 'cookies', '字段说明', 'api']
+2026-04-15 15:55:50 [INFO] [test_api_ddt.py:54] api_test_cases.xlsx 未找到 login sheet，改用：C:\Users\11154\Desktop\api-auto-test-framework\data\login_data.xlsx
+2026-04-15 15:55:50 [INFO] [excel_reader.py:31] 读取 Excel：C:\Users\11154\Desktop\api-auto-test-framework\data\login_data.xlsx sheet=login
+2026-04-15 15:55:50 [INFO] [excel_reader.py:89] Excel 读取完成，共 3 条数据行
+2026-04-15 15:55:50 [INFO] [test_api_ddt.py:64] 加载测试用例：login，共 3 条（启用 3 条）
+2026-04-15 15:55:50 [INFO] [excel_reader.py:31] 读取 Excel：C:\Users\11154\Desktop\api-auto-test-framework\data\api_test_cases.xlsx sheet=api
+2026-04-15 15:55:50 [INFO] [excel_reader.py:89] Excel 读取完成，共 10 条数据行
+2026-04-15 15:55:50 [INFO] [test_api_ddt.py:64] 加载测试用例：api，共 10 条（启用 10 条）
+2026-04-15 15:55:50 [INFO] [request_handler.py:111] Request: POST https://httpbin.org/post
+2026-04-15 15:55:52 [INFO] [request_handler.py:120] Response status: 200 elapsed=2.331s
+2026-04-15 15:55:52 [INFO] [test_api_ddt.py:282] 已保存 Token 到上下文
+2026-04-15 15:55:52 [INFO] [request_handler.py:111] Request: POST https://httpbin.org/post
+2026-04-15 15:55:55 [INFO] [request_handler.py:120] Response status: 200 elapsed=2.768s
+2026-04-15 15:55:55 [INFO] [request_handler.py:111] Request: POST https://httpbin.org/post
+2026-04-15 15:55:58 [INFO] [request_handler.py:120] Response status: 200 elapsed=2.869s
+2026-04-15 15:55:58 [INFO] [request_handler.py:111] Request: POST https://httpbin.org/post
+2026-04-15 15:56:00 [INFO] [request_handler.py:120] Response status: 200 elapsed=2.213s
+2026-04-15 15:56:00 [INFO] [request_handler.py:111] Request: POST https://httpbin.org/post
+2026-04-15 15:56:01 [INFO] [request_handler.py:120] Response status: 200 elapsed=1.523s
+2026-04-15 15:56:01 [INFO] [request_handler.py:111] Request: POST https://httpbin.org/post
+2026-04-15 15:56:10 [INFO] [request_handler.py:120] Response status: 200 elapsed=8.182s
+2026-04-15 15:56:10 [WARNING] [test_api_ddt.py:144] 解析请求体失败：Expecting property name enclosed in double quotes: line 1 column 2 (char 1)，原值：{invalid_json: missing_quotes}
+2026-04-15 15:56:10 [INFO] [request_handler.py:111] Request: POST https://httpbin.org/post
+2026-04-15 15:56:12 [INFO] [request_handler.py:120] Response status: 200 elapsed=2.031s
+2026-04-15 15:56:12 [WARNING] [test_api_ddt.py:144] 解析请求体失败：Expecting value: line 1 column 1 (char 0)，原值：plain text instead of json
+2026-04-15 15:56:12 [INFO] [request_handler.py:111] Request: POST https://httpbin.org/post
+2026-04-15 15:56:13 [INFO] [request_handler.py:120] Response status: 200 elapsed=1.283s
+2026-04-15 15:56:13 [INFO] [request_handler.py:111] Request: POST https://httpbin.org/post
+2026-04-15 15:56:14 [INFO] [request_handler.py:120] Response status: 200 elapsed=1.442s
+2026-04-15 15:56:14 [INFO] [request_handler.py:111] Request: POST https://httpbin.org/post
+2026-04-15 15:56:17 [INFO] [request_handler.py:120] Response status: 200 elapsed=2.096s
+2026-04-15 15:56:17 [INFO] [request_handler.py:111] Request: POST https://httpbin.org/post
+2026-04-15 15:56:18 [INFO] [request_handler.py:120] Response status: 200 elapsed=1.354s
+2026-04-15 15:56:18 [INFO] [request_handler.py:111] Request: POST https://httpbin.org/post
+2026-04-15 15:56:20 [INFO] [request_handler.py:120] Response status: 200 elapsed=2.222s
+2026-04-15 15:56:20 [INFO] [request_handler.py:111] Request: POST https://httpbin.org/post
+2026-04-15 15:56:22 [INFO] [request_handler.py:120] Response status: 200 elapsed=1.653s
+2026-04-15 18:57:27 [INFO] [settings.py:140] 日志系统初始化完成，级别=INFO
+2026-04-15 18:57:27 [INFO] [request_handler.py:111] Request: GET https://httpbin.org/get
+2026-04-15 18:57:30 [INFO] [request_handler.py:120] Response status: 200 elapsed=3.108s
+2026-04-15 18:57:30 [INFO] [request_handler.py:111] Request: POST https://httpbin.org/post
+2026-04-15 18:57:31 [INFO] [request_handler.py:120] Response status: 200 elapsed=0.240s
+2026-04-15 18:57:31 [INFO] [request_handler.py:111] Request: GET https://httpbin.org/ip
+2026-04-15 18:57:31 [INFO] [request_handler.py:120] Response status: 200 elapsed=0.224s
+2026-04-15 19:04:54 [INFO] [settings.py:140] 日志系统初始化完成，级别=INFO
+2026-04-15 19:04:54 [INFO] [ai_helper.py:210] 调用 DeepSeek 生成用例… temperature=0.3 strict=False
+2026-04-15 19:05:21 [INFO] [ai_helper.py:243] DeepSeek 生成用例 12 条
+2026-04-15 19:05:21 [INFO] [ai_to_excel.py:173] 已删除旧用例行：0（method=GET path=/api/users）
+2026-04-15 19:05:21 [INFO] [ai_to_excel.py:188] 已写入 12 条 AI 用例到 C:\Users\11154\Desktop\api-auto-test-framework\data\api_test_cases.xlsx sheet=api 起始行=12
+2026-04-15 19:05:22 [INFO] [settings.py:140] 日志系统初始化完成，级别=INFO
+2026-04-15 19:05:22 [INFO] [runtest.py:157] 目录结构检查完成
+2026-04-15 19:05:22 [INFO] [runtest.py:92] 执行命令：pytest testcases/test_api_ddt.py -v --tb=short -W ignore::DeprecationWarning --alluredir C:\Users\11154\Desktop\api-auto-test-framework\reports\allure_results
+2026-04-15 19:05:22 [INFO] [settings.py:140] 日志系统初始化完成，级别=INFO
+2026-04-15 19:05:22 [INFO] [excel_reader.py:31] 读取 Excel：C:\Users\11154\Desktop\api-auto-test-framework\data\api_test_cases.xlsx sheet=login
+2026-04-15 19:05:22 [ERROR] [excel_reader.py:51] 工作表不存在：login，可选：['http_methods', 'status_codes', 'headers', 'cookies', '字段说明', 'api']
+2026-04-15 19:05:22 [INFO] [test_api_ddt.py:54] api_test_cases.xlsx 未找到 login sheet，改用：C:\Users\11154\Desktop\api-auto-test-framework\data\login_data.xlsx
+2026-04-15 19:05:22 [INFO] [excel_reader.py:31] 读取 Excel：C:\Users\11154\Desktop\api-auto-test-framework\data\login_data.xlsx sheet=login
+2026-04-15 19:05:22 [INFO] [excel_reader.py:89] Excel 读取完成，共 3 条数据行
+2026-04-15 19:05:22 [INFO] [test_api_ddt.py:64] 加载测试用例：login，共 3 条（启用 3 条）
+2026-04-15 19:05:22 [INFO] [excel_reader.py:31] 读取 Excel：C:\Users\11154\Desktop\api-auto-test-framework\data\api_test_cases.xlsx sheet=api
+2026-04-15 19:05:22 [INFO] [excel_reader.py:89] Excel 读取完成，共 22 条数据行
+2026-04-15 19:05:22 [INFO] [test_api_ddt.py:64] 加载测试用例：api，共 22 条（启用 22 条）
+2026-04-15 19:05:22 [INFO] [request_handler.py:111] Request: POST BASE_URL=https://reqres.in/post
+2026-04-15 19:05:22 [ERROR] [request_handler.py:128] Request failed: No connection adapters were found for 'BASE_URL=https://reqres.in/post'
+Traceback (most recent call last):
+  File "C:\Users\11154\Desktop\api-auto-test-framework\core\request_handler.py", line 118, in request
+    response = self.session.request(method, full_url, **kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 697, in send
+    adapter = self.get_adapter(url=request.url)
+  File "D:\Lib\site-packages\requests\sessions.py", line 792, in get_adapter
+    raise InvalidSchema(f"No connection adapters were found for {url!r}")
+requests.exceptions.InvalidSchema: No connection adapters were found for 'BASE_URL=https://reqres.in/post'
+2026-04-15 19:05:23 [INFO] [request_handler.py:111] Request: POST BASE_URL=https://reqres.in/post
+2026-04-15 19:05:23 [ERROR] [request_handler.py:128] Request failed: No connection adapters were found for 'BASE_URL=https://reqres.in/post'
+Traceback (most recent call last):
+  File "C:\Users\11154\Desktop\api-auto-test-framework\core\request_handler.py", line 118, in request
+    response = self.session.request(method, full_url, **kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 697, in send
+    adapter = self.get_adapter(url=request.url)
+  File "D:\Lib\site-packages\requests\sessions.py", line 792, in get_adapter
+    raise InvalidSchema(f"No connection adapters were found for {url!r}")
+requests.exceptions.InvalidSchema: No connection adapters were found for 'BASE_URL=https://reqres.in/post'
+2026-04-15 19:05:23 [INFO] [request_handler.py:111] Request: POST BASE_URL=https://reqres.in/post
+2026-04-15 19:05:23 [ERROR] [request_handler.py:128] Request failed: No connection adapters were found for 'BASE_URL=https://reqres.in/post'
+Traceback (most recent call last):
+  File "C:\Users\11154\Desktop\api-auto-test-framework\core\request_handler.py", line 118, in request
+    response = self.session.request(method, full_url, **kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 697, in send
+    adapter = self.get_adapter(url=request.url)
+  File "D:\Lib\site-packages\requests\sessions.py", line 792, in get_adapter
+    raise InvalidSchema(f"No connection adapters were found for {url!r}")
+requests.exceptions.InvalidSchema: No connection adapters were found for 'BASE_URL=https://reqres.in/post'
+2026-04-15 19:05:23 [INFO] [request_handler.py:111] Request: POST BASE_URL=https://reqres.in/post
+2026-04-15 19:05:23 [ERROR] [request_handler.py:128] Request failed: No connection adapters were found for 'BASE_URL=https://reqres.in/post'
+Traceback (most recent call last):
+  File "C:\Users\11154\Desktop\api-auto-test-framework\core\request_handler.py", line 118, in request
+    response = self.session.request(method, full_url, **kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 697, in send
+    adapter = self.get_adapter(url=request.url)
+  File "D:\Lib\site-packages\requests\sessions.py", line 792, in get_adapter
+    raise InvalidSchema(f"No connection adapters were found for {url!r}")
+requests.exceptions.InvalidSchema: No connection adapters were found for 'BASE_URL=https://reqres.in/post'
+2026-04-15 19:05:23 [INFO] [request_handler.py:111] Request: POST BASE_URL=https://reqres.in/post
+2026-04-15 19:05:23 [ERROR] [request_handler.py:128] Request failed: No connection adapters were found for 'BASE_URL=https://reqres.in/post'
+Traceback (most recent call last):
+  File "C:\Users\11154\Desktop\api-auto-test-framework\core\request_handler.py", line 118, in request
+    response = self.session.request(method, full_url, **kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 697, in send
+    adapter = self.get_adapter(url=request.url)
+  File "D:\Lib\site-packages\requests\sessions.py", line 792, in get_adapter
+    raise InvalidSchema(f"No connection adapters were found for {url!r}")
+requests.exceptions.InvalidSchema: No connection adapters were found for 'BASE_URL=https://reqres.in/post'
+2026-04-15 19:05:23 [INFO] [request_handler.py:111] Request: POST BASE_URL=https://reqres.in/post
+2026-04-15 19:05:23 [ERROR] [request_handler.py:128] Request failed: No connection adapters were found for 'BASE_URL=https://reqres.in/post'
+Traceback (most recent call last):
+  File "C:\Users\11154\Desktop\api-auto-test-framework\core\request_handler.py", line 118, in request
+    response = self.session.request(method, full_url, **kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 697, in send
+    adapter = self.get_adapter(url=request.url)
+  File "D:\Lib\site-packages\requests\sessions.py", line 792, in get_adapter
+    raise InvalidSchema(f"No connection adapters were found for {url!r}")
+requests.exceptions.InvalidSchema: No connection adapters were found for 'BASE_URL=https://reqres.in/post'
+2026-04-15 19:05:23 [WARNING] [test_api_ddt.py:144] 解析请求体失败：Expecting property name enclosed in double quotes: line 1 column 2 (char 1)，原值：{invalid_json: missing_quotes}
+2026-04-15 19:05:23 [INFO] [request_handler.py:111] Request: POST BASE_URL=https://reqres.in/post
+2026-04-15 19:05:23 [ERROR] [request_handler.py:128] Request failed: No connection adapters were found for 'BASE_URL=https://reqres.in/post'
+Traceback (most recent call last):
+  File "C:\Users\11154\Desktop\api-auto-test-framework\core\request_handler.py", line 118, in request
+    response = self.session.request(method, full_url, **kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 697, in send
+    adapter = self.get_adapter(url=request.url)
+  File "D:\Lib\site-packages\requests\sessions.py", line 792, in get_adapter
+    raise InvalidSchema(f"No connection adapters were found for {url!r}")
+requests.exceptions.InvalidSchema: No connection adapters were found for 'BASE_URL=https://reqres.in/post'
+2026-04-15 19:05:23 [WARNING] [test_api_ddt.py:144] 解析请求体失败：Expecting value: line 1 column 1 (char 0)，原值：plain text instead of json
+2026-04-15 19:05:23 [INFO] [request_handler.py:111] Request: POST BASE_URL=https://reqres.in/post
+2026-04-15 19:05:23 [ERROR] [request_handler.py:128] Request failed: No connection adapters were found for 'BASE_URL=https://reqres.in/post'
+Traceback (most recent call last):
+  File "C:\Users\11154\Desktop\api-auto-test-framework\core\request_handler.py", line 118, in request
+    response = self.session.request(method, full_url, **kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 697, in send
+    adapter = self.get_adapter(url=request.url)
+  File "D:\Lib\site-packages\requests\sessions.py", line 792, in get_adapter
+    raise InvalidSchema(f"No connection adapters were found for {url!r}")
+requests.exceptions.InvalidSchema: No connection adapters were found for 'BASE_URL=https://reqres.in/post'
+2026-04-15 19:05:23 [INFO] [request_handler.py:111] Request: POST BASE_URL=https://reqres.in/post
+2026-04-15 19:05:23 [ERROR] [request_handler.py:128] Request failed: No connection adapters were found for 'BASE_URL=https://reqres.in/post'
+Traceback (most recent call last):
+  File "C:\Users\11154\Desktop\api-auto-test-framework\core\request_handler.py", line 118, in request
+    response = self.session.request(method, full_url, **kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 697, in send
+    adapter = self.get_adapter(url=request.url)
+  File "D:\Lib\site-packages\requests\sessions.py", line 792, in get_adapter
+    raise InvalidSchema(f"No connection adapters were found for {url!r}")
+requests.exceptions.InvalidSchema: No connection adapters were found for 'BASE_URL=https://reqres.in/post'
+2026-04-15 19:05:23 [INFO] [request_handler.py:111] Request: POST BASE_URL=https://reqres.in/post
+2026-04-15 19:05:23 [ERROR] [request_handler.py:128] Request failed: No connection adapters were found for 'BASE_URL=https://reqres.in/post'
+Traceback (most recent call last):
+  File "C:\Users\11154\Desktop\api-auto-test-framework\core\request_handler.py", line 118, in request
+    response = self.session.request(method, full_url, **kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 697, in send
+    adapter = self.get_adapter(url=request.url)
+  File "D:\Lib\site-packages\requests\sessions.py", line 792, in get_adapter
+    raise InvalidSchema(f"No connection adapters were found for {url!r}")
+requests.exceptions.InvalidSchema: No connection adapters were found for 'BASE_URL=https://reqres.in/post'
+2026-04-15 19:05:23 [INFO] [request_handler.py:111] Request: POST BASE_URL=https://reqres.in/post
+2026-04-15 19:05:23 [ERROR] [request_handler.py:128] Request failed: No connection adapters were found for 'BASE_URL=https://reqres.in/post'
+Traceback (most recent call last):
+  File "C:\Users\11154\Desktop\api-auto-test-framework\core\request_handler.py", line 118, in request
+    response = self.session.request(method, full_url, **kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 697, in send
+    adapter = self.get_adapter(url=request.url)
+  File "D:\Lib\site-packages\requests\sessions.py", line 792, in get_adapter
+    raise InvalidSchema(f"No connection adapters were found for {url!r}")
+requests.exceptions.InvalidSchema: No connection adapters were found for 'BASE_URL=https://reqres.in/post'
+2026-04-15 19:05:23 [INFO] [request_handler.py:111] Request: POST BASE_URL=https://reqres.in/post
+2026-04-15 19:05:23 [ERROR] [request_handler.py:128] Request failed: No connection adapters were found for 'BASE_URL=https://reqres.in/post'
+Traceback (most recent call last):
+  File "C:\Users\11154\Desktop\api-auto-test-framework\core\request_handler.py", line 118, in request
+    response = self.session.request(method, full_url, **kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 697, in send
+    adapter = self.get_adapter(url=request.url)
+  File "D:\Lib\site-packages\requests\sessions.py", line 792, in get_adapter
+    raise InvalidSchema(f"No connection adapters were found for {url!r}")
+requests.exceptions.InvalidSchema: No connection adapters were found for 'BASE_URL=https://reqres.in/post'
+2026-04-15 19:05:23 [INFO] [request_handler.py:111] Request: POST BASE_URL=https://reqres.in/post
+2026-04-15 19:05:23 [ERROR] [request_handler.py:128] Request failed: No connection adapters were found for 'BASE_URL=https://reqres.in/post'
+Traceback (most recent call last):
+  File "C:\Users\11154\Desktop\api-auto-test-framework\core\request_handler.py", line 118, in request
+    response = self.session.request(method, full_url, **kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 697, in send
+    adapter = self.get_adapter(url=request.url)
+  File "D:\Lib\site-packages\requests\sessions.py", line 792, in get_adapter
+    raise InvalidSchema(f"No connection adapters were found for {url!r}")
+requests.exceptions.InvalidSchema: No connection adapters were found for 'BASE_URL=https://reqres.in/post'
+2026-04-15 19:05:23 [INFO] [request_handler.py:111] Request: GET BASE_URL=https://reqres.in/api/users
+2026-04-15 19:05:23 [ERROR] [request_handler.py:128] Request failed: No connection adapters were found for 'BASE_URL=https://reqres.in/api/users'
+Traceback (most recent call last):
+  File "C:\Users\11154\Desktop\api-auto-test-framework\core\request_handler.py", line 118, in request
+    response = self.session.request(method, full_url, **kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 697, in send
+    adapter = self.get_adapter(url=request.url)
+  File "D:\Lib\site-packages\requests\sessions.py", line 792, in get_adapter
+    raise InvalidSchema(f"No connection adapters were found for {url!r}")
+requests.exceptions.InvalidSchema: No connection adapters were found for 'BASE_URL=https://reqres.in/api/users'
+2026-04-15 19:05:23 [INFO] [request_handler.py:111] Request: GET BASE_URL=https://reqres.in/api/users?page=2
+2026-04-15 19:05:23 [ERROR] [request_handler.py:128] Request failed: No connection adapters were found for 'BASE_URL=https://reqres.in/api/users?page=2'
+Traceback (most recent call last):
+  File "C:\Users\11154\Desktop\api-auto-test-framework\core\request_handler.py", line 118, in request
+    response = self.session.request(method, full_url, **kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 697, in send
+    adapter = self.get_adapter(url=request.url)
+  File "D:\Lib\site-packages\requests\sessions.py", line 792, in get_adapter
+    raise InvalidSchema(f"No connection adapters were found for {url!r}")
+requests.exceptions.InvalidSchema: No connection adapters were found for 'BASE_URL=https://reqres.in/api/users?page=2'
+2026-04-15 19:05:23 [INFO] [request_handler.py:111] Request: GET BASE_URL=https://reqres.in/api/users?page=0
+2026-04-15 19:05:23 [ERROR] [request_handler.py:128] Request failed: No connection adapters were found for 'BASE_URL=https://reqres.in/api/users?page=0'
+Traceback (most recent call last):
+  File "C:\Users\11154\Desktop\api-auto-test-framework\core\request_handler.py", line 118, in request
+    response = self.session.request(method, full_url, **kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 697, in send
+    adapter = self.get_adapter(url=request.url)
+  File "D:\Lib\site-packages\requests\sessions.py", line 792, in get_adapter
+    raise InvalidSchema(f"No connection adapters were found for {url!r}")
+requests.exceptions.InvalidSchema: No connection adapters were found for 'BASE_URL=https://reqres.in/api/users?page=0'
+2026-04-15 19:05:23 [INFO] [request_handler.py:111] Request: GET BASE_URL=https://reqres.in/api/users?page=999999
+2026-04-15 19:05:23 [ERROR] [request_handler.py:128] Request failed: No connection adapters were found for 'BASE_URL=https://reqres.in/api/users?page=999999'
+Traceback (most recent call last):
+  File "C:\Users\11154\Desktop\api-auto-test-framework\core\request_handler.py", line 118, in request
+    response = self.session.request(method, full_url, **kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 697, in send
+    adapter = self.get_adapter(url=request.url)
+  File "D:\Lib\site-packages\requests\sessions.py", line 792, in get_adapter
+    raise InvalidSchema(f"No connection adapters were found for {url!r}")
+requests.exceptions.InvalidSchema: No connection adapters were found for 'BASE_URL=https://reqres.in/api/users?page=999999'
+2026-04-15 19:05:23 [INFO] [request_handler.py:111] Request: GET BASE_URL=https://reqres.in/api/users?page=-1
+2026-04-15 19:05:23 [ERROR] [request_handler.py:128] Request failed: No connection adapters were found for 'BASE_URL=https://reqres.in/api/users?page=-1'
+Traceback (most recent call last):
+  File "C:\Users\11154\Desktop\api-auto-test-framework\core\request_handler.py", line 118, in request
+    response = self.session.request(method, full_url, **kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 697, in send
+    adapter = self.get_adapter(url=request.url)
+  File "D:\Lib\site-packages\requests\sessions.py", line 792, in get_adapter
+    raise InvalidSchema(f"No connection adapters were found for {url!r}")
+requests.exceptions.InvalidSchema: No connection adapters were found for 'BASE_URL=https://reqres.in/api/users?page=-1'
+2026-04-15 19:05:23 [INFO] [request_handler.py:111] Request: GET BASE_URL=https://reqres.in/api/users?page=abc
+2026-04-15 19:05:23 [ERROR] [request_handler.py:128] Request failed: No connection adapters were found for 'BASE_URL=https://reqres.in/api/users?page=abc'
+Traceback (most recent call last):
+  File "C:\Users\11154\Desktop\api-auto-test-framework\core\request_handler.py", line 118, in request
+    response = self.session.request(method, full_url, **kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 697, in send
+    adapter = self.get_adapter(url=request.url)
+  File "D:\Lib\site-packages\requests\sessions.py", line 792, in get_adapter
+    raise InvalidSchema(f"No connection adapters were found for {url!r}")
+requests.exceptions.InvalidSchema: No connection adapters were found for 'BASE_URL=https://reqres.in/api/users?page=abc'
+2026-04-15 19:05:23 [INFO] [request_handler.py:111] Request: GET BASE_URL=https://reqres.in/api/users?page=1.5
+2026-04-15 19:05:23 [ERROR] [request_handler.py:128] Request failed: No connection adapters were found for 'BASE_URL=https://reqres.in/api/users?page=1.5'
+Traceback (most recent call last):
+  File "C:\Users\11154\Desktop\api-auto-test-framework\core\request_handler.py", line 118, in request
+    response = self.session.request(method, full_url, **kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 697, in send
+    adapter = self.get_adapter(url=request.url)
+  File "D:\Lib\site-packages\requests\sessions.py", line 792, in get_adapter
+    raise InvalidSchema(f"No connection adapters were found for {url!r}")
+requests.exceptions.InvalidSchema: No connection adapters were found for 'BASE_URL=https://reqres.in/api/users?page=1.5'
+2026-04-15 19:05:23 [INFO] [request_handler.py:111] Request: GET BASE_URL=https://reqres.in/api/users?page=1' OR '1'='1
+2026-04-15 19:05:23 [ERROR] [request_handler.py:128] Request failed: No connection adapters were found for "BASE_URL=https://reqres.in/api/users?page=1' OR '1'='1"
+Traceback (most recent call last):
+  File "C:\Users\11154\Desktop\api-auto-test-framework\core\request_handler.py", line 118, in request
+    response = self.session.request(method, full_url, **kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 697, in send
+    adapter = self.get_adapter(url=request.url)
+  File "D:\Lib\site-packages\requests\sessions.py", line 792, in get_adapter
+    raise InvalidSchema(f"No connection adapters were found for {url!r}")
+requests.exceptions.InvalidSchema: No connection adapters were found for "BASE_URL=https://reqres.in/api/users?page=1' OR '1'='1"
+2026-04-15 19:05:23 [INFO] [request_handler.py:111] Request: GET BASE_URL=https://reqres.in/api/users?page=1 UNION SELECT username, password FROM users
+2026-04-15 19:05:23 [ERROR] [request_handler.py:128] Request failed: No connection adapters were found for 'BASE_URL=https://reqres.in/api/users?page=1 UNION SELECT username, password FROM users'
+Traceback (most recent call last):
+  File "C:\Users\11154\Desktop\api-auto-test-framework\core\request_handler.py", line 118, in request
+    response = self.session.request(method, full_url, **kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 697, in send
+    adapter = self.get_adapter(url=request.url)
+  File "D:\Lib\site-packages\requests\sessions.py", line 792, in get_adapter
+    raise InvalidSchema(f"No connection adapters were found for {url!r}")
+requests.exceptions.InvalidSchema: No connection adapters were found for 'BASE_URL=https://reqres.in/api/users?page=1 UNION SELECT username, password FROM users'
+2026-04-15 19:05:23 [INFO] [request_handler.py:111] Request: GET BASE_URL=https://reqres.in/api/users?page=<script>alert('xss')</script>
+2026-04-15 19:05:23 [ERROR] [request_handler.py:128] Request failed: No connection adapters were found for "BASE_URL=https://reqres.in/api/users?page=<script>alert('xss')</script>"
+Traceback (most recent call last):
+  File "C:\Users\11154\Desktop\api-auto-test-framework\core\request_handler.py", line 118, in request
+    response = self.session.request(method, full_url, **kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 697, in send
+    adapter = self.get_adapter(url=request.url)
+  File "D:\Lib\site-packages\requests\sessions.py", line 792, in get_adapter
+    raise InvalidSchema(f"No connection adapters were found for {url!r}")
+requests.exceptions.InvalidSchema: No connection adapters were found for "BASE_URL=https://reqres.in/api/users?page=<script>alert('xss')</script>"
+2026-04-15 19:05:23 [INFO] [request_handler.py:111] Request: GET BASE_URL=https://reqres.in/api/users?page=
+2026-04-15 19:05:23 [ERROR] [request_handler.py:128] Request failed: No connection adapters were found for 'BASE_URL=https://reqres.in/api/users?page='
+Traceback (most recent call last):
+  File "C:\Users\11154\Desktop\api-auto-test-framework\core\request_handler.py", line 118, in request
+    response = self.session.request(method, full_url, **kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 697, in send
+    adapter = self.get_adapter(url=request.url)
+  File "D:\Lib\site-packages\requests\sessions.py", line 792, in get_adapter
+    raise InvalidSchema(f"No connection adapters were found for {url!r}")
+requests.exceptions.InvalidSchema: No connection adapters were found for 'BASE_URL=https://reqres.in/api/users?page='
+2026-04-15 19:05:23 [INFO] [request_handler.py:111] Request: GET BASE_URL=https://reqres.in/api/users?page=1&page=2
+2026-04-15 19:05:23 [ERROR] [request_handler.py:128] Request failed: No connection adapters were found for 'BASE_URL=https://reqres.in/api/users?page=1&page=2'
+Traceback (most recent call last):
+  File "C:\Users\11154\Desktop\api-auto-test-framework\core\request_handler.py", line 118, in request
+    response = self.session.request(method, full_url, **kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 697, in send
+    adapter = self.get_adapter(url=request.url)
+  File "D:\Lib\site-packages\requests\sessions.py", line 792, in get_adapter
+    raise InvalidSchema(f"No connection adapters were found for {url!r}")
+requests.exceptions.InvalidSchema: No connection adapters were found for 'BASE_URL=https://reqres.in/api/users?page=1&page=2'
+2026-04-15 19:06:04 [INFO] [settings.py:140] 日志系统初始化完成，级别=INFO
+2026-04-15 19:06:04 [INFO] [ai_helper.py:210] 调用 DeepSeek 生成用例… temperature=0.3 strict=False
+2026-04-15 19:06:31 [INFO] [ai_helper.py:243] DeepSeek 生成用例 12 条
+2026-04-15 19:06:31 [INFO] [ai_to_excel.py:173] 已删除旧用例行：1（method=GET path=/api/users）
+2026-04-15 19:06:31 [INFO] [ai_to_excel.py:188] 已写入 12 条 AI 用例到 C:\Users\11154\Desktop\api-auto-test-framework\data\api_test_cases.xlsx sheet=api 起始行=23
+2026-04-15 19:06:31 [INFO] [settings.py:140] 日志系统初始化完成，级别=INFO
+2026-04-15 19:06:31 [INFO] [runtest.py:157] 目录结构检查完成
+2026-04-15 19:06:31 [INFO] [runtest.py:92] 执行命令：pytest testcases/test_api_ddt.py -v --tb=short -W ignore::DeprecationWarning --alluredir C:\Users\11154\Desktop\api-auto-test-framework\reports\allure_results
+2026-04-15 19:06:31 [INFO] [settings.py:140] 日志系统初始化完成，级别=INFO
+2026-04-15 19:06:32 [INFO] [excel_reader.py:31] 读取 Excel：C:\Users\11154\Desktop\api-auto-test-framework\data\api_test_cases.xlsx sheet=login
+2026-04-15 19:06:32 [ERROR] [excel_reader.py:51] 工作表不存在：login，可选：['http_methods', 'status_codes', 'headers', 'cookies', '字段说明', 'api']
+2026-04-15 19:06:32 [INFO] [test_api_ddt.py:54] api_test_cases.xlsx 未找到 login sheet，改用：C:\Users\11154\Desktop\api-auto-test-framework\data\login_data.xlsx
+2026-04-15 19:06:32 [INFO] [excel_reader.py:31] 读取 Excel：C:\Users\11154\Desktop\api-auto-test-framework\data\login_data.xlsx sheet=login
+2026-04-15 19:06:32 [INFO] [excel_reader.py:89] Excel 读取完成，共 3 条数据行
+2026-04-15 19:06:32 [INFO] [test_api_ddt.py:64] 加载测试用例：login，共 3 条（启用 3 条）
+2026-04-15 19:06:32 [INFO] [excel_reader.py:31] 读取 Excel：C:\Users\11154\Desktop\api-auto-test-framework\data\api_test_cases.xlsx sheet=api
+2026-04-15 19:06:32 [INFO] [excel_reader.py:89] Excel 读取完成，共 33 条数据行
+2026-04-15 19:06:32 [INFO] [test_api_ddt.py:64] 加载测试用例：api，共 33 条（启用 33 条）
+2026-04-15 19:06:32 [INFO] [request_handler.py:111] Request: POST BASE_URL=https://reqres.in/post
+2026-04-15 19:06:32 [ERROR] [request_handler.py:128] Request failed: No connection adapters were found for 'BASE_URL=https://reqres.in/post'
+Traceback (most recent call last):
+  File "C:\Users\11154\Desktop\api-auto-test-framework\core\request_handler.py", line 118, in request
+    response = self.session.request(method, full_url, **kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 697, in send
+    adapter = self.get_adapter(url=request.url)
+  File "D:\Lib\site-packages\requests\sessions.py", line 792, in get_adapter
+    raise InvalidSchema(f"No connection adapters were found for {url!r}")
+requests.exceptions.InvalidSchema: No connection adapters were found for 'BASE_URL=https://reqres.in/post'
+2026-04-15 19:06:32 [INFO] [request_handler.py:111] Request: POST BASE_URL=https://reqres.in/post
+2026-04-15 19:06:32 [ERROR] [request_handler.py:128] Request failed: No connection adapters were found for 'BASE_URL=https://reqres.in/post'
+Traceback (most recent call last):
+  File "C:\Users\11154\Desktop\api-auto-test-framework\core\request_handler.py", line 118, in request
+    response = self.session.request(method, full_url, **kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 697, in send
+    adapter = self.get_adapter(url=request.url)
+  File "D:\Lib\site-packages\requests\sessions.py", line 792, in get_adapter
+    raise InvalidSchema(f"No connection adapters were found for {url!r}")
+requests.exceptions.InvalidSchema: No connection adapters were found for 'BASE_URL=https://reqres.in/post'
+2026-04-15 19:06:32 [INFO] [request_handler.py:111] Request: POST BASE_URL=https://reqres.in/post
+2026-04-15 19:06:32 [ERROR] [request_handler.py:128] Request failed: No connection adapters were found for 'BASE_URL=https://reqres.in/post'
+Traceback (most recent call last):
+  File "C:\Users\11154\Desktop\api-auto-test-framework\core\request_handler.py", line 118, in request
+    response = self.session.request(method, full_url, **kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 697, in send
+    adapter = self.get_adapter(url=request.url)
+  File "D:\Lib\site-packages\requests\sessions.py", line 792, in get_adapter
+    raise InvalidSchema(f"No connection adapters were found for {url!r}")
+requests.exceptions.InvalidSchema: No connection adapters were found for 'BASE_URL=https://reqres.in/post'
+2026-04-15 19:06:32 [INFO] [request_handler.py:111] Request: POST BASE_URL=https://reqres.in/post
+2026-04-15 19:06:32 [ERROR] [request_handler.py:128] Request failed: No connection adapters were found for 'BASE_URL=https://reqres.in/post'
+Traceback (most recent call last):
+  File "C:\Users\11154\Desktop\api-auto-test-framework\core\request_handler.py", line 118, in request
+    response = self.session.request(method, full_url, **kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 697, in send
+    adapter = self.get_adapter(url=request.url)
+  File "D:\Lib\site-packages\requests\sessions.py", line 792, in get_adapter
+    raise InvalidSchema(f"No connection adapters were found for {url!r}")
+requests.exceptions.InvalidSchema: No connection adapters were found for 'BASE_URL=https://reqres.in/post'
+2026-04-15 19:06:32 [INFO] [request_handler.py:111] Request: POST BASE_URL=https://reqres.in/post
+2026-04-15 19:06:32 [ERROR] [request_handler.py:128] Request failed: No connection adapters were found for 'BASE_URL=https://reqres.in/post'
+Traceback (most recent call last):
+  File "C:\Users\11154\Desktop\api-auto-test-framework\core\request_handler.py", line 118, in request
+    response = self.session.request(method, full_url, **kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 697, in send
+    adapter = self.get_adapter(url=request.url)
+  File "D:\Lib\site-packages\requests\sessions.py", line 792, in get_adapter
+    raise InvalidSchema(f"No connection adapters were found for {url!r}")
+requests.exceptions.InvalidSchema: No connection adapters were found for 'BASE_URL=https://reqres.in/post'
+2026-04-15 19:06:32 [INFO] [request_handler.py:111] Request: POST BASE_URL=https://reqres.in/post
+2026-04-15 19:06:32 [ERROR] [request_handler.py:128] Request failed: No connection adapters were found for 'BASE_URL=https://reqres.in/post'
+Traceback (most recent call last):
+  File "C:\Users\11154\Desktop\api-auto-test-framework\core\request_handler.py", line 118, in request
+    response = self.session.request(method, full_url, **kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 697, in send
+    adapter = self.get_adapter(url=request.url)
+  File "D:\Lib\site-packages\requests\sessions.py", line 792, in get_adapter
+    raise InvalidSchema(f"No connection adapters were found for {url!r}")
+requests.exceptions.InvalidSchema: No connection adapters were found for 'BASE_URL=https://reqres.in/post'
+2026-04-15 19:06:32 [WARNING] [test_api_ddt.py:144] 解析请求体失败：Expecting property name enclosed in double quotes: line 1 column 2 (char 1)，原值：{invalid_json: missing_quotes}
+2026-04-15 19:06:32 [INFO] [request_handler.py:111] Request: POST BASE_URL=https://reqres.in/post
+2026-04-15 19:06:32 [ERROR] [request_handler.py:128] Request failed: No connection adapters were found for 'BASE_URL=https://reqres.in/post'
+Traceback (most recent call last):
+  File "C:\Users\11154\Desktop\api-auto-test-framework\core\request_handler.py", line 118, in request
+    response = self.session.request(method, full_url, **kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 697, in send
+    adapter = self.get_adapter(url=request.url)
+  File "D:\Lib\site-packages\requests\sessions.py", line 792, in get_adapter
+    raise InvalidSchema(f"No connection adapters were found for {url!r}")
+requests.exceptions.InvalidSchema: No connection adapters were found for 'BASE_URL=https://reqres.in/post'
+2026-04-15 19:06:32 [WARNING] [test_api_ddt.py:144] 解析请求体失败：Expecting value: line 1 column 1 (char 0)，原值：plain text instead of json
+2026-04-15 19:06:32 [INFO] [request_handler.py:111] Request: POST BASE_URL=https://reqres.in/post
+2026-04-15 19:06:32 [ERROR] [request_handler.py:128] Request failed: No connection adapters were found for 'BASE_URL=https://reqres.in/post'
+Traceback (most recent call last):
+  File "C:\Users\11154\Desktop\api-auto-test-framework\core\request_handler.py", line 118, in request
+    response = self.session.request(method, full_url, **kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 697, in send
+    adapter = self.get_adapter(url=request.url)
+  File "D:\Lib\site-packages\requests\sessions.py", line 792, in get_adapter
+    raise InvalidSchema(f"No connection adapters were found for {url!r}")
+requests.exceptions.InvalidSchema: No connection adapters were found for 'BASE_URL=https://reqres.in/post'
+2026-04-15 19:06:32 [INFO] [request_handler.py:111] Request: POST BASE_URL=https://reqres.in/post
+2026-04-15 19:06:32 [ERROR] [request_handler.py:128] Request failed: No connection adapters were found for 'BASE_URL=https://reqres.in/post'
+Traceback (most recent call last):
+  File "C:\Users\11154\Desktop\api-auto-test-framework\core\request_handler.py", line 118, in request
+    response = self.session.request(method, full_url, **kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 697, in send
+    adapter = self.get_adapter(url=request.url)
+  File "D:\Lib\site-packages\requests\sessions.py", line 792, in get_adapter
+    raise InvalidSchema(f"No connection adapters were found for {url!r}")
+requests.exceptions.InvalidSchema: No connection adapters were found for 'BASE_URL=https://reqres.in/post'
+2026-04-15 19:06:32 [INFO] [request_handler.py:111] Request: POST BASE_URL=https://reqres.in/post
+2026-04-15 19:06:32 [ERROR] [request_handler.py:128] Request failed: No connection adapters were found for 'BASE_URL=https://reqres.in/post'
+Traceback (most recent call last):
+  File "C:\Users\11154\Desktop\api-auto-test-framework\core\request_handler.py", line 118, in request
+    response = self.session.request(method, full_url, **kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 697, in send
+    adapter = self.get_adapter(url=request.url)
+  File "D:\Lib\site-packages\requests\sessions.py", line 792, in get_adapter
+    raise InvalidSchema(f"No connection adapters were found for {url!r}")
+requests.exceptions.InvalidSchema: No connection adapters were found for 'BASE_URL=https://reqres.in/post'
+2026-04-15 19:06:32 [INFO] [request_handler.py:111] Request: POST BASE_URL=https://reqres.in/post
+2026-04-15 19:06:32 [ERROR] [request_handler.py:128] Request failed: No connection adapters were found for 'BASE_URL=https://reqres.in/post'
+Traceback (most recent call last):
+  File "C:\Users\11154\Desktop\api-auto-test-framework\core\request_handler.py", line 118, in request
+    response = self.session.request(method, full_url, **kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 697, in send
+    adapter = self.get_adapter(url=request.url)
+  File "D:\Lib\site-packages\requests\sessions.py", line 792, in get_adapter
+    raise InvalidSchema(f"No connection adapters were found for {url!r}")
+requests.exceptions.InvalidSchema: No connection adapters were found for 'BASE_URL=https://reqres.in/post'
+2026-04-15 19:06:32 [INFO] [request_handler.py:111] Request: POST BASE_URL=https://reqres.in/post
+2026-04-15 19:06:32 [ERROR] [request_handler.py:128] Request failed: No connection adapters were found for 'BASE_URL=https://reqres.in/post'
+Traceback (most recent call last):
+  File "C:\Users\11154\Desktop\api-auto-test-framework\core\request_handler.py", line 118, in request
+    response = self.session.request(method, full_url, **kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 697, in send
+    adapter = self.get_adapter(url=request.url)
+  File "D:\Lib\site-packages\requests\sessions.py", line 792, in get_adapter
+    raise InvalidSchema(f"No connection adapters were found for {url!r}")
+requests.exceptions.InvalidSchema: No connection adapters were found for 'BASE_URL=https://reqres.in/post'
+2026-04-15 19:06:32 [INFO] [request_handler.py:111] Request: POST BASE_URL=https://reqres.in/post
+2026-04-15 19:06:32 [ERROR] [request_handler.py:128] Request failed: No connection adapters were found for 'BASE_URL=https://reqres.in/post'
+Traceback (most recent call last):
+  File "C:\Users\11154\Desktop\api-auto-test-framework\core\request_handler.py", line 118, in request
+    response = self.session.request(method, full_url, **kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 697, in send
+    adapter = self.get_adapter(url=request.url)
+  File "D:\Lib\site-packages\requests\sessions.py", line 792, in get_adapter
+    raise InvalidSchema(f"No connection adapters were found for {url!r}")
+requests.exceptions.InvalidSchema: No connection adapters were found for 'BASE_URL=https://reqres.in/post'
+2026-04-15 19:06:32 [INFO] [request_handler.py:111] Request: GET BASE_URL=https://reqres.in/api/users?page=2
+2026-04-15 19:06:32 [ERROR] [request_handler.py:128] Request failed: No connection adapters were found for 'BASE_URL=https://reqres.in/api/users?page=2'
+Traceback (most recent call last):
+  File "C:\Users\11154\Desktop\api-auto-test-framework\core\request_handler.py", line 118, in request
+    response = self.session.request(method, full_url, **kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 697, in send
+    adapter = self.get_adapter(url=request.url)
+  File "D:\Lib\site-packages\requests\sessions.py", line 792, in get_adapter
+    raise InvalidSchema(f"No connection adapters were found for {url!r}")
+requests.exceptions.InvalidSchema: No connection adapters were found for 'BASE_URL=https://reqres.in/api/users?page=2'
+2026-04-15 19:06:32 [INFO] [request_handler.py:111] Request: GET BASE_URL=https://reqres.in/api/users?page=0
+2026-04-15 19:06:32 [ERROR] [request_handler.py:128] Request failed: No connection adapters were found for 'BASE_URL=https://reqres.in/api/users?page=0'
+Traceback (most recent call last):
+  File "C:\Users\11154\Desktop\api-auto-test-framework\core\request_handler.py", line 118, in request
+    response = self.session.request(method, full_url, **kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 697, in send
+    adapter = self.get_adapter(url=request.url)
+  File "D:\Lib\site-packages\requests\sessions.py", line 792, in get_adapter
+    raise InvalidSchema(f"No connection adapters were found for {url!r}")
+requests.exceptions.InvalidSchema: No connection adapters were found for 'BASE_URL=https://reqres.in/api/users?page=0'
+2026-04-15 19:06:32 [INFO] [request_handler.py:111] Request: GET BASE_URL=https://reqres.in/api/users?page=999999
+2026-04-15 19:06:32 [ERROR] [request_handler.py:128] Request failed: No connection adapters were found for 'BASE_URL=https://reqres.in/api/users?page=999999'
+Traceback (most recent call last):
+  File "C:\Users\11154\Desktop\api-auto-test-framework\core\request_handler.py", line 118, in request
+    response = self.session.request(method, full_url, **kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 697, in send
+    adapter = self.get_adapter(url=request.url)
+  File "D:\Lib\site-packages\requests\sessions.py", line 792, in get_adapter
+    raise InvalidSchema(f"No connection adapters were found for {url!r}")
+requests.exceptions.InvalidSchema: No connection adapters were found for 'BASE_URL=https://reqres.in/api/users?page=999999'
+2026-04-15 19:06:32 [INFO] [request_handler.py:111] Request: GET BASE_URL=https://reqres.in/api/users?page=-1
+2026-04-15 19:06:32 [ERROR] [request_handler.py:128] Request failed: No connection adapters were found for 'BASE_URL=https://reqres.in/api/users?page=-1'
+Traceback (most recent call last):
+  File "C:\Users\11154\Desktop\api-auto-test-framework\core\request_handler.py", line 118, in request
+    response = self.session.request(method, full_url, **kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 697, in send
+    adapter = self.get_adapter(url=request.url)
+  File "D:\Lib\site-packages\requests\sessions.py", line 792, in get_adapter
+    raise InvalidSchema(f"No connection adapters were found for {url!r}")
+requests.exceptions.InvalidSchema: No connection adapters were found for 'BASE_URL=https://reqres.in/api/users?page=-1'
+2026-04-15 19:06:32 [INFO] [request_handler.py:111] Request: GET BASE_URL=https://reqres.in/api/users?page=abc
+2026-04-15 19:06:32 [ERROR] [request_handler.py:128] Request failed: No connection adapters were found for 'BASE_URL=https://reqres.in/api/users?page=abc'
+Traceback (most recent call last):
+  File "C:\Users\11154\Desktop\api-auto-test-framework\core\request_handler.py", line 118, in request
+    response = self.session.request(method, full_url, **kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 697, in send
+    adapter = self.get_adapter(url=request.url)
+  File "D:\Lib\site-packages\requests\sessions.py", line 792, in get_adapter
+    raise InvalidSchema(f"No connection adapters were found for {url!r}")
+requests.exceptions.InvalidSchema: No connection adapters were found for 'BASE_URL=https://reqres.in/api/users?page=abc'
+2026-04-15 19:06:32 [INFO] [request_handler.py:111] Request: GET BASE_URL=https://reqres.in/api/users?page=1.5
+2026-04-15 19:06:32 [ERROR] [request_handler.py:128] Request failed: No connection adapters were found for 'BASE_URL=https://reqres.in/api/users?page=1.5'
+Traceback (most recent call last):
+  File "C:\Users\11154\Desktop\api-auto-test-framework\core\request_handler.py", line 118, in request
+    response = self.session.request(method, full_url, **kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 697, in send
+    adapter = self.get_adapter(url=request.url)
+  File "D:\Lib\site-packages\requests\sessions.py", line 792, in get_adapter
+    raise InvalidSchema(f"No connection adapters were found for {url!r}")
+requests.exceptions.InvalidSchema: No connection adapters were found for 'BASE_URL=https://reqres.in/api/users?page=1.5'
+2026-04-15 19:06:32 [INFO] [request_handler.py:111] Request: GET BASE_URL=https://reqres.in/api/users?page=1' OR '1'='1
+2026-04-15 19:06:32 [ERROR] [request_handler.py:128] Request failed: No connection adapters were found for "BASE_URL=https://reqres.in/api/users?page=1' OR '1'='1"
+Traceback (most recent call last):
+  File "C:\Users\11154\Desktop\api-auto-test-framework\core\request_handler.py", line 118, in request
+    response = self.session.request(method, full_url, **kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 697, in send
+    adapter = self.get_adapter(url=request.url)
+  File "D:\Lib\site-packages\requests\sessions.py", line 792, in get_adapter
+    raise InvalidSchema(f"No connection adapters were found for {url!r}")
+requests.exceptions.InvalidSchema: No connection adapters were found for "BASE_URL=https://reqres.in/api/users?page=1' OR '1'='1"
+2026-04-15 19:06:32 [INFO] [request_handler.py:111] Request: GET BASE_URL=https://reqres.in/api/users?page=1 UNION SELECT username, password FROM users
+2026-04-15 19:06:32 [ERROR] [request_handler.py:128] Request failed: No connection adapters were found for 'BASE_URL=https://reqres.in/api/users?page=1 UNION SELECT username, password FROM users'
+Traceback (most recent call last):
+  File "C:\Users\11154\Desktop\api-auto-test-framework\core\request_handler.py", line 118, in request
+    response = self.session.request(method, full_url, **kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 697, in send
+    adapter = self.get_adapter(url=request.url)
+  File "D:\Lib\site-packages\requests\sessions.py", line 792, in get_adapter
+    raise InvalidSchema(f"No connection adapters were found for {url!r}")
+requests.exceptions.InvalidSchema: No connection adapters were found for 'BASE_URL=https://reqres.in/api/users?page=1 UNION SELECT username, password FROM users'
+2026-04-15 19:06:32 [INFO] [request_handler.py:111] Request: GET BASE_URL=https://reqres.in/api/users?page=<script>alert('xss')</script>
+2026-04-15 19:06:32 [ERROR] [request_handler.py:128] Request failed: No connection adapters were found for "BASE_URL=https://reqres.in/api/users?page=<script>alert('xss')</script>"
+Traceback (most recent call last):
+  File "C:\Users\11154\Desktop\api-auto-test-framework\core\request_handler.py", line 118, in request
+    response = self.session.request(method, full_url, **kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 697, in send
+    adapter = self.get_adapter(url=request.url)
+  File "D:\Lib\site-packages\requests\sessions.py", line 792, in get_adapter
+    raise InvalidSchema(f"No connection adapters were found for {url!r}")
+requests.exceptions.InvalidSchema: No connection adapters were found for "BASE_URL=https://reqres.in/api/users?page=<script>alert('xss')</script>"
+2026-04-15 19:06:32 [INFO] [request_handler.py:111] Request: GET BASE_URL=https://reqres.in/api/users?page=
+2026-04-15 19:06:32 [ERROR] [request_handler.py:128] Request failed: No connection adapters were found for 'BASE_URL=https://reqres.in/api/users?page='
+Traceback (most recent call last):
+  File "C:\Users\11154\Desktop\api-auto-test-framework\core\request_handler.py", line 118, in request
+    response = self.session.request(method, full_url, **kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 697, in send
+    adapter = self.get_adapter(url=request.url)
+  File "D:\Lib\site-packages\requests\sessions.py", line 792, in get_adapter
+    raise InvalidSchema(f"No connection adapters were found for {url!r}")
+requests.exceptions.InvalidSchema: No connection adapters were found for 'BASE_URL=https://reqres.in/api/users?page='
+2026-04-15 19:06:32 [INFO] [request_handler.py:111] Request: GET BASE_URL=https://reqres.in/api/users?page=1&page=2
+2026-04-15 19:06:32 [ERROR] [request_handler.py:128] Request failed: No connection adapters were found for 'BASE_URL=https://reqres.in/api/users?page=1&page=2'
+Traceback (most recent call last):
+  File "C:\Users\11154\Desktop\api-auto-test-framework\core\request_handler.py", line 118, in request
+    response = self.session.request(method, full_url, **kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 697, in send
+    adapter = self.get_adapter(url=request.url)
+  File "D:\Lib\site-packages\requests\sessions.py", line 792, in get_adapter
+    raise InvalidSchema(f"No connection adapters were found for {url!r}")
+requests.exceptions.InvalidSchema: No connection adapters were found for 'BASE_URL=https://reqres.in/api/users?page=1&page=2'
+2026-04-15 19:06:32 [INFO] [request_handler.py:111] Request: GET BASE_URL=https://reqres.in/api/users
+2026-04-15 19:06:32 [ERROR] [request_handler.py:128] Request failed: No connection adapters were found for 'BASE_URL=https://reqres.in/api/users'
+Traceback (most recent call last):
+  File "C:\Users\11154\Desktop\api-auto-test-framework\core\request_handler.py", line 118, in request
+    response = self.session.request(method, full_url, **kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 697, in send
+    adapter = self.get_adapter(url=request.url)
+  File "D:\Lib\site-packages\requests\sessions.py", line 792, in get_adapter
+    raise InvalidSchema(f"No connection adapters were found for {url!r}")
+requests.exceptions.InvalidSchema: No connection adapters were found for 'BASE_URL=https://reqres.in/api/users'
+2026-04-15 19:06:32 [INFO] [request_handler.py:111] Request: GET BASE_URL=https://reqres.in/api/users?page=2
+2026-04-15 19:06:32 [ERROR] [request_handler.py:128] Request failed: No connection adapters were found for 'BASE_URL=https://reqres.in/api/users?page=2'
+Traceback (most recent call last):
+  File "C:\Users\11154\Desktop\api-auto-test-framework\core\request_handler.py", line 118, in request
+    response = self.session.request(method, full_url, **kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 697, in send
+    adapter = self.get_adapter(url=request.url)
+  File "D:\Lib\site-packages\requests\sessions.py", line 792, in get_adapter
+    raise InvalidSchema(f"No connection adapters were found for {url!r}")
+requests.exceptions.InvalidSchema: No connection adapters were found for 'BASE_URL=https://reqres.in/api/users?page=2'
+2026-04-15 19:06:32 [INFO] [request_handler.py:111] Request: GET BASE_URL=https://reqres.in/api/users?page=1
+2026-04-15 19:06:32 [ERROR] [request_handler.py:128] Request failed: No connection adapters were found for 'BASE_URL=https://reqres.in/api/users?page=1'
+Traceback (most recent call last):
+  File "C:\Users\11154\Desktop\api-auto-test-framework\core\request_handler.py", line 118, in request
+    response = self.session.request(method, full_url, **kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 697, in send
+    adapter = self.get_adapter(url=request.url)
+  File "D:\Lib\site-packages\requests\sessions.py", line 792, in get_adapter
+    raise InvalidSchema(f"No connection adapters were found for {url!r}")
+requests.exceptions.InvalidSchema: No connection adapters were found for 'BASE_URL=https://reqres.in/api/users?page=1'
+2026-04-15 19:06:32 [INFO] [request_handler.py:111] Request: GET BASE_URL=https://reqres.in/api/users?page=999999
+2026-04-15 19:06:32 [ERROR] [request_handler.py:128] Request failed: No connection adapters were found for 'BASE_URL=https://reqres.in/api/users?page=999999'
+Traceback (most recent call last):
+  File "C:\Users\11154\Desktop\api-auto-test-framework\core\request_handler.py", line 118, in request
+    response = self.session.request(method, full_url, **kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 697, in send
+    adapter = self.get_adapter(url=request.url)
+  File "D:\Lib\site-packages\requests\sessions.py", line 792, in get_adapter
+    raise InvalidSchema(f"No connection adapters were found for {url!r}")
+requests.exceptions.InvalidSchema: No connection adapters were found for 'BASE_URL=https://reqres.in/api/users?page=999999'
+2026-04-15 19:06:32 [INFO] [request_handler.py:111] Request: GET BASE_URL=https://reqres.in/api/users?page=0
+2026-04-15 19:06:32 [ERROR] [request_handler.py:128] Request failed: No connection adapters were found for 'BASE_URL=https://reqres.in/api/users?page=0'
+Traceback (most recent call last):
+  File "C:\Users\11154\Desktop\api-auto-test-framework\core\request_handler.py", line 118, in request
+    response = self.session.request(method, full_url, **kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 697, in send
+    adapter = self.get_adapter(url=request.url)
+  File "D:\Lib\site-packages\requests\sessions.py", line 792, in get_adapter
+    raise InvalidSchema(f"No connection adapters were found for {url!r}")
+requests.exceptions.InvalidSchema: No connection adapters were found for 'BASE_URL=https://reqres.in/api/users?page=0'
+2026-04-15 19:06:32 [INFO] [request_handler.py:111] Request: GET BASE_URL=https://reqres.in/api/users?page=-1
+2026-04-15 19:06:32 [ERROR] [request_handler.py:128] Request failed: No connection adapters were found for 'BASE_URL=https://reqres.in/api/users?page=-1'
+Traceback (most recent call last):
+  File "C:\Users\11154\Desktop\api-auto-test-framework\core\request_handler.py", line 118, in request
+    response = self.session.request(method, full_url, **kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 697, in send
+    adapter = self.get_adapter(url=request.url)
+  File "D:\Lib\site-packages\requests\sessions.py", line 792, in get_adapter
+    raise InvalidSchema(f"No connection adapters were found for {url!r}")
+requests.exceptions.InvalidSchema: No connection adapters were found for 'BASE_URL=https://reqres.in/api/users?page=-1'
+2026-04-15 19:06:32 [INFO] [request_handler.py:111] Request: GET BASE_URL=https://reqres.in/api/users?page=abc
+2026-04-15 19:06:32 [ERROR] [request_handler.py:128] Request failed: No connection adapters were found for 'BASE_URL=https://reqres.in/api/users?page=abc'
+Traceback (most recent call last):
+  File "C:\Users\11154\Desktop\api-auto-test-framework\core\request_handler.py", line 118, in request
+    response = self.session.request(method, full_url, **kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 697, in send
+    adapter = self.get_adapter(url=request.url)
+  File "D:\Lib\site-packages\requests\sessions.py", line 792, in get_adapter
+    raise InvalidSchema(f"No connection adapters were found for {url!r}")
+requests.exceptions.InvalidSchema: No connection adapters were found for 'BASE_URL=https://reqres.in/api/users?page=abc'
+2026-04-15 19:06:32 [INFO] [request_handler.py:111] Request: GET BASE_URL=https://reqres.in/api/users?page=1' OR '1'='1
+2026-04-15 19:06:32 [ERROR] [request_handler.py:128] Request failed: No connection adapters were found for "BASE_URL=https://reqres.in/api/users?page=1' OR '1'='1"
+Traceback (most recent call last):
+  File "C:\Users\11154\Desktop\api-auto-test-framework\core\request_handler.py", line 118, in request
+    response = self.session.request(method, full_url, **kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 697, in send
+    adapter = self.get_adapter(url=request.url)
+  File "D:\Lib\site-packages\requests\sessions.py", line 792, in get_adapter
+    raise InvalidSchema(f"No connection adapters were found for {url!r}")
+requests.exceptions.InvalidSchema: No connection adapters were found for "BASE_URL=https://reqres.in/api/users?page=1' OR '1'='1"
+2026-04-15 19:06:32 [INFO] [request_handler.py:111] Request: GET BASE_URL=https://reqres.in/api/users?page=<script>alert('xss')</script>
+2026-04-15 19:06:32 [ERROR] [request_handler.py:128] Request failed: No connection adapters were found for "BASE_URL=https://reqres.in/api/users?page=<script>alert('xss')</script>"
+Traceback (most recent call last):
+  File "C:\Users\11154\Desktop\api-auto-test-framework\core\request_handler.py", line 118, in request
+    response = self.session.request(method, full_url, **kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 697, in send
+    adapter = self.get_adapter(url=request.url)
+  File "D:\Lib\site-packages\requests\sessions.py", line 792, in get_adapter
+    raise InvalidSchema(f"No connection adapters were found for {url!r}")
+requests.exceptions.InvalidSchema: No connection adapters were found for "BASE_URL=https://reqres.in/api/users?page=<script>alert('xss')</script>"
+2026-04-15 19:06:32 [INFO] [request_handler.py:111] Request: GET BASE_URL=https://reqres.in/api/users?page=2.5
+2026-04-15 19:06:32 [ERROR] [request_handler.py:128] Request failed: No connection adapters were found for 'BASE_URL=https://reqres.in/api/users?page=2.5'
+Traceback (most recent call last):
+  File "C:\Users\11154\Desktop\api-auto-test-framework\core\request_handler.py", line 118, in request
+    response = self.session.request(method, full_url, **kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 697, in send
+    adapter = self.get_adapter(url=request.url)
+  File "D:\Lib\site-packages\requests\sessions.py", line 792, in get_adapter
+    raise InvalidSchema(f"No connection adapters were found for {url!r}")
+requests.exceptions.InvalidSchema: No connection adapters were found for 'BASE_URL=https://reqres.in/api/users?page=2.5'
+2026-04-15 19:06:32 [INFO] [request_handler.py:111] Request: GET BASE_URL=https://reqres.in/api/users?page=1&other=value
+2026-04-15 19:06:32 [ERROR] [request_handler.py:128] Request failed: No connection adapters were found for 'BASE_URL=https://reqres.in/api/users?page=1&other=value'
+Traceback (most recent call last):
+  File "C:\Users\11154\Desktop\api-auto-test-framework\core\request_handler.py", line 118, in request
+    response = self.session.request(method, full_url, **kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 697, in send
+    adapter = self.get_adapter(url=request.url)
+  File "D:\Lib\site-packages\requests\sessions.py", line 792, in get_adapter
+    raise InvalidSchema(f"No connection adapters were found for {url!r}")
+requests.exceptions.InvalidSchema: No connection adapters were found for 'BASE_URL=https://reqres.in/api/users?page=1&other=value'
+2026-04-15 19:06:33 [INFO] [request_handler.py:111] Request: GET BASE_URL=https://reqres.in/api/users?page=1 UNION SELECT username, password FROM users
+2026-04-15 19:06:33 [ERROR] [request_handler.py:128] Request failed: No connection adapters were found for 'BASE_URL=https://reqres.in/api/users?page=1 UNION SELECT username, password FROM users'
+Traceback (most recent call last):
+  File "C:\Users\11154\Desktop\api-auto-test-framework\core\request_handler.py", line 118, in request
+    response = self.session.request(method, full_url, **kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Lib\site-packages\requests\sessions.py", line 697, in send
+    adapter = self.get_adapter(url=request.url)
+  File "D:\Lib\site-packages\requests\sessions.py", line 792, in get_adapter
+    raise InvalidSchema(f"No connection adapters were found for {url!r}")
+requests.exceptions.InvalidSchema: No connection adapters were found for 'BASE_URL=https://reqres.in/api/users?page=1 UNION SELECT username, password FROM users'
+2026-04-15 19:07:23 [INFO] [settings.py:140] 日志系统初始化完成，级别=INFO
+2026-04-15 19:07:24 [INFO] [ai_to_excel.py:173] 已删除旧用例行：10（method=POST path=/post）
+2026-04-15 19:07:24 [INFO] [ai_to_excel.py:186] 仅删除完成：C:\Users\11154\Desktop\api-auto-test-framework\data\api_test_cases.xlsx sheet=api deleted=10
+2026-04-15 19:07:24 [INFO] [settings.py:140] 日志系统初始化完成，级别=INFO
+2026-04-15 19:07:24 [INFO] [ai_helper.py:210] 调用 DeepSeek 生成用例… temperature=0.3 strict=False
+2026-04-15 19:07:52 [INFO] [ai_helper.py:243] DeepSeek 生成用例 12 条
+2026-04-15 19:07:52 [INFO] [ai_to_excel.py:173] 已删除旧用例行：1（method=GET path=/api/users）
+2026-04-15 19:07:52 [INFO] [ai_to_excel.py:188] 已写入 12 条 AI 用例到 C:\Users\11154\Desktop\api-auto-test-framework\data\api_test_cases.xlsx sheet=api 起始行=24
+2026-04-15 19:07:53 [INFO] [settings.py:140] 日志系统初始化完成，级别=INFO
+2026-04-15 19:07:53 [INFO] [runtest.py:157] 目录结构检查完成
+2026-04-15 19:07:53 [INFO] [runtest.py:92] 执行命令：pytest testcases/test_api_ddt.py -v --tb=short -W ignore::DeprecationWarning --alluredir C:\Users\11154\Desktop\api-auto-test-framework\reports\allure_results
+2026-04-15 19:07:53 [INFO] [settings.py:140] 日志系统初始化完成，级别=INFO
+2026-04-15 19:07:54 [INFO] [excel_reader.py:31] 读取 Excel：C:\Users\11154\Desktop\api-auto-test-framework\data\api_test_cases.xlsx sheet=login
+2026-04-15 19:07:54 [ERROR] [excel_reader.py:51] 工作表不存在：login，可选：['http_methods', 'status_codes', 'headers', 'cookies', '字段说明', 'api']
+2026-04-15 19:07:54 [INFO] [test_api_ddt.py:54] api_test_cases.xlsx 未找到 login sheet，改用：C:\Users\11154\Desktop\api-auto-test-framework\data\login_data.xlsx
+2026-04-15 19:07:54 [INFO] [excel_reader.py:31] 读取 Excel：C:\Users\11154\Desktop\api-auto-test-framework\data\login_data.xlsx sheet=login
+2026-04-15 19:07:54 [INFO] [excel_reader.py:89] Excel 读取完成，共 3 条数据行
+2026-04-15 19:07:54 [INFO] [test_api_ddt.py:64] 加载测试用例：login，共 3 条（启用 3 条）
+2026-04-15 19:07:54 [INFO] [excel_reader.py:31] 读取 Excel：C:\Users\11154\Desktop\api-auto-test-framework\data\api_test_cases.xlsx sheet=api
+2026-04-15 19:07:54 [INFO] [excel_reader.py:89] Excel 读取完成，共 34 条数据行
+2026-04-15 19:07:54 [INFO] [test_api_ddt.py:64] 加载测试用例：api，共 34 条（启用 34 条）
+2026-04-15 19:07:54 [INFO] [request_handler.py:111] Request: POST https://reqres.in/post
+2026-04-15 19:07:55 [INFO] [request_handler.py:120] Response status: 404 elapsed=1.435s
+2026-04-15 19:07:55 [INFO] [request_handler.py:111] Request: POST https://reqres.in/post
+2026-04-15 19:07:57 [INFO] [request_handler.py:120] Response status: 404 elapsed=1.114s
+2026-04-15 19:07:57 [INFO] [request_handler.py:111] Request: POST https://reqres.in/post
+2026-04-15 19:07:58 [INFO] [request_handler.py:120] Response status: 404 elapsed=1.126s
+2026-04-15 19:07:58 [INFO] [request_handler.py:111] Request: GET https://reqres.in/api/users?page=2
+2026-04-15 19:08:01 [INFO] [request_handler.py:120] Response status: 401 elapsed=2.979s
+2026-04-15 19:08:01 [INFO] [request_handler.py:111] Request: GET https://reqres.in/api/users?page=0
+2026-04-15 19:08:03 [INFO] [request_handler.py:120] Response status: 401 elapsed=1.794s
+2026-04-15 19:08:03 [INFO] [request_handler.py:111] Request: GET https://reqres.in/api/users?page=999999
+2026-04-15 19:08:06 [INFO] [request_handler.py:120] Response status: 401 elapsed=3.205s
+2026-04-15 19:08:06 [INFO] [request_handler.py:111] Request: GET https://reqres.in/api/users?page=-1
+2026-04-15 19:08:07 [INFO] [request_handler.py:120] Response status: 401 elapsed=0.905s
+2026-04-15 19:08:07 [INFO] [request_handler.py:111] Request: GET https://reqres.in/api/users?page=abc
+2026-04-15 19:08:08 [INFO] [request_handler.py:120] Response status: 401 elapsed=0.955s
+2026-04-15 19:08:08 [INFO] [request_handler.py:111] Request: GET https://reqres.in/api/users?page=1.5
+2026-04-15 19:08:10 [INFO] [request_handler.py:120] Response status: 401 elapsed=2.260s
+2026-04-15 19:08:10 [INFO] [request_handler.py:111] Request: GET https://reqres.in/api/users?page=1' OR '1'='1
+2026-04-15 19:08:14 [INFO] [request_handler.py:120] Response status: 401 elapsed=3.570s
+2026-04-15 19:08:14 [INFO] [request_handler.py:111] Request: GET https://reqres.in/api/users?page=1 UNION SELECT username, password FROM users
+2026-04-15 19:08:15 [INFO] [request_handler.py:120] Response status: 403 elapsed=1.620s
+2026-04-15 19:08:15 [INFO] [request_handler.py:111] Request: GET https://reqres.in/api/users?page=<script>alert('xss')</script>
+2026-04-15 19:08:16 [INFO] [request_handler.py:120] Response status: 403 elapsed=1.033s
+2026-04-15 19:08:16 [INFO] [request_handler.py:111] Request: GET https://reqres.in/api/users?page=
+2026-04-15 19:08:18 [INFO] [request_handler.py:120] Response status: 401 elapsed=1.657s
+2026-04-15 19:08:18 [INFO] [request_handler.py:111] Request: GET https://reqres.in/api/users?page=1&page=2
+2026-04-15 19:08:20 [INFO] [request_handler.py:120] Response status: 401 elapsed=1.652s
+2026-04-15 19:08:20 [INFO] [request_handler.py:111] Request: GET https://reqres.in/api/users?page=2
+2026-04-15 19:08:21 [INFO] [request_handler.py:120] Response status: 401 elapsed=1.461s
+2026-04-15 19:08:21 [INFO] [request_handler.py:111] Request: GET https://reqres.in/api/users?page=1
+2026-04-15 19:08:22 [INFO] [request_handler.py:120] Response status: 401 elapsed=1.245s
+2026-04-15 19:08:22 [INFO] [request_handler.py:111] Request: GET https://reqres.in/api/users?page=999999
+2026-04-15 19:08:26 [INFO] [request_handler.py:120] Response status: 401 elapsed=3.274s
+2026-04-15 19:08:26 [INFO] [request_handler.py:111] Request: GET https://reqres.in/api/users?page=0
+2026-04-15 19:08:28 [INFO] [request_handler.py:120] Response status: 401 elapsed=2.289s
+2026-04-15 19:08:28 [INFO] [request_handler.py:111] Request: GET https://reqres.in/api/users?page=-1
+2026-04-15 19:08:32 [INFO] [request_handler.py:120] Response status: 401 elapsed=4.523s
+2026-04-15 19:08:32 [INFO] [request_handler.py:111] Request: GET https://reqres.in/api/users?page=abc
+2026-04-15 19:08:35 [INFO] [request_handler.py:120] Response status: 401 elapsed=2.862s
+2026-04-15 19:08:35 [INFO] [request_handler.py:111] Request: GET https://reqres.in/api/users?page=1' OR '1'='1
+2026-04-15 19:08:36 [INFO] [request_handler.py:120] Response status: 401 elapsed=1.059s
+2026-04-15 19:08:36 [INFO] [request_handler.py:111] Request: GET https://reqres.in/api/users?page=<script>alert('xss')</script>
+2026-04-15 19:08:37 [INFO] [request_handler.py:120] Response status: 403 elapsed=0.992s
+2026-04-15 19:08:37 [INFO] [request_handler.py:111] Request: GET https://reqres.in/api/users?page=2.5
+2026-04-15 19:08:39 [INFO] [request_handler.py:120] Response status: 401 elapsed=1.441s
+2026-04-15 19:08:39 [INFO] [request_handler.py:111] Request: GET https://reqres.in/api/users?page=1&other=value
+2026-04-15 19:08:40 [INFO] [request_handler.py:120] Response status: 401 elapsed=1.421s
+2026-04-15 19:08:40 [INFO] [request_handler.py:111] Request: GET https://reqres.in/api/users?page=1 UNION SELECT username, password FROM users
+2026-04-15 19:08:42 [INFO] [request_handler.py:120] Response status: 403 elapsed=1.394s
+2026-04-15 19:08:42 [INFO] [request_handler.py:111] Request: GET https://reqres.in/api/users
+2026-04-15 19:08:44 [INFO] [request_handler.py:120] Response status: 401 elapsed=2.194s
+2026-04-15 19:08:44 [INFO] [request_handler.py:111] Request: GET https://reqres.in/api/users?page=2
+2026-04-15 19:08:45 [INFO] [request_handler.py:120] Response status: 401 elapsed=1.431s
+2026-04-15 19:08:45 [INFO] [request_handler.py:111] Request: GET https://reqres.in/api/users?page=0
+2026-04-15 19:08:48 [INFO] [request_handler.py:120] Response status: 401 elapsed=2.524s
+2026-04-15 19:08:48 [INFO] [request_handler.py:111] Request: GET https://reqres.in/api/users?page=999999
+2026-04-15 19:08:49 [INFO] [request_handler.py:120] Response status: 401 elapsed=1.121s
+2026-04-15 19:08:49 [INFO] [request_handler.py:111] Request: GET https://reqres.in/api/users?page=-1
+2026-04-15 19:08:51 [INFO] [request_handler.py:120] Response status: 401 elapsed=1.552s
+2026-04-15 19:08:51 [INFO] [request_handler.py:111] Request: GET https://reqres.in/api/users?page=abc
+2026-04-15 19:08:55 [INFO] [request_handler.py:120] Response status: 401 elapsed=4.900s
+2026-04-15 19:08:55 [INFO] [request_handler.py:111] Request: GET https://reqres.in/api/users?page=1.5
+2026-04-15 19:08:56 [INFO] [request_handler.py:120] Response status: 401 elapsed=0.903s
+2026-04-15 19:08:56 [INFO] [request_handler.py:111] Request: GET https://reqres.in/api/users?page=1 OR 1=1
+2026-04-15 19:08:58 [INFO] [request_handler.py:120] Response status: 403 elapsed=1.543s
+2026-04-15 19:08:58 [INFO] [request_handler.py:111] Request: GET https://reqres.in/api/users?page=<script>alert('xss')</script>
+2026-04-15 19:09:00 [INFO] [request_handler.py:120] Response status: 403 elapsed=1.653s
+2026-04-15 19:09:00 [INFO] [request_handler.py:111] Request: GET https://reqres.in/api/users?page=../../../etc/passwd
+2026-04-15 19:09:01 [INFO] [request_handler.py:120] Response status: 401 elapsed=0.962s
+2026-04-15 19:09:01 [INFO] [request_handler.py:111] Request: GET https://reqres.in/api/users?page=
+2026-04-15 19:09:02 [INFO] [request_handler.py:120] Response status: 401 elapsed=1.669s
+2026-04-15 19:09:02 [INFO] [request_handler.py:111] Request: GET https://reqres.in/api/users?page=1
+2026-04-15 19:09:06 [INFO] [request_handler.py:120] Response status: 401 elapsed=4.119s
+2026-04-15 21:27:53 [INFO] [settings.py:140] 日志系统初始化完成，级别=INFO
+2026-04-15 21:47:03 [INFO] [settings.py:140] 日志系统初始化完成，级别=INFO
+2026-04-15 21:47:03 [INFO] [runtest.py:157] 目录结构检查完成
+2026-04-15 21:47:03 [INFO] [runtest.py:92] 执行命令：pytest testcases/test_httpbin_real.py -v --tb=short -W ignore::DeprecationWarning
+2026-04-15 21:47:03 [INFO] [settings.py:140] 日志系统初始化完成，级别=INFO
+2026-04-15 21:47:03 [INFO] [request_handler.py:111] Request: GET https://httpbin.org/get
+2026-04-15 21:47:11 [INFO] [request_handler.py:120] Response status: 200 elapsed=7.331s
+2026-04-15 21:47:11 [INFO] [request_handler.py:111] Request: POST https://httpbin.org/post
+2026-04-15 21:47:14 [INFO] [request_handler.py:120] Response status: 200 elapsed=3.381s
+2026-04-15 21:47:14 [INFO] [request_handler.py:111] Request: PUT https://httpbin.org/put
+2026-04-15 21:47:16 [INFO] [request_handler.py:120] Response status: 200 elapsed=2.039s
+2026-04-15 21:47:16 [INFO] [request_handler.py:111] Request: DELETE https://httpbin.org/delete
+2026-04-15 21:47:19 [INFO] [request_handler.py:120] Response status: 200 elapsed=3.094s
+2026-04-15 21:47:19 [INFO] [request_handler.py:111] Request: GET https://httpbin.org/status/200
+2026-04-15 21:47:21 [INFO] [request_handler.py:120] Response status: 200 elapsed=1.444s
+2026-04-15 21:47:21 [INFO] [request_handler.py:111] Request: GET https://httpbin.org/status/301
+2026-04-15 21:47:22 [INFO] [request_handler.py:120] Response status: 301 elapsed=1.324s
+2026-04-15 21:47:22 [INFO] [request_handler.py:111] Request: GET https://httpbin.org/status/404
+2026-04-15 21:47:23 [INFO] [request_handler.py:120] Response status: 404 elapsed=1.335s
+2026-04-15 21:47:23 [INFO] [request_handler.py:111] Request: GET https://httpbin.org/status/500
+2026-04-15 21:47:27 [INFO] [request_handler.py:120] Response status: 500 elapsed=3.534s
+2026-04-15 21:47:27 [INFO] [request_handler.py:111] Request: GET https://httpbin.org/headers
+2026-04-15 21:47:30 [INFO] [request_handler.py:120] Response status: 200 elapsed=3.616s
+2026-04-15 21:47:30 [INFO] [request_handler.py:111] Request: GET https://httpbin.org/user-agent
+2026-04-15 21:47:32 [INFO] [request_handler.py:120] Response status: 200 elapsed=1.729s
+2026-04-15 21:47:32 [INFO] [request_handler.py:111] Request: GET https://httpbin.org/json
+2026-04-15 21:47:35 [INFO] [request_handler.py:120] Response status: 200 elapsed=2.746s
+2026-04-15 21:47:35 [INFO] [request_handler.py:111] Request: GET https://httpbin.org/xml
+2026-04-15 21:47:37 [INFO] [request_handler.py:120] Response status: 200 elapsed=1.850s
+2026-04-15 21:47:37 [INFO] [request_handler.py:111] Request: GET https://httpbin.org/cookies/set?session_id=abc123
+2026-04-15 21:47:42 [INFO] [request_handler.py:120] Response status: 200 elapsed=4.966s
+2026-04-15 21:47:42 [INFO] [request_handler.py:111] Request: GET https://httpbin.org/cookies/set?test_cookie=test_value
+2026-04-15 21:47:45 [INFO] [request_handler.py:120] Response status: 200 elapsed=2.817s
+2026-04-15 21:47:45 [INFO] [request_handler.py:111] Request: GET https://httpbin.org/cookies
+2026-04-15 21:47:45 [INFO] [request_handler.py:120] Response status: 200 elapsed=0.449s
+2026-04-15 21:47:45 [INFO] [request_handler.py:111] Request: GET https://httpbin.org/delay/1
+2026-04-15 21:47:48 [INFO] [request_handler.py:120] Response status: 200 elapsed=2.507s
+2026-04-15 21:47:48 [INFO] [request_handler.py:111] Request: GET https://httpbin.org/delay/2
+2026-04-15 21:47:53 [INFO] [request_handler.py:120] Response status: 200 elapsed=5.164s
+2026-04-15 21:47:53 [INFO] [request_handler.py:111] Request: POST https://httpbin.org/post
+2026-04-15 21:47:54 [INFO] [request_handler.py:120] Response status: 200 elapsed=1.330s
+2026-04-15 21:47:54 [INFO] [request_handler.py:111] Request: POST https://httpbin.org/post
+2026-04-15 21:47:57 [INFO] [request_handler.py:120] Response status: 200 elapsed=2.359s
+2026-04-15 21:47:57 [INFO] [request_handler.py:111] Request: GET https://httpbin.org/get
+2026-04-15 21:47:59 [INFO] [request_handler.py:120] Response status: 200 elapsed=2.269s
+2026-04-15 21:47:59 [INFO] [request_handler.py:111] Request: GET https://httpbin.org/get
+2026-04-15 21:48:08 [INFO] [request_handler.py:120] Response status: 200 elapsed=8.977s
+2026-04-15 21:48:08 [INFO] [request_handler.py:111] Request: GET https://httpbin.org/get
+2026-04-15 21:48:10 [INFO] [request_handler.py:120] Response status: 200 elapsed=2.360s
+2026-04-15 21:48:10 [INFO] [request_handler.py:111] Request: GET https://httpbin.org/get
+2026-04-15 21:48:13 [INFO] [request_handler.py:120] Response status: 200 elapsed=2.549s
+2026-04-15 21:50:31 [INFO] [settings.py:140] 日志系统初始化完成，级别=INFO
+2026-04-15 21:50:31 [INFO] [runtest.py:157] 目录结构检查完成
+2026-04-15 21:50:31 [INFO] [runtest.py:92] 执行命令：pytest testcases/test_httpbin_real.py -v --tb=short -W ignore::DeprecationWarning --alluredir C:\Users\11154\Desktop\api-auto-test-framework\reports\allure_results
+2026-04-15 21:50:32 [INFO] [settings.py:140] 日志系统初始化完成，级别=INFO
+2026-04-15 21:50:32 [INFO] [request_handler.py:111] Request: GET https://httpbin.org/get
+2026-04-15 21:50:34 [INFO] [request_handler.py:120] Response status: 200 elapsed=2.615s
+2026-04-15 21:50:34 [INFO] [request_handler.py:111] Request: POST https://httpbin.org/post
+2026-04-15 21:50:38 [INFO] [request_handler.py:120] Response status: 200 elapsed=3.748s
+2026-04-15 21:50:38 [INFO] [request_handler.py:111] Request: PUT https://httpbin.org/put
+2026-04-15 21:50:41 [INFO] [request_handler.py:120] Response status: 200 elapsed=2.288s
+2026-04-15 21:50:41 [INFO] [request_handler.py:111] Request: DELETE https://httpbin.org/delete
+2026-04-15 21:50:44 [INFO] [request_handler.py:120] Response status: 200 elapsed=3.021s
+2026-04-15 21:50:44 [INFO] [request_handler.py:111] Request: GET https://httpbin.org/status/200
+2026-04-15 21:50:46 [INFO] [request_handler.py:120] Response status: 200 elapsed=2.772s
+2026-04-15 21:50:46 [INFO] [request_handler.py:111] Request: GET https://httpbin.org/status/301
+2026-04-15 21:50:50 [INFO] [request_handler.py:120] Response status: 301 elapsed=3.314s
+2026-04-15 21:50:50 [INFO] [request_handler.py:111] Request: GET https://httpbin.org/status/404
+2026-04-15 21:50:52 [INFO] [request_handler.py:120] Response status: 404 elapsed=2.016s
+2026-04-15 21:50:52 [INFO] [request_handler.py:111] Request: GET https://httpbin.org/status/500
+2026-04-15 21:50:54 [INFO] [request_handler.py:120] Response status: 500 elapsed=2.004s
+2026-04-15 21:50:54 [INFO] [request_handler.py:111] Request: GET https://httpbin.org/headers
+2026-04-15 21:50:56 [INFO] [request_handler.py:120] Response status: 200 elapsed=2.047s
+2026-04-15 21:50:56 [INFO] [request_handler.py:111] Request: GET https://httpbin.org/user-agent
+2026-04-15 21:50:57 [INFO] [request_handler.py:120] Response status: 200 elapsed=1.463s
+2026-04-15 21:50:57 [INFO] [request_handler.py:111] Request: GET https://httpbin.org/json
+2026-04-15 21:50:58 [INFO] [request_handler.py:120] Response status: 200 elapsed=1.223s
+2026-04-15 21:50:58 [INFO] [request_handler.py:111] Request: GET https://httpbin.org/xml
+2026-04-15 21:51:00 [INFO] [request_handler.py:120] Response status: 200 elapsed=1.430s
+2026-04-15 21:51:00 [INFO] [request_handler.py:111] Request: GET https://httpbin.org/cookies/set?session_id=abc123
+2026-04-15 21:51:02 [INFO] [request_handler.py:120] Response status: 200 elapsed=1.872s
+2026-04-15 21:51:02 [INFO] [request_handler.py:111] Request: GET https://httpbin.org/cookies/set?test_cookie=test_value
+2026-04-15 21:51:04 [INFO] [request_handler.py:120] Response status: 200 elapsed=2.674s
+2026-04-15 21:51:04 [INFO] [request_handler.py:111] Request: GET https://httpbin.org/cookies
+2026-04-15 21:51:06 [INFO] [request_handler.py:120] Response status: 200 elapsed=1.420s
+2026-04-15 21:51:06 [INFO] [request_handler.py:111] Request: GET https://httpbin.org/delay/1
+2026-04-15 21:51:08 [INFO] [request_handler.py:120] Response status: 200 elapsed=2.564s
+2026-04-15 21:51:08 [INFO] [request_handler.py:111] Request: GET https://httpbin.org/delay/2
+2026-04-15 21:51:12 [INFO] [request_handler.py:120] Response status: 200 elapsed=3.838s
+2026-04-15 21:51:12 [INFO] [request_handler.py:111] Request: POST https://httpbin.org/post
+2026-04-15 21:51:15 [INFO] [request_handler.py:120] Response status: 200 elapsed=2.496s
+2026-04-15 21:51:15 [INFO] [request_handler.py:111] Request: POST https://httpbin.org/post
+2026-04-15 21:51:17 [INFO] [request_handler.py:120] Response status: 200 elapsed=2.060s
+2026-04-15 21:51:17 [INFO] [request_handler.py:111] Request: GET https://httpbin.org/get
+2026-04-15 21:51:19 [INFO] [request_handler.py:120] Response status: 200 elapsed=1.774s
+2026-04-15 21:51:19 [INFO] [request_handler.py:111] Request: GET https://httpbin.org/get
+2026-04-15 21:51:21 [INFO] [request_handler.py:120] Response status: 200 elapsed=2.765s
+2026-04-15 21:51:21 [INFO] [request_handler.py:111] Request: GET https://httpbin.org/get
+2026-04-15 21:51:23 [INFO] [request_handler.py:120] Response status: 200 elapsed=1.760s
+2026-04-15 21:51:23 [INFO] [request_handler.py:111] Request: GET https://httpbin.org/get
+2026-04-15 21:51:25 [INFO] [request_handler.py:120] Response status: 200 elapsed=1.616s
+2026-04-15 21:51:25 [INFO] [runtest.py:141] 启动 Allure 报告服务：allure serve C:\Users\11154\Desktop\api-auto-test-framework\reports\allure_results
+2026-04-15 21:52:28 [INFO] [settings.py:140] 日志系统初始化完成，级别=INFO
+2026-04-15 21:52:28 [INFO] [runtest.py:157] 目录结构检查完成
+2026-04-15 21:52:28 [INFO] [runtest.py:92] 执行命令：pytest testcases/test_httpbin_real.py -v --tb=short -W ignore::DeprecationWarning --alluredir C:\Users\11154\Desktop\api-auto-test-framework\reports\allure_results
+2026-04-15 21:52:29 [INFO] [settings.py:140] 日志系统初始化完成，级别=INFO
+2026-04-15 21:52:29 [INFO] [request_handler.py:111] Request: GET https://httpbin.org/get
+2026-04-15 21:52:30 [INFO] [request_handler.py:120] Response status: 200 elapsed=1.716s
+2026-04-15 21:52:30 [INFO] [request_handler.py:111] Request: POST https://httpbin.org/post
+2026-04-15 21:52:33 [INFO] [request_handler.py:120] Response status: 200 elapsed=2.665s
+2026-04-15 21:52:33 [INFO] [request_handler.py:111] Request: PUT https://httpbin.org/put
+2026-04-15 21:52:34 [INFO] [request_handler.py:120] Response status: 200 elapsed=1.447s
+2026-04-15 21:52:34 [INFO] [request_handler.py:111] Request: DELETE https://httpbin.org/delete
+2026-04-15 21:52:36 [INFO] [request_handler.py:120] Response status: 200 elapsed=1.819s
+2026-04-15 21:52:36 [INFO] [request_handler.py:111] Request: GET https://httpbin.org/status/200
+2026-04-15 21:52:38 [INFO] [request_handler.py:120] Response status: 200 elapsed=1.675s
+2026-04-15 21:52:38 [INFO] [request_handler.py:111] Request: GET https://httpbin.org/status/301
+2026-04-15 21:52:40 [INFO] [request_handler.py:120] Response status: 301 elapsed=2.545s
+2026-04-15 21:52:40 [INFO] [request_handler.py:111] Request: GET https://httpbin.org/status/404
+2026-04-15 21:52:42 [INFO] [request_handler.py:120] Response status: 404 elapsed=1.664s
+2026-04-15 21:52:42 [INFO] [request_handler.py:111] Request: GET https://httpbin.org/status/500
+2026-04-15 21:52:44 [INFO] [request_handler.py:120] Response status: 500 elapsed=2.349s
+2026-04-15 21:52:44 [INFO] [request_handler.py:111] Request: GET https://httpbin.org/headers
+2026-04-15 21:52:48 [INFO] [request_handler.py:120] Response status: 200 elapsed=3.906s
+2026-04-15 21:52:48 [INFO] [request_handler.py:111] Request: GET https://httpbin.org/user-agent
+2026-04-15 21:52:50 [INFO] [request_handler.py:120] Response status: 200 elapsed=2.059s
+2026-04-15 21:52:50 [INFO] [request_handler.py:111] Request: GET https://httpbin.org/json
+2026-04-15 21:52:54 [INFO] [request_handler.py:120] Response status: 200 elapsed=3.944s
+2026-04-15 21:52:54 [INFO] [request_handler.py:111] Request: GET https://httpbin.org/xml
+2026-04-15 21:52:57 [INFO] [request_handler.py:120] Response status: 200 elapsed=2.404s
+2026-04-15 21:52:57 [INFO] [request_handler.py:111] Request: GET https://httpbin.org/cookies/set?session_id=abc123
+2026-04-15 21:53:02 [INFO] [request_handler.py:120] Response status: 200 elapsed=4.853s
+2026-04-15 21:53:02 [INFO] [request_handler.py:111] Request: GET https://httpbin.org/cookies/set?test_cookie=test_value
+2026-04-15 21:53:04 [INFO] [request_handler.py:120] Response status: 200 elapsed=2.631s
+2026-04-15 21:53:04 [INFO] [request_handler.py:111] Request: GET https://httpbin.org/cookies
+2026-04-15 21:53:06 [INFO] [request_handler.py:120] Response status: 200 elapsed=1.244s
+2026-04-15 21:53:06 [INFO] [request_handler.py:111] Request: GET https://httpbin.org/delay/1
+2026-04-15 21:53:09 [INFO] [request_handler.py:120] Response status: 200 elapsed=3.310s
+2026-04-15 21:53:09 [INFO] [request_handler.py:111] Request: GET https://httpbin.org/delay/2
+2026-04-15 21:53:15 [INFO] [request_handler.py:120] Response status: 200 elapsed=5.880s
+2026-04-15 21:53:15 [INFO] [request_handler.py:111] Request: POST https://httpbin.org/post
+2026-04-15 21:53:17 [INFO] [request_handler.py:120] Response status: 200 elapsed=2.358s
+2026-04-15 21:53:17 [INFO] [request_handler.py:111] Request: POST https://httpbin.org/post
+2026-04-15 21:53:19 [INFO] [request_handler.py:120] Response status: 200 elapsed=1.630s
+2026-04-15 21:53:19 [INFO] [request_handler.py:111] Request: GET https://httpbin.org/get
+2026-04-15 21:53:24 [INFO] [request_handler.py:120] Response status: 200 elapsed=5.265s
+2026-04-15 21:53:24 [INFO] [request_handler.py:111] Request: GET https://httpbin.org/get
+2026-04-15 21:53:26 [INFO] [request_handler.py:120] Response status: 200 elapsed=1.758s
+2026-04-15 21:53:26 [INFO] [request_handler.py:111] Request: GET https://httpbin.org/get
+2026-04-15 21:53:28 [INFO] [request_handler.py:120] Response status: 200 elapsed=1.938s
+2026-04-15 21:53:28 [INFO] [request_handler.py:111] Request: GET https://httpbin.org/get
+2026-04-15 21:53:29 [INFO] [request_handler.py:120] Response status: 200 elapsed=1.554s
+2026-04-15 23:35:37 [INFO] [settings.py:140] 日志系统初始化完成，级别=INFO
+2026-04-15 23:35:37 [INFO] [runtest.py:157] 目录结构检查完成
+2026-04-15 23:35:37 [INFO] [runtest.py:92] 执行命令：pytest testcases/test_httpbin_real.py -v --tb=short -W ignore::DeprecationWarning
+2026-04-15 23:35:38 [INFO] [settings.py:140] 日志系统初始化完成，级别=INFO
+2026-04-15 23:35:38 [INFO] [request_handler.py:111] Request: GET https://httpbin.org/get
+2026-04-15 23:35:51 [INFO] [request_handler.py:120] Response status: 200 elapsed=12.627s
+2026-04-15 23:35:51 [INFO] [request_handler.py:111] Request: POST https://httpbin.org/post
+2026-04-15 23:35:53 [INFO] [request_handler.py:120] Response status: 200 elapsed=2.760s
+2026-04-15 23:35:53 [INFO] [request_handler.py:111] Request: PUT https://httpbin.org/put
+2026-04-15 23:35:55 [INFO] [request_handler.py:120] Response status: 200 elapsed=1.206s
+2026-04-15 23:35:55 [INFO] [request_handler.py:111] Request: DELETE https://httpbin.org/delete
+2026-04-15 23:36:02 [INFO] [request_handler.py:120] Response status: 200 elapsed=6.887s
+2026-04-15 23:36:02 [INFO] [request_handler.py:111] Request: GET https://httpbin.org/status/200
+2026-04-15 23:36:04 [INFO] [request_handler.py:120] Response status: 200 elapsed=2.889s
+2026-04-15 23:36:04 [INFO] [request_handler.py:111] Request: GET https://httpbin.org/status/301
+2026-04-15 23:36:06 [INFO] [request_handler.py:120] Response status: 301 elapsed=1.583s
+2026-04-15 23:36:06 [INFO] [request_handler.py:111] Request: GET https://httpbin.org/status/404
+2026-04-15 23:36:09 [INFO] [request_handler.py:120] Response status: 404 elapsed=3.318s
+2026-04-15 23:36:09 [INFO] [request_handler.py:111] Request: GET https://httpbin.org/status/500
+2026-04-15 23:36:11 [INFO] [request_handler.py:120] Response status: 500 elapsed=1.669s
+2026-04-15 23:36:11 [INFO] [request_handler.py:111] Request: GET https://httpbin.org/headers
+2026-04-15 23:36:13 [INFO] [request_handler.py:120] Response status: 200 elapsed=1.680s
+2026-04-15 23:36:13 [INFO] [request_handler.py:111] Request: GET https://httpbin.org/user-agent
+2026-04-15 23:36:15 [INFO] [request_handler.py:120] Response status: 200 elapsed=1.938s
+2026-04-15 23:36:15 [INFO] [request_handler.py:111] Request: GET https://httpbin.org/json
+2026-04-15 23:36:16 [INFO] [request_handler.py:120] Response status: 200 elapsed=1.781s
+2026-04-15 23:36:16 [INFO] [request_handler.py:111] Request: GET https://httpbin.org/xml
+2026-04-15 23:36:21 [INFO] [request_handler.py:120] Response status: 200 elapsed=4.075s
+2026-04-15 23:36:21 [INFO] [request_handler.py:111] Request: GET https://httpbin.org/cookies/set?session_id=abc123
+2026-04-15 23:36:25 [INFO] [request_handler.py:120] Response status: 200 elapsed=4.232s
+2026-04-15 23:36:25 [INFO] [request_handler.py:111] Request: GET https://httpbin.org/cookies/set?test_cookie=test_value
+2026-04-15 23:36:27 [INFO] [request_handler.py:120] Response status: 200 elapsed=2.241s
+2026-04-15 23:36:27 [INFO] [request_handler.py:111] Request: GET https://httpbin.org/cookies
+2026-04-15 23:36:27 [INFO] [request_handler.py:120] Response status: 200 elapsed=0.442s
+2026-04-15 23:36:27 [INFO] [request_handler.py:111] Request: GET https://httpbin.org/delay/1
+2026-04-15 23:36:31 [INFO] [request_handler.py:120] Response status: 200 elapsed=4.003s
+2026-04-15 23:36:31 [INFO] [request_handler.py:111] Request: GET https://httpbin.org/delay/2
+2026-04-15 23:36:35 [INFO] [request_handler.py:120] Response status: 200 elapsed=3.391s
+2026-04-15 23:36:35 [INFO] [request_handler.py:111] Request: POST https://httpbin.org/post
+2026-04-15 23:36:38 [INFO] [request_handler.py:120] Response status: 200 elapsed=2.716s
+2026-04-15 23:36:38 [INFO] [request_handler.py:111] Request: POST https://httpbin.org/post
+2026-04-15 23:36:40 [INFO] [request_handler.py:120] Response status: 200 elapsed=1.920s
+2026-04-15 23:36:40 [INFO] [request_handler.py:111] Request: GET https://httpbin.org/get
+2026-04-15 23:36:42 [INFO] [request_handler.py:120] Response status: 200 elapsed=2.911s
+2026-04-15 23:36:42 [INFO] [request_handler.py:111] Request: GET https://httpbin.org/get
+2026-04-15 23:36:47 [INFO] [request_handler.py:120] Response status: 200 elapsed=4.874s
+2026-04-15 23:36:47 [INFO] [request_handler.py:111] Request: GET https://httpbin.org/get
+2026-04-15 23:36:49 [INFO] [request_handler.py:120] Response status: 200 elapsed=1.914s
+2026-04-15 23:36:49 [INFO] [request_handler.py:111] Request: GET https://httpbin.org/get
+2026-04-15 23:36:53 [INFO] [request_handler.py:120] Response status: 200 elapsed=3.627s
+2026-04-15 23:38:48 [INFO] [settings.py:140] 日志系统初始化完成，级别=INFO
+2026-04-15 23:38:48 [INFO] [runtest.py:157] 目录结构检查完成
+2026-04-15 23:38:48 [INFO] [runtest.py:92] 执行命令：pytest testcases/test_httpbin_real.py -v --tb=short -W ignore::DeprecationWarning
+2026-04-15 23:38:48 [INFO] [settings.py:140] 日志系统初始化完成，级别=INFO
+2026-04-15 23:38:48 [INFO] [request_handler.py:111] Request: GET https://httpbin.org/get
+2026-04-15 23:38:58 [INFO] [request_handler.py:120] Response status: 200 elapsed=9.432s
+2026-04-15 23:38:58 [INFO] [request_handler.py:111] Request: POST https://httpbin.org/post
+2026-04-15 23:39:00 [INFO] [request_handler.py:120] Response status: 200 elapsed=2.338s
+2026-04-15 23:39:00 [INFO] [request_handler.py:111] Request: PUT https://httpbin.org/put
+2026-04-15 23:39:04 [INFO] [request_handler.py:120] Response status: 200 elapsed=3.883s
+2026-04-15 23:39:04 [INFO] [request_handler.py:111] Request: DELETE https://httpbin.org/delete
+2026-04-15 23:39:08 [INFO] [request_handler.py:120] Response status: 200 elapsed=3.569s
+2026-04-15 23:39:08 [INFO] [request_handler.py:111] Request: GET https://httpbin.org/status/200
+2026-04-15 23:39:11 [INFO] [request_handler.py:120] Response status: 200 elapsed=3.535s
+2026-04-15 23:39:11 [INFO] [request_handler.py:111] Request: GET https://httpbin.org/status/301
+2026-04-15 23:39:14 [INFO] [request_handler.py:120] Response status: 301 elapsed=2.357s
+2026-04-15 23:39:14 [INFO] [request_handler.py:111] Request: GET https://httpbin.org/status/404
+2026-04-15 23:39:18 [INFO] [request_handler.py:120] Response status: 404 elapsed=4.274s
+2026-04-15 23:39:18 [INFO] [request_handler.py:111] Request: GET https://httpbin.org/status/500
+2026-04-15 23:39:19 [INFO] [request_handler.py:120] Response status: 500 elapsed=1.486s
+2026-04-15 23:39:19 [INFO] [request_handler.py:111] Request: GET https://httpbin.org/headers
+2026-04-15 23:39:21 [INFO] [request_handler.py:120] Response status: 200 elapsed=1.727s
+2026-04-15 23:39:21 [INFO] [request_handler.py:111] Request: GET https://httpbin.org/user-agent
+2026-04-15 23:39:22 [INFO] [request_handler.py:120] Response status: 200 elapsed=1.375s
+2026-04-15 23:39:22 [INFO] [request_handler.py:111] Request: GET https://httpbin.org/json
+2026-04-15 23:39:25 [INFO] [request_handler.py:120] Response status: 200 elapsed=2.984s
+2026-04-15 23:39:25 [INFO] [request_handler.py:111] Request: GET https://httpbin.org/xml
+2026-04-15 23:39:29 [INFO] [request_handler.py:120] Response status: 200 elapsed=3.539s
+2026-04-15 23:39:29 [INFO] [request_handler.py:111] Request: GET https://httpbin.org/cookies/set?session_id=abc123
+2026-04-15 23:39:31 [INFO] [request_handler.py:120] Response status: 200 elapsed=1.725s
+2026-04-15 23:39:31 [INFO] [request_handler.py:111] Request: GET https://httpbin.org/cookies/set?test_cookie=test_value
+2026-04-15 23:39:34 [INFO] [request_handler.py:120] Response status: 200 elapsed=3.254s
+2026-04-15 23:39:34 [INFO] [request_handler.py:111] Request: GET https://httpbin.org/cookies
+2026-04-15 23:39:36 [INFO] [request_handler.py:120] Response status: 200 elapsed=2.263s
+2026-04-15 23:39:36 [INFO] [request_handler.py:111] Request: GET https://httpbin.org/delay/1
+2026-04-15 23:39:40 [INFO] [request_handler.py:120] Response status: 200 elapsed=3.977s
+2026-04-15 23:39:40 [INFO] [request_handler.py:111] Request: GET https://httpbin.org/delay/2
+2026-04-15 23:39:45 [INFO] [request_handler.py:120] Response status: 200 elapsed=4.887s
+2026-04-15 23:39:45 [INFO] [request_handler.py:111] Request: POST https://httpbin.org/post
+2026-04-15 23:39:48 [INFO] [request_handler.py:120] Response status: 200 elapsed=3.269s
+2026-04-15 23:39:48 [INFO] [request_handler.py:111] Request: POST https://httpbin.org/post
+2026-04-15 23:39:50 [INFO] [request_handler.py:120] Response status: 200 elapsed=1.491s
+2026-04-15 23:39:50 [INFO] [request_handler.py:111] Request: GET https://httpbin.org/get
+2026-04-15 23:39:52 [INFO] [request_handler.py:120] Response status: 200 elapsed=2.248s
+2026-04-15 23:39:52 [INFO] [request_handler.py:111] Request: GET https://httpbin.org/get
+2026-04-15 23:39:54 [INFO] [request_handler.py:120] Response status: 200 elapsed=1.708s
+2026-04-15 23:39:54 [INFO] [request_handler.py:111] Request: GET https://httpbin.org/get
+2026-04-15 23:39:57 [INFO] [request_handler.py:120] Response status: 200 elapsed=3.379s
+2026-04-15 23:39:57 [INFO] [request_handler.py:111] Request: GET https://httpbin.org/get
+2026-04-15 23:39:59 [INFO] [request_handler.py:120] Response status: 200 elapsed=1.741s

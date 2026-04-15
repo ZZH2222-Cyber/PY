@@ -100,8 +100,15 @@ def _parse_json_array_from_content(content: str) -> List[Dict[str, Any]]:
             candidate = m.group(0).strip()
             # 清理常见的末尾多余逗号：", }" / ", ]"
             candidate = re.sub(r",(\s*[\]}])", r"\1", candidate)
-            data = _try_load(candidate)
+            try:
+                data = _try_load(candidate)
+            except json.JSONDecodeError:
+                # 数组整体不合法时，降级为逐个对象提取
+                data = None
         else:
+            data = None
+
+        if data is None:
             # 最后兜底：逐个提取 JSON 对象并解析（容忍数组层面的格式问题/截断）
             objs: List[Dict[str, Any]] = []
             in_str = False
