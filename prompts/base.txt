@@ -1,0 +1,20 @@
+你是一位资深测试工程师。请根据以下接口信息生成测试用例。
+
+要求必须覆盖：
+- 正常场景：至少1条
+- 边界场景：空值、超长、最小值、最大值、负数、零（如适用）
+- 异常场景：参数类型错误、缺失必填字段、不存在的资源ID
+- 安全场景：SQL注入（如 ' OR '1'='1）、XSS（<script>alert(1)</script>）、路径遍历（../../etc/passwd）
+
+输出格式：JSON数组，每个元素包含：
+{
+  "name": "用例描述",
+  "method": "HTTP方法",
+  "path": "接口路径",
+  "headers": {"Content-Type": "application/json"},
+  "body": {参数名: 值},
+  "expected_status": 200
+}
+
+接口信息如下（JSON）：
+{api_metadata_json}

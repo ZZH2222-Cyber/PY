@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API自动化测试平台</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Microsoft YaHei', sans-serif;
+        }
+        .container {
+            margin-top: 30px;
+            max-width: 1200px;
+        }
+        .card {
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        .card-header {
+            background-color: #007bff;
+            color: white;
+            border-radius: 8px 8px 0 0;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .btn {
+            margin-right: 10px;
+            border-radius: 4px;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e9ecef;
+            border-radius: 5px;
+            border-left: 4px solid #007bff;
+        }
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+        .spinner {
+            border: 4px solid rgba(0, 123, 255, 0.3);
+            border-radius: 50%;
+            border-top: 4px solid #007bff;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 10px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .alert {
+            margin-top: 15px;
+        }
+        pre {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            background-color: #f8f9fa;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #dee2e6;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        .nav-tabs .nav-link {
+            border-radius: 8px 8px 0 0;
+            margin-right: 10px;
+        }
+        .nav-tabs .nav-link.active {
+            background-color: #007bff;
+            color: white;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center mb-4">API自动化测试平台</h1>
+        
+        <!-- 导航标签 -->
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="simple-tab" data-bs-toggle="tab" data-bs-target="#simple" type="button" role="tab" aria-controls="simple" aria-selected="true">简便测试</button>
+            </li>
+        </ul>
+        
+        <!-- 标签内容 -->
+        <div class="tab-content" id="myTabContent">
+
+            
+            <!-- 简便测试 -->
+            <div class="tab-pane fade show active" id="simple" role="tabpanel" aria-labelledby="simple-tab">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0">一键接口测试生成器</h5>
+                    </div>
+                    <div class="card-body">
+                        <form id="simpleForm">
+                            <div class="form-group">
+                                <label for="simpleApiUrl">接口地址</label>
+                                <input type="url" class="form-control" id="simpleApiUrl" placeholder="例如: https://api.example.com/v1/login">
+                            </div>
+                            <div class="form-group">
+                                <label for="simpleApiDocFile">API文档</label>
+                                <input type="file" class="form-control-file" id="simpleApiDocFile" accept=".json,.yaml,.yml,.txt">
+                                <small class="form-text text-muted">支持OpenAPI JSON/YAML、Postman Collection或纯文本格式</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="simpleApiDocText">或直接粘贴文档内容</label>
+                                <textarea class="form-control" id="simpleApiDocText" rows="10" placeholder="粘贴API文档内容..."></textarea>
+                            </div>
+                            <div class="loading" id="simpleLoading" style="display: none;">
+                                <div class="spinner"></div>
+                                <p>生成测试用例中...</p>
+                            </div>
+                            <div class="loading" id="testLoading" style="display: none;">
+                                <div class="spinner"></div>
+                                <p>测试接口中...</p>
+                            </div>
+                            <button type="button" class="btn btn-primary" onclick="generateSimpleTest()">开始生成</button>
+                            <button type="button" class="btn btn-secondary" onclick="clearSimpleForm()">清空</button>
+                        </form>
+                        <div class="result" id="simpleResult" style="display: none;">
+                            <h6>生成的测试用例</h6>
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>用例名称</th>
+                                        <th>请求方法</th>
+                                        <th>接口路径</th>
+                                        <th>预期状态码</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="testCasesTable"></tbody>
+                            </table>
+                            <div class="mt-3">
+                                <button type="button" class="btn btn-success" onclick="downloadSimpleExcel()">导出Excel</button>
+                                <button type="button" class="btn btn-info" onclick="runSimpleTest()">运行测试</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 错误提示模态框 -->
+    <div class="modal fade" id="errorModal" tabindex="-1" aria-labelledby="errorModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-danger text-white">
+                    <h5 class="modal-title" id="errorModalLabel">错误提示</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="errorMessage">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">关闭</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // 显示错误提示
+        function showError(message) {
+            document.getElementById('errorMessage').textContent = message;
+            const errorModal = new bootstrap.Modal(document.getElementById('errorModal'));
+            errorModal.show();
+        }
+        
+        // 清空测试表单
+        function clearTestForm() {
+            document.getElementById('endpoint').value = '';
+            document.getElementById('headers').value = '';
+            document.getElementById('body').value = '';
+            document.getElementById('testResult').style.display = 'none';
+        }
+        
+        // 清空AI表单
+        function clearAiForm() {
+            document.getElementById('apiDoc').value = '';
+            document.getElementById('aiResult').style.display = 'none';
+        }
+        
+        // 运行测试
+        function runTest() {
+            const baseUrl = document.getElementById('baseUrl').value;
+            const endpoint = document.getElementById('endpoint').value;
+            
+            if (!baseUrl || !endpoint) {
+                showError('请填写基础URL和接口路径');
+                return;
+            }
+            
+            const formData = {
+                baseUrl: baseUrl,
+                endpoint: endpoint,
+                method: document.getElementById('method').value,
+                headers: document.getElementById('headers').value,
+                body: document.getElementById('body').value
+            };
+            
+            // 显示加载状态
+            document.getElementById('testLoading').style.display = 'block';
+            
+            fetch('/api/test', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('testLoading').style.display = 'none';
+                if (data.status === 'success') {
+                    let resultHtml = JSON.stringify(data, null, 2);
+                    if (data.allure_report_url) {
+                        resultHtml += '\n\nAllure报告地址: <a href="' + data.allure_report_url + '" target="_blank">' + data.allure_report_url + '</a>';
+                    }
+                    document.getElementById('resultContent').innerHTML = resultHtml;
+                    document.getElementById('testResult').style.display = 'block';
+                } else {
+                    showError(data.message);
+                }
+            })
+            .catch(error => {
+                document.getElementById('testLoading').style.display = 'none';
+                showError('测试执行失败: ' + error.message);
+            });
+        }
+        
+        // 生成测试用例
+        function generateTestCases() {
+            const apiDoc = document.getElementById('apiDoc').value;
+            
+            if (!apiDoc) {
+                showError('请填写接口文档');
+                return;
+            }
+            
+            // 显示加载状态
+            document.getElementById('aiLoading').style.display = 'block';
+            
+            fetch('/api/ai/generate', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ apiDoc: apiDoc })
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('aiLoading').style.display = 'none';
+                if (data.status === 'success') {
+                    document.getElementById('businessPrompt').textContent = data.business_prompt;
+                    document.getElementById('testCases').textContent = JSON.stringify(data.test_cases, null, 2);
+                    document.getElementById('aiResult').style.display = 'block';
+                } else {
+                    showError(data.message);
+                }
+            })
+            .catch(error => {
+                document.getElementById('aiLoading').style.display = 'none';
+                showError('测试用例生成失败: ' + error.message);
+            });
+        }
+        
+        // 下载Excel测试用例
+        function downloadExcel() {
+            const testCasesText = document.getElementById('testCases').textContent;
+            
+            if (!testCasesText || testCasesText === '这里将显示AI生成的测试用例') {
+                showError('请先生成测试用例');
+                return;
+            }
+            
+            try {
+                const testCases = JSON.parse(testCasesText);
+                
+                fetch('/api/excel/download', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ test_cases: testCases })
+                })
+                .then(response => {
+                    if (response.ok) {
+                        // 获取Allure报告地址
+                        const allureReportUrl = response.headers.get('X-Allure-Report-Url');
+                        return response.blob().then(blob => ({
+                            blob: blob,
+                            allureReportUrl: allureReportUrl
+                        }));
+                    } else {
+                        return response.json().then(data => {
+                            throw new Error(data.message || '下载失败');
+                        });
+                    }
+                })
+                .then(data => {
+                    const blob = data.blob;
+                    const allureReportUrl = data.allureReportUrl;
+                    
+                    const url = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = 'test_cases.xlsx';
+                    document.body.appendChild(a);
+                    a.click();
+                    window.URL.revokeObjectURL(url);
+                    document.body.removeChild(a);
+                    
+                    if (allureReportUrl) {
+                        alert('Excel测试用例下载成功！\nAllure报告地址: ' + allureReportUrl);
+                    } else {
+                        alert('Excel测试用例下载成功！');
+                    }
+                })
+                .catch(error => {
+                    showError('Excel下载失败: ' + error.message);
+                });
+            } catch (error) {
+                showError('解析测试用例失败: ' + error.message);
+            }
+        }
+        
+        // 简便测试 - 生成测试用例
+        function generateSimpleTest() {
+            const apiUrl = document.getElementById('simpleApiUrl').value;
+            const apiDocFile = document.getElementById('simpleApiDocFile').files[0];
+            const apiDocText = document.getElementById('simpleApiDocText').value;
+            
+            if (!apiUrl) {
+                showError('请输入接口地址');
+                return;
+            }
+            
+            if (!apiDocFile && !apiDocText) {
+                showError('请上传API文档或粘贴文档内容');
+                return;
+            }
+            
+            document.getElementById('simpleLoading').style.display = 'block';
+            
+            const formData = new FormData();
+            formData.append('api_url', apiUrl);
+            
+            if (apiDocFile) {
+                formData.append('api_doc_file', apiDocFile);
+            } else if (apiDocText) {
+                formData.append('api_doc_text', apiDocText);
+            }
+            
+            fetch('/api/simple/generate', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('simpleLoading').style.display = 'none';
+                if (data.status === 'success') {
+                    // 显示测试用例表格
+                    const tableBody = document.getElementById('testCasesTable');
+                    tableBody.innerHTML = '';
+                    
+                    data.test_cases.forEach(testCase => {
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                            <td>${testCase.title || testCase.name}</td>
+                            <td>${testCase.method}</td>
+                            <td>${testCase.path}</td>
+                            <td>${testCase.expected_status || testCase.expected.code}</td>
+                        `;
+                        tableBody.appendChild(row);
+                    });
+                    
+                    // 保存测试用例到全局变量，供后续下载和运行使用
+                    window.simpleTestCases = data.test_cases;
+                    
+                    document.getElementById('simpleResult').style.display = 'block';
+                } else {
+                    showError(data.message);
+                }
+            })
+            .catch(error => {
+                document.getElementById('simpleLoading').style.display = 'none';
+                showError('测试用例生成失败: ' + error.message);
+            });
+        }
+        
+        // 简便测试 - 清空表单
+        function clearSimpleForm() {
+            document.getElementById('simpleApiUrl').value = '';
+            document.getElementById('simpleApiDocFile').value = '';
+            document.getElementById('simpleApiDocText').value = '';
+            document.getElementById('simpleResult').style.display = 'none';
+            window.simpleTestCases = null;
+        }
+        
+        // 简便测试 - 下载Excel
+        function downloadSimpleExcel() {
+            if (!window.simpleTestCases) {
+                showError('请先生成测试用例');
+                return;
+            }
+            
+            fetch('/api/excel/download', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ test_cases: window.simpleTestCases })
+            })
+            .then(response => {
+                if (response.ok) {
+                    // 获取Allure报告地址
+                    const allureReportUrl = response.headers.get('X-Allure-Report-Url');
+                    return response.blob().then(blob => ({
+                        blob: blob,
+                        allureReportUrl: allureReportUrl
+                    }));
+                } else {
+                    return response.json().then(data => {
+                        throw new Error(data.message || '下载失败');
+                    });
+                }
+            })
+            .then(data => {
+                const blob = data.blob;
+                const allureReportUrl = data.allureReportUrl;
+                
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'simple_test_cases.xlsx';
+                document.body.appendChild(a);
+                a.click();
+                window.URL.revokeObjectURL(url);
+                document.body.removeChild(a);
+                
+                if (allureReportUrl) {
+                    alert('Excel测试用例下载成功！\nAllure报告地址: ' + allureReportUrl);
+                } else {
+                    alert('Excel测试用例下载成功！');
+                }
+            })
+            .catch(error => {
+                showError('Excel下载失败: ' + error.message);
+            });
+        }
+        
+        // 简便测试 - 运行测试
+        function runSimpleTest() {
+            if (!window.simpleTestCases || window.simpleTestCases.length === 0) {
+                showError('请先生成测试用例');
+                return;
+            }
+
+            // 这里可以实现批量运行测试的逻辑
+            // 暂时只执行第一个测试用例作为示例
+            const firstTestCase = window.simpleTestCases[0];
+            const apiUrl = document.getElementById('simpleApiUrl').value;
+            
+            // 提取基础URL和路径
+            const urlParts = new URL(apiUrl);
+            const baseUrl = `${urlParts.protocol}//${urlParts.host}`;
+            const endpoint = urlParts.pathname + urlParts.search;
+            
+            // 准备请求数据
+            const method = firstTestCase.method;
+            const headers = firstTestCase.headers || { 'Content-Type': 'application/json' };
+            const body = firstTestCase.body || {};
+            
+            document.getElementById('testLoading').style.display = 'block';
+            
+            fetch('/api/test', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    base_url: baseUrl,
+                    endpoint: endpoint,
+                    method: method,
+                    headers: headers,
+                    body: body
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('testLoading').style.display = 'none';
+                if (data.status === 'success') {
+                    // 创建一个更友好的结果显示
+                    let resultHtml = `
+                        <div class="alert alert-success">
+                            <h5>测试执行成功！</h5>
+                            <pre class="mt-2">${JSON.stringify(data, null, 2)}</pre>
+                            ${data.allure_report_url ? `<div class="mt-3">
+                                <strong>Allure报告地址：</strong>
+                                <a href="${data.allure_report_url}" target="_blank" class="btn btn-sm btn-primary">打开报告</a>
+                                <input type="text" class="form-control mt-2" value="${data.allure_report_url}" readonly>
+                            </div>` : ''}
+                        </div>
+                    `;
+                    // 创建一个模态框显示结果
+                    const modalHtml = `
+                        <div class="modal fade" id="resultModal" tabindex="-1" aria-labelledby="resultModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header bg-success text-white">
+                                        <h5 class="modal-title" id="resultModalLabel">测试结果</h5>
+                                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        ${resultHtml}
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">关闭</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    
+                    // 移除旧的模态框（如果存在）
+                    const oldModal = document.getElementById('resultModal');
+                    if (oldModal) {
+                        oldModal.remove();
+                    }
+                    
+                    // 添加新的模态框
+                    document.body.insertAdjacentHTML('beforeend', modalHtml);
+                    
+                    // 显示模态框
+                    const resultModal = new bootstrap.Modal(document.getElementById('resultModal'));
+                    resultModal.show();
+                } else {
+                    showError(data.message);
+                }
+            })
+            .catch(error => {
+                document.getElementById('testLoading').style.display = 'none';
+                showError('测试执行失败: ' + error.message);
+            });
+        }
+        
+        // 业务理解注入 - 解析业务规则
+        function parseBusinessRules() {
+            const apiUrl = document.getElementById('apiUrl').value;
+            const businessRules = document.getElementById('businessRules').value;
+            
+            if (!apiUrl) {
+                showError('请输入接口地址');
+                return;
+            }
+            
+            showLoading('businessLoading');
+            
+            fetch('/api/parse_business', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    api_url: apiUrl,
+                    business_rules: businessRules,
+                    domain_knowledge: document.getElementById('domainKnowledge').value,
+                    historical_bugs: document.getElementById('historicalBugs').value,
+                    compliance: document.getElementById('compliance').value
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                hideLoading('businessLoading');
+                if (data.status === 'success') {
+                    // 显示增强提示词
+                    const promptPreview = document.getElementById('promptPreview');
+                    document.getElementById('promptContent').textContent = data.prompt;
+                    promptPreview.style.display = 'block';
+                    
+                    // 显示测试计划
+                    const testPlan = document.getElementById('testPlan');
+                    document.getElementById('planContent').textContent = JSON.stringify(data.test_plan, null, 2);
+                    testPlan.style.display = 'block';
+                } else {
+                    showError(data.message);
+                }
+            })
+            .catch(error => {
+                hideLoading('businessLoading');
+                showError('请求失败: ' + error.message);
+            });
+        }
+        
+
+    </script>
+</body>
+</html>

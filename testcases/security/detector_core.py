@@ -1,13 +1,17 @@
 """安全检测核心：payload 注入、接口请求、可解释证据提取、漏洞信息收集。
 
 说明：
-    本模块只做“探测与证据记录”，不包含任何数据提取/外带逻辑。
+    本模块只做"探测与证据记录"，不包含任何数据提取/外带逻辑。
     适用于合法靶场/训练环境的安全测试与可解释报告输出。
 """
 
+import json
 import logging
+import os
 import re
+import time
 from copy import deepcopy
+from pathlib import Path
 from typing import Any, Callable, Dict, List, Optional, Tuple
 
 from requests import Response
@@ -17,6 +21,19 @@ from core.request_handler import RequestHandler
 from testcases.security.auth_handler import AuthManager
 
 logger = logging.getLogger(__name__)
+
+PAYLOAD_DB_PATH = Path(__file__).resolve().parents[2] / "data" / "security_payloads.json"
+
+
+def load_payload_db() -> Dict[str, Any]:
+    """从data/security_payloads.json加载所有payload数据。"""
+    if PAYLOAD_DB_PATH.exists():
+        try:
+            with open(PAYLOAD_DB_PATH, 'r', encoding='utf-8') as f:
+                return json.load(f)
+        except Exception:
+            pass
+    return {}
 
 
 class SecurityDetector:
@@ -41,10 +58,9 @@ class SecurityDetector:
         self._auth_manager = auth_manager
         self._sql_payloads = list(sql_payloads)
         self._xss_payloads = list(xss_payloads)
+        self._payload_db = load_payload_db()
 
-        # 检测结果：标准化漏洞字典列表（供 BugLogGenerator 使用）
         self.bug_info_list: List[Dict[str, Any]] = []
-        # SQL 错误关键字：用于证据与数据库指纹推断
         self._sql_error_markers: Tuple[str, ...] = (
             "sql syntax",
             "syntax error",
@@ -52,12 +68,14 @@ class SecurityDetector:
             "sqlite",
             "postgresql",
             "psycopg2",
-            "pymysql",
             "ora-",
             "odbc",
             "sql server",
             "stack trace",
             "traceback",
+            "xp_",
+            "extractvalue",
+            "updatexml",
         )
 
     @staticmethod
@@ -219,6 +237,182 @@ class SecurityDetector:
         except Exception:
             return ""
 
+    def _detect_injection_type(self, cfg: Dict[str, Any], param_name: str) -> str:
+        """探测注入点类型：字符型、数字型、JSON型。"""
+        interface = str(cfg.get("interface", ""))
+        method = str(cfg.get("method", "")).upper()
+
+        test_chars = [
+            ("'", "sql_error"),
+            ("1", "numeric"),
+            ('"', "json_string"),
+        ]
+
+        for test_val, test_type in test_chars:
+            try:
+                response, _ = self._dispatch_request(cfg, param_name, test_val)
+                text = (response.text or "").lower()
+
+                if test_type == "sql_error":
+                    if any(m in text for m in self._sql_error_markers):
+                        return "error_based"
+                elif test_type == "numeric":
+                    if response.status_code == 200 and test_val in text:
+                        return "numeric"
+                elif test_type == "json_string":
+                    if response.status_code == 200 and '"' in response.text:
+                        return "json"
+            except Exception:
+                pass
+
+        return "unknown"
+
+    def _detect_time_blind_injection(self, cfg: Dict[str, Any], param_name: str) -> Optional[Dict[str, Any]]:
+        """检测时间盲注：发送带有延时的payload，比较响应时间差异。"""
+        payload_db = self._payload_db.get("sql_injection", {}).get("time_based", {})
+
+        for db_type, payloads in payload_db.items():
+            for payload_entry in payloads[:3]:
+                payload = payload_entry.get("payload", "")
+                if not payload:
+                    continue
+
+                try:
+                    start_time = time.time()
+                    test_resp, _ = self._dispatch_request(cfg, param_name, payload)
+                    elapsed_time = time.time() - start_time
+
+                    if elapsed_time > 3:
+                        return {
+                            "type": "time_based",
+                            "payload": payload,
+                            "db_type": db_type,
+                            "delay": elapsed_time,
+                            "evidence": f"响应延迟 {elapsed_time:.2f}秒"
+                        }
+                except Exception:
+                    pass
+
+        return None
+
+    def _detect_path_traversal(self, cfg: Dict[str, Any], param_name: str) -> Optional[Dict[str, Any]]:
+        """检测路径遍历漏洞：尝试读取系统敏感文件。"""
+        path_payloads = self._payload_db.get("path_traversal", {})
+        common_files = [
+            ("/etc/passwd", "root:x:"),
+            ("C:\\Windows\\win.ini", "[extensions]"),
+            ("/etc/hosts", "localhost"),
+            ("/proc/self/environ", "PATH"),
+        ]
+
+        for os_type, payloads in path_payloads.items():
+            if os_type == "description":
+                continue
+            if not isinstance(payloads, list):
+                continue
+            for payload_entry in payloads[:5]:
+                if not isinstance(payload_entry, dict):
+                    continue
+                payload = payload_entry.get("payload", "")
+                if not payload:
+                    continue
+
+                try:
+                    response, _ = self._dispatch_request(cfg, param_name, payload)
+                    text = response.text or ""
+
+                    for file_path, expected_content in common_files:
+                        if expected_content.lower() in text.lower():
+                            return {
+                                "type": "path_traversal",
+                                "payload": payload,
+                                "target_file": file_path,
+                                "evidence": f"成功读取敏感文件 {file_path}"
+                            }
+                except Exception:
+                    pass
+
+        return None
+
+    def _detect_command_injection(self, cfg: Dict[str, Any], param_name: str) -> Optional[Dict[str, Any]]:
+        """检测命令注入漏洞：尝试执行系统命令。"""
+        cmd_payloads = self._payload_db.get("command_injection", {})
+
+        for os_type, payloads in cmd_payloads.items():
+            if os_type == "description":
+                continue
+            if not isinstance(payloads, list):
+                continue
+            for payload_entry in payloads[:5]:
+                if not isinstance(payload_entry, dict):
+                    continue
+                payload = payload_entry.get("payload", "")
+                if not payload:
+                    continue
+
+                try:
+                    response, _ = self._dispatch_request(cfg, param_name, payload)
+                    text = response.text or ""
+
+                    cmd_indicators = ["root:x:", "uid=", "Directory of", "User accounts", "total", "Windows IP", "Microsoft"]
+                    for indicator in cmd_indicators:
+                        if indicator.lower() in text.lower():
+                            return {
+                                "type": "command_injection",
+                                "payload": payload,
+                                "os_type": os_type,
+                                "evidence": f"命令执行成功，响应包含: {indicator}"
+                            }
+                except Exception:
+                    pass
+
+        return None
+
+    def _detect_boolean_blind_injection(self, cfg: Dict[str, Any], param_name: str) -> Optional[Dict[str, Any]]:
+        """检测布尔盲注：比较注入永真式和永假式的响应差异。"""
+        payload_db = self._payload_db.get("sql_injection", {}).get("boolean_based", {})
+
+        try:
+            baseline_resp, _ = self._dispatch_request(cfg, param_name, "test")
+            baseline_len = len(baseline_resp.text or "")
+            baseline_status = baseline_resp.status_code
+
+            true_payloads = [
+                "' OR 1=1 -- ",
+                "' AND 1=1 -- ",
+                "1' OR '1'='1' -- ",
+            ]
+            false_payloads = [
+                "' AND 1=2 -- ",
+                "' OR 1=2 -- ",
+                "1' AND '1'='2' -- ",
+            ]
+
+            for true_payload in true_payloads:
+                for false_payload in false_payloads:
+                    try:
+                        true_resp, _ = self._dispatch_request(cfg, param_name, true_payload)
+                        false_resp, _ = self._dispatch_request(cfg, param_name, false_payload)
+
+                        true_len = len(true_resp.text or "")
+                        false_len = len(false_resp.text or "")
+
+                        if abs(true_len - false_len) > 50:
+                            return {
+                                "type": "boolean_based",
+                                "true_payload": true_payload,
+                                "false_payload": false_payload,
+                                "true_length": true_len,
+                                "false_length": false_len,
+                                "evidence": f"响应长度差异: {abs(true_len - false_len)} bytes"
+                            }
+                    except Exception:
+                        pass
+        except Exception:
+            pass
+
+        return None
+
     def detect_single_interface(self, interface_cfg: Dict[str, Any]) -> List[Dict[str, Any]]:
         """单接口检测：结果写入 bug_info_list 并返回。"""
         self.bug_info_list = []
@@ -240,22 +434,84 @@ class SecurityDetector:
         method = str(interface_cfg.get("method", "")).upper()
         interface = str(interface_cfg.get("interface", ""))
 
-        # 默认对 default_data 中的所有字段尝试注入
         param_names = list((interface_cfg.get("default_data") or {}).keys())
         if not param_names:
             logger.info("接口无可注入参数，跳过：%s %s", method, interface)
             return
 
         for param_name in param_names:
-            # 基线请求：使用默认值，不做注入，用于差异对比解释
             baseline_value = str((interface_cfg.get("default_data") or {}).get(param_name, "test"))
             baseline_resp = self._try_request(interface_cfg, param_name, baseline_value)
             baseline_metrics = self._response_metrics(baseline_resp) if baseline_resp else {"status_code": 0, "length": 0}
 
+            injection_type = self._detect_injection_type(interface_cfg, param_name)
+
             for payload in self._sql_payloads:
                 self._probe(interface_cfg, param_name, payload, "SQL_INJECTION", baseline_metrics)
+
             for payload in self._xss_payloads:
                 self._probe(interface_cfg, param_name, payload, "XSS", baseline_metrics)
+
+            if injection_type != "unknown":
+                time_blind_result = self._detect_time_blind_injection(interface_cfg, param_name)
+                if time_blind_result:
+                    self._append_bug(
+                        vuln_type="SQL_INJECTION_TIME_BLIND",
+                        risk_level="高危",
+                        target_path=interface,
+                        http_method=method,
+                        inject_param=param_name,
+                        payload=time_blind_result.get("payload", ""),
+                        status_code=0,
+                        reason=f"时间盲注检测: {time_blind_result.get('evidence', '')}",
+                        response_snippet="",
+                        error_message="",
+                    )
+
+                bool_blind_result = self._detect_boolean_blind_injection(interface_cfg, param_name)
+                if bool_blind_result:
+                    self._append_bug(
+                        vuln_type="SQL_INJECTION_BOOLEAN_BLIND",
+                        risk_level="高危",
+                        target_path=interface,
+                        http_method=method,
+                        inject_param=param_name,
+                        payload=bool_blind_result.get("true_payload", ""),
+                        status_code=0,
+                        reason=f"布尔盲注检测: {bool_blind_result.get('evidence', '')}",
+                        response_snippet="",
+                        error_message="",
+                    )
+
+            path_traversal_result = self._detect_path_traversal(interface_cfg, param_name)
+            if path_traversal_result:
+                self._append_bug(
+                    vuln_type="PATH_TRAVERSAL",
+                    risk_level="高危",
+                    target_path=interface,
+                    http_method=method,
+                    inject_param=param_name,
+                    payload=path_traversal_result.get("payload", ""),
+                    status_code=0,
+                    reason=f"路径遍历检测: {path_traversal_result.get('evidence', '')}",
+                    response_snippet="",
+                    error_message="",
+                )
+
+            cmd_injection_result = self._detect_command_injection(interface_cfg, param_name)
+            if cmd_injection_result:
+                self._append_bug(
+                    vuln_type="COMMAND_INJECTION",
+                    risk_level="严重",
+                    target_path=interface,
+                    http_method=method,
+                    inject_param=param_name,
+                    payload=cmd_injection_result.get("payload", ""),
+                    status_code=0,
+                    reason=f"命令注入检测: {cmd_injection_result.get('evidence', '')}",
+                    response_snippet="",
+                    error_message="",
+                )
 
     def _try_request(self, cfg: Dict[str, Any], param_name: str, payload: str) -> Optional[Response]:
         """发起一次请求（用于基线或探测）；异常返回 None。"""

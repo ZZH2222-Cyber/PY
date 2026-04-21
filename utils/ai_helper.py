@@ -291,3 +291,185 @@ def save_to_excel(cases: List[Dict[str, Any]], file_path: str) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     wb.save(str(path))
     logger.info("Excel 已保存：%s", path)
+
+
+def generate_business_prompt(api_doc: str) -> str:
+    """根据接口文档生成业务提示词。
+
+    参数:
+        api_doc: 接口文档内容。
+
+    返回:
+        业务提示词字符串。
+    """
+    if not DEEPSEEK_API_KEY:
+        logger.info("未配置 DEEPSEEK_API_KEY，返回模拟业务提示词")
+        return "# 业务提示词\n\n## 接口功能\n- 接口描述：模拟接口\n- 业务场景：测试场景\n\n## 测试要点\n- 正常流程测试\n- 异常流程测试\n- 边界条件测试\n- 安全测试\n\n## 预期结果\n- 返回正确的响应数据\n- 处理错误情况\n- 防止安全漏洞"
+
+    system_prompt = (
+        "你是资深测试工程师。根据给定的接口文档，生成详细的业务提示词，用于指导测试用例生成。"
+        "业务提示词应包含：接口功能描述、业务场景分析、测试要点、预期结果等内容。"
+        "请使用 Markdown 格式输出，内容要详细、全面。"
+    )
+
+    headers = {
+        "Authorization": f"Bearer {DEEPSEEK_API_KEY}",
+        "Content-Type": "application/json",
+    }
+
+    payload = {
+        "model": "deepseek-chat",
+        "messages": [
+            {"role": "system", "content": system_prompt},
+            {"role": "user", "content": api_doc},
+        ],
+        "temperature": 0.3,
+        "max_tokens": 1500,
+    }
+
+    logger.info("调用 DeepSeek 生成业务提示词…")
+    try:
+        resp = requests.post(
+            DEEPSEEK_API_URL,
+            headers=headers,
+            json=payload,
+            timeout=120,
+        )
+        resp.raise_for_status()
+        body = resp.json()
+        return body["choices"][0]["message"]["content"]
+    except RequestException as exc:
+        logger.error("DeepSeek 请求失败：%s", exc, exc_info=True)
+        return "# 业务提示词\n\n## 接口功能\n- 接口描述：模拟接口\n- 业务场景：测试场景\n\n## 测试要点\n- 正常流程测试\n- 异常流程测试\n- 边界条件测试\n- 安全测试\n\n## 预期结果\n- 返回正确的响应数据\n- 处理错误情况\n- 防止安全漏洞"
+
+
+import urllib.parse
+
+def parse_api_info_from_doc(api_doc: str) -> Dict[str, Any]:
+    """从接口文档中解析接口信息"""
+    import re
+    
+    # 默认值
+    api_info = {
+        "description": api_doc,
+        "method": "GET",
+        "path": "/api/demo"
+    }
+    
+    # 检查是否是完整的URL
+    if api_doc.startswith('http://') or api_doc.startswith('https://'):
+        try:
+            parsed = urllib.parse.urlparse(api_doc)
+            # 直接使用解析后的路径
+            api_info["path"] = parsed.path
+            if parsed.query:
+                api_info["path"] += f"?{parsed.query}"
+            # 提取主机信息作为描述的一部分
+            api_info["description"] = f"接口: {parsed.scheme}://{parsed.netloc}{api_info['path']}"
+        except Exception as e:
+            logger.error(f"解析URL失败: {e}")
+            pass
+    
+    # 尝试从文档中提取方法
+    method_pattern = r'(GET|POST|PUT|DELETE|HEAD|OPTIONS|PATCH)\s+'
+    match = re.search(method_pattern, api_doc, re.IGNORECASE)
+    if match:
+        api_info["method"] = match.group(1).upper()
+    
+    # 尝试从文档中提取路径
+    path_pattern = r'\s+(/[^\s]+)'
+    match = re.search(path_pattern, api_doc)
+    if match and not (api_doc.startswith('http://') or api_doc.startswith('https://')):
+        api_info["path"] = match.group(1)
+    
+    return api_info
+
+
+def generate_test_cases(api_doc: str) -> Dict[str, Any]:
+    """根据接口文档生成测试用例和业务提示词。
+
+    参数:
+        api_doc: 接口文档内容。
+
+    返回:
+        包含业务提示词和测试用例的字典。
+    """
+    # 生成业务提示词
+    business_prompt = generate_business_prompt(api_doc)
+    
+    # 解析接口文档，提取接口信息
+    api_info = parse_api_info_from_doc(api_doc)
+    
+    # 生成测试用例
+    if not DEEPSEEK_API_KEY:
+        logger.info("未配置 DEEPSEEK_API_KEY，返回模拟用例")
+        test_cases = _mock_cases(api_info)
+    else:
+        system_prompt = (
+            "你是资深测试工程师。根据给定的接口信息，输出**仅包含**一个 JSON 数组，"
+            "数组元素为对象，输出 8~12 条用例，覆盖：正常、边界、异常、安全（含 SQL 注入/XSS payload 思路）。"
+            "每个对象建议包含：title, method, path, headers, body, expected_status, category。"
+            "不要输出 Markdown 说明，只输出 JSON。"
+        )
+        user_prompt = json.dumps(api_info, ensure_ascii=False, indent=2)
+
+        headers = {
+            "Authorization": f"Bearer {DEEPSEEK_API_KEY}",
+            "Content-Type": "application/json",
+        }
+
+        def _call_deepseek(temp: float, strict: bool) -> str:
+            extra_hint = ""
+            if strict:
+                extra_hint = (
+                    "\n\n【格式强约束】你必须输出严格有效的 JSON 数组（RFC8259），"
+                    "禁止代码块围栏（```）、禁止任何解释性文字；字符串必须使用双引号；"
+                    "不要包含尾随逗号。"
+                )
+            payload = {
+                "model": "deepseek-chat",
+                "messages": [
+                    {"role": "system", "content": system_prompt + extra_hint},
+                    {"role": "user", "content": user_prompt},
+                ],
+                "temperature": temp,
+                "max_tokens": 2000,
+            }
+            logger.info("调用 DeepSeek 生成用例… temperature=%s strict=%s", temp, strict)
+            try:
+                resp = requests.post(
+                    DEEPSEEK_API_URL,
+                    headers=headers,
+                    json=payload,
+                    timeout=120,
+                )
+                resp.raise_for_status()
+            except RequestException as exc:
+                logger.error("DeepSeek 请求失败：%s", exc, exc_info=True)
+                raise
+
+            try:
+                body = resp.json()
+                return body["choices"][0]["message"]["content"]
+            except (ValueError, KeyError, IndexError) as exc:
+                logger.error("DeepSeek 响应结构异常：%s", exc)
+                raise ValueError("无法解析 DeepSeek 响应") from exc
+
+        content = _call_deepseek(temp=0.3, strict=False)
+        try:
+            test_cases = _parse_json_array_from_content(content)
+        except (json.JSONDecodeError, ValueError) as exc:
+            logger.error("解析模型 JSON 失败：%s 原始片段=%s", exc, content[:500])
+            logger.info("将使用更严格提示重试一次…")
+            content2 = _call_deepseek(temp=0.0, strict=True)
+            try:
+                test_cases = _parse_json_array_from_content(content2)
+            except (json.JSONDecodeError, ValueError) as exc2:
+                logger.error("二次解析仍失败：%s 原始片段=%s", exc2, content2[:500])
+                test_cases = _mock_cases(api_info)
+
+    logger.info("生成用例 %d 条", len(test_cases))
+    return {
+        "business_prompt": business_prompt,
+        "test_cases": test_cases
+    }

